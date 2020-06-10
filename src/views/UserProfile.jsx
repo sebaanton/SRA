@@ -40,54 +40,56 @@ class UserProfile extends Component {
           <Row>
             <Col md={8} mdOffset={2}>
               <Card
-                title="Edit Profile"
+                title="Editar Perfil"
                 content={
                   <form>
-                    <FormInputs
-                      ncols={["col-md-6", "col-md-6"]}
-                      properties={[
-                        {
-                          label: "First name",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "First name",
-                          defaultValue: "Mike"
-                        },
-                        {
-                          label: "Last name",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "Last name",
-                          defaultValue: "Andrew"
-                        }
-                      ]}
-                    />
                     <FormInputs
                       ncols={["col-md-5", "col-md-7"]}
                       properties={[
                         {
-                          label: "Email address",
+                          label: "RUT",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "RUT",
+                          defaultValue: "123456789"
+                        },
+                        {
+                          label: "Email",
                           type: "email",
                           bsClass: "form-control",
                           placeholder: "Email"
-                        },
-                        {
-                          label: "Rut",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "Username",
-                          defaultValue: "12.256.258-5"
                         }
                       ]}
                     />
+                    <FormInputs
+                      ncols={["col-md-6", "col-md-6"]}
+                      properties={[
+                        {
+                          label: "Nombre",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "Nombre",
+                          defaultValue: "Mike"
+                        },
+                        {
+                          label: "Apellido",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "Apellido",
+                          defaultValue: "Andrew"
+                        }
+                      ]}
+                    />
+                
                     <Button bsStyle="info" pullRight fill type="submit">
-                      Update Profile
+                      Actualizar perfil
                     </Button>
                     <div className="clearfix" />
                   </form>
                 }
               />
             </Col>
+            
           </Row>
         </Grid>
       </div>

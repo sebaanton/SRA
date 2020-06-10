@@ -22,60 +22,47 @@ import Typography from "views/Typography.jsx";
 import Icons from "views/Icons.jsx";
 import Maps from "views/Maps.jsx";
 import Notifications from "views/Notifications.jsx";
-import Upgrade from "views/Upgrade.jsx";
+import Login from "views/Login.jsx";
+import Login2 from "views/Login2.jsx";
 
 const dashboardRoutes = [
   {
+    
     path: "/notifications",
     name: "Home",
     icon: "pe-7s-home",
     component: Notifications,
     layout: "/admin"
   },
-  {
+   {   
     path: "/dashboard",
-    name: "Ver Estadística",
+    name: " Ver Estadisticas",
     icon: "pe-7s-graph",
     component: Dashboard,
-    layout: "/admin"
+    layout: "/admin/Login2"
   },
   {
     path: "/user",
-    name: "Perfil de usuario",
+    name: "Perfil",
     icon: "pe-7s-user",
     component: UserProfile,
-    layout: "/admin"
+    layout: "/admin/Login2"
   },
   {
     path: "/table",
-    name: "Table List",
+    name: "Listado de alumnos",
     icon: "pe-7s-note2",
     component: TableList,
-    layout: "/admin"
+    layout: "/admin/Login2"
   },
   {
-    path: "/icons",
-    name: "Icons",
+    path: "/Login2",
+    name: "Login2",
     icon: "pe-7s-science",
-    component: Icons,
+    component: Login2,
     layout: "/admin"
-  }
-  /*{
-    path: "/maps",
-    name: "Maps",
-    icon: "pe-7s-map-marker",
-    component: Maps,
-    layout: "/admin"
-  },*/
+  },
 
-  /*{
-    upgrade: false,
-    path: "/upgrade",
-    name: "Upgrade to PRO",
-    icon: "pe-7s-rocket",
-    component: Upgrade,
-    layout: "/admin"
-  }*/
 ];
 
 export default dashboardRoutes;

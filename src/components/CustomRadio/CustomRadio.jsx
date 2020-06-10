@@ -18,23 +18,12 @@
 import React, { Component } from "react";
 
 class CustomRadio extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      is_checked: props.isChecked ? true : false
-    };
-    this.handleClick = this.handleClick.bind(this);
-  }
-  handleClick() {
-    this.setState({ is_checked: !this.state.is_checked });
-  }
   render() {
-    const { isChecked, number, label, option, name, ...rest } = this.props;
+    const { number, label, option, name, ...rest } = this.props;
 
     return (
       <div className="radio">
-        <input id={number} name={name} type="radio" value={option} onChange={this.handleClick}
-          checked={this.state.is_checked} {...rest} />
+        <input id={number} name={name} type="radio" value={option} {...rest} />
         <label htmlFor={number}>{label}</label>
       </div>
     );

@@ -22,23 +22,25 @@ class CustomCheckbox extends Component {
     super(props);
     this.state = {
       is_checked: props.isChecked ? true : false
+      //radio1: "apple"
     };
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick() {
-    this.setState({ is_checked: !this.state.is_checked });
+    //this.setState({ is_checked: !this.state.is_checked });
+
   }
   render() {
     const { isChecked, number, label, inline, ...rest } = this.props;
     const classes =
-      inline !== undefined ? "checkbox checkbox-inline" : "checkbox";
+      inline !== undefined ? "radio radio-inline" : "radio";
     return (
       <div className={classes}>
         <input
           id={number}
-          type="checkbox"
+          type="radio"
           onChange={this.handleClick}
-          checked={this.state.is_checked}
+          checked={this.state.radio1}
           {...rest}
         />
         <label htmlFor={number}>{label}</label>

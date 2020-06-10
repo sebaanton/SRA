@@ -18,6 +18,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -27,12 +28,13 @@ import "./assets/css/demo.css";
 import "./assets/css/pe-icon-7-stroke.css";
 
 import AdminLayout from "layouts/Admin.jsx";
+import Login2 from "views/Login2.jsx";
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-      <Route path="/admin" render={props => <AdminLayout {...props} />} />
-      <Redirect from="/" to="/admin/dashboard" />
+      <Route path="/admin" render={props => <Login2 {...props} />} />
+      <Redirect from="/" to="/admin/Login2" />
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")

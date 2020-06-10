@@ -266,14 +266,14 @@ var style = {
 // // // For tables
 // //
 //
-const thArray = ["ID", "Name", "Salary", "Country", "City"];
+const thArray = ["ID", "Nombre y Apellido", "Prioridad", "Estado", "Reincidencia"];
 const tdArray = [
-  ["1", "Dakota Rice", "$36,738", "Niger", "Oud-Turnhout"],
-  ["2", "Minerva Hooper", "$23,789", "Curaçao", "Sinaai-Waas"],
-  ["3", "Sage Rodriguez", "$56,142", "Netherlands", "Baileux"],
-  ["4", "Philip Chaney", "$38,735", "Korea, South", "Overland Park"],
-  ["5", "Doris Greene", "$63,542", "Malawi", "Feldkirchen in Kärnten"],
-  ["6", "Mason Porter", "$78,615", "Chile", "Gloucester"]
+  ["1", "Dakota Rice", "1.7", "En observación", "si"],
+  ["2", "Minerva Hooper", "2.8", "En causal", "no"],
+  ["3", "Sage Rodriguez", "1.4", "En observación", "no"],
+  ["4", "Philip Chaney", "2.1", "En observación", "no"],
+  ["5", "Doris Greene", "3.3", "En observación", "no"],
+  ["6", "Mason Porter", "1.9", "En observación", "no"]
 ];
 
 //

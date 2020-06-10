@@ -18,7 +18,6 @@
 import React, { Component } from "react";
 import { Tooltip, OverlayTrigger } from "react-bootstrap";
 import Checkbox from "components/CustomCheckbox/CustomCheckbox.jsx";
-import Radio from "components/CustomRadio/CustomRadio.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
 
 export class Tasks extends Component {
@@ -39,13 +38,13 @@ export class Tasks extends Component {
     var tasks = [];
     var number;
     for (var i = 0; i < tasks_title.length; i++) {
-      number = "radio" + i;
+      number = "checkbox" + i;
       tasks.push(
         <tr key={i}>
           <td>
-            <Radio
+            <Checkbox
               number={number}
-              isChecked={i === 1 || i === 0 ? true : false}
+              isChecked={i === 1 || i === 2 ? true : false}
             />
           </td>
           <td>{tasks_title[i]}</td>

@@ -20,7 +20,8 @@ import { Grid, Row, Col, Alert } from "react-bootstrap";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
 import { Card } from "components/Card/Card.jsx";
-import { Tasks } from "components/Tasks/Tasks2.jsx";
+import { Tasks } from "components/Tasks/Tasks3.jsx";
+
 class Notifications extends Component {
   render() {
     return (
@@ -35,7 +36,7 @@ class Notifications extends Component {
                 content={
                   <form>
                     <FormInputs
-                      ncols={["col-md-8"]}
+                      ncols={["col-md-6"]}
                       properties={[
                         {
                           type: "text",
@@ -44,10 +45,14 @@ class Notifications extends Component {
                         }
                       ]}
 
-                    /> 
-                   <Button bsStyle="info" pullRight fill type="submit" ncols={["col-md-1"]}>
-                    Buscar
-                  </Button>
+
+
+                    />
+
+                   <Button bsStyle="info" pullRight fill type="submit">
+                      Buscar
+                    </Button>   
+
                 <h3>Atributos</h3>
                   <div className="table-full-width">
                     <table className="table">
@@ -55,7 +60,7 @@ class Notifications extends Component {
                     </table>
                   </div>
 
-
+                    
                   </form>
                 }
               />
