@@ -1,4 +1,5 @@
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.parsers import FileUploadParser
 from rest_framework import generics, mixins
 from .models import (Administrador, Coordinador, Profesor, Alumno, Reporte,
                      Asignatura, Asignatura_reportada, Causal, Contacto, Derivacion,

@@ -26,7 +26,7 @@ class Ver_detalle extends Component {
                 title="Detalle del Alumno"
                 content={
                   <form>
-                    <FormInputs
+                    <FormInputs disabled
                       ncols={["col-md-5", "col-md-7"]}
                       properties={[
                         {
@@ -34,13 +34,16 @@ class Ver_detalle extends Component {
                           label: "RUT",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "123456789-8"
+                          placeholder: "123456789-8",
+                          defaultValue: "123456789",
+                          disabled: "disabled"
                         },
                         {
                           label: "Email",
                           type: "email",
                           bsClass: "form-control",
-                          placeholder: "usuario@mail.udp.cl"
+                          placeholder: "usuario@mail.udp.cl",
+                          disabled: "disabled"
                         }
                       ]}
                     />
@@ -52,18 +55,21 @@ class Ver_detalle extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "Juan",
+                          disabled: "disabled"
                         },
                         {
                           label: "Apellido",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "Perez"
+                          placeholder: "Perez", 
+                          disabled: "disabled"
                         },
                         {
                           label: "Año de Nacimiento",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "05/05/1970"
+                          placeholder: "05/05/1970", 
+                          disabled: "disabled"
                         },
                         
                       ]}
@@ -76,19 +82,22 @@ class Ver_detalle extends Component {
                           label: "Teléfonos",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "+56997856443, 0222879654"
+                          placeholder: "+56997856443, 0222879654",
+                          disabled: "disabled"
                         },
                         {
                           label: "Año de ingreso",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "2016"
+                          placeholder: "2016",
+                          disabled: "disabled"
                         },
                         {
                           label: "Semestre de ingreso",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "1er semestre"
+                          placeholder: "1er semestre",
+                          disabled: "disabled"
                         },
                       ]}
                     />
@@ -100,13 +109,15 @@ class Ver_detalle extends Component {
                           label: "Universidad o carrera de origen (si corresponde)",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "UDP, industrias"
+                          placeholder: "UDP, industrias",
+                          disabled: "disabled"
                         },
                         {
                           label: "Copia del registro ",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "(link al registro)"
+                          placeholder: "(link al registro)",
+                          disabled: "disabled"
                         },
                       ]}
                     />
@@ -118,13 +129,15 @@ class Ver_detalle extends Component {
                           label: "Fecha del registro",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "07/07/2020"
+                          placeholder: "07/07/2020",
+                          disabled: "disabled"
                         },
                         {
                           label: "Estado actual",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "Rehabilitado"
+                          placeholder: "Rehabilitado",
+                          disabled: "disabled"
                         },
                       ]}
                     />

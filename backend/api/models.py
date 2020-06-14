@@ -47,6 +47,7 @@ class Alumno(models.Model):
     correo = models.CharField(max_length=50, blank=False)
     telefono = models.IntegerField(null=False, blank=False)
     carrera_origen = models.TextField(blank=True)
+    copia_registro = models.FileField(upload_to='uploads/%Y/%m/%d/', null=True)
     fecha_registro = models.DateTimeField(default=now, editable=False)
     estado_actual = models.CharField(max_length=50, blank=False)
     coordinador = models.ForeignKey(Coordinador, on_delete=models.DO_NOTHING)
