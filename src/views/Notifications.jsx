@@ -22,6 +22,7 @@ import Button from "components/CustomButton/CustomButton.jsx";
 import { Card } from "components/Card/Card.jsx";
 import { Tasks } from "components/Tasks/Tasks3.jsx";
 import { thArray, tdArray } from "variables/Variables.jsx";
+import Ver_detalle from "views/Ver_detalle";
 class Notifications extends Component {
   render() {
     return (
@@ -93,6 +94,8 @@ class Notifications extends Component {
                             {prop.map((prop, key) => {
                               return <td key={key}>{prop}</td>;
                             })}
+                            <p ><a href="Ver_detalle">Ver Detalle</a>
+                </p>
                           </tr>
                         );
                       })}

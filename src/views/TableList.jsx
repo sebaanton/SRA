@@ -16,7 +16,7 @@
 
 */
 import React, { Component } from "react";
-import { Grid, Row, Col, Table } from "react-bootstrap";
+import { Grid, Row, Col, Table, Alert } from "react-bootstrap";
 import Button from "components/CustomButton/CustomButton.jsx";
 import Card from "components/Card/Card.jsx";
 import { thArray, tdArray } from "variables/Variables.jsx";
@@ -24,6 +24,7 @@ import { thArray, tdArray } from "variables/Variables.jsx";
 class TableList extends Component {
   render() {
     return (
+<<<<<<< HEAD
       <div className="content">
         <Grid fluid>
           <Row>
@@ -64,7 +65,63 @@ class TableList extends Component {
             </Col>
           </Row>
         </Grid>
+=======
+      
+      <Grid fluid>
+      <div className="card">
+        <div className="header">
+          <h4 className="title">{<i className="pe-7s-bell" />} Notificaciones</h4>
+        </div>
+        <div className="content">
+          
+          <Row>
+            <Col md={6} mdOffset={3}>
+              <h5>Notification states</h5>
+              <Alert bsStyle="info">
+                <button type="button" aria-hidden="true" className="close">
+                  &#x2715;
+                </button>
+                <span>
+                  <b> Info - </b> This is a regular notification made with
+                  bsStyle="info"
+                </span>
+              </Alert>
+              <Alert bsStyle="success">
+                <button type="button" aria-hidden="true" className="close">
+                  &#x2715;
+                </button>
+                <span>
+                  <b> Success - </b> This is a regular notification made
+                  with bsStyle="success"
+                </span>
+              </Alert>
+              <Alert bsStyle="warning">
+                <button type="button" aria-hidden="true" className="close">
+                  &#x2715;
+                </button>
+                <span>
+                  <b> Warning - </b> This is a regular notification made
+                  with bsStyle="warning"
+                </span>
+              </Alert>
+              <Alert bsStyle="danger">
+                <button type="button" aria-hidden="true" className="close">
+                  &#x2715;
+                </button>
+                <span>
+                  <b> Danger - </b> This is a regular notification made with
+                  bsStyle="danger"
+                </span>
+              </Alert>
+            </Col>
+          </Row>
+          <br />
+          <br />
+          
+        </div>
+>>>>>>> 752817bd3f18e2e8367da21618bbb6c66e0ec917
       </div>
+    </Grid>
     );
   }
 }
