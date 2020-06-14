@@ -75,7 +75,6 @@ class AlumnoView(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateMo
     serializer_class = AlumnoSerializer
     queryset = Alumno.objects.all()
     permission_classes = [IsAuthenticated]
-    parser_classes = [FileUploadParser]
 
     def get(self, request, pk = None):
         if pk:
