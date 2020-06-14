@@ -25,6 +25,7 @@ import Notifications from "views/Notifications.jsx";
 import Login from "views/Login.jsx";
 import Login2 from "views/Login2.jsx";
 import Ver_detalle from "views/Ver_detalle";
+import Ver_flujo from "views/Ver_flujo";
 
 const dashboardRoutes = [
   {
@@ -71,12 +72,12 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    path: "#",
-    name: "Ver flujo",
+    path: "/Ver_flujo",
+    name: "Ver Flujo",
     icon: "pe-7s-science",
-    component: Ver_detalle,
-    layout: "#"
-  }
+    component: Ver_flujo,
+    layout: "/admin"
+  },
 
 ];
 
