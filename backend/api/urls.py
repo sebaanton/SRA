@@ -1,0 +1,38 @@
+from django.urls import path
+from rest_framework_simplejwt import views as jwt_views
+from .views import (AdministradorView, CoordinadorView, ProfesorView,
+                    AlumnoView, ReporteView, AsignaturaView,
+                    Asignatura_reportadaView, CausalView, ContactoView,
+                    DerivacionView, ReunionView, Problema_asociadoView,
+                    RecomendacionView)
+
+urlpatterns = [
+    path('administrador/', AdministradorView.as_view()),
+    path('administrador/<pk>/', AdministradorView.as_view()),
+    path('coordinador/', CoordinadorView.as_view()),
+    path('coordinador/<pk>/', CoordinadorView.as_view()),
+    path('profesor/', ProfesorView.as_view()),
+    path('profesor/<pk>/', ProfesorView.as_view()),
+    path('alumno/', AlumnoView.as_view()),
+    path('alumno/<pk>/', AlumnoView.as_view()),
+    path('reporte/', ReporteView.as_view()),
+    path('reporte/<pk>/', ReporteView.as_view()),
+    path('asignatura/', AsignaturaView.as_view()),
+    path('asignatura/<pk>/', AsignaturaView.as_view()),
+    path('asignatura_reportada/', Asignatura_reportadaView.as_view()),
+    path('asignatura_reportada/<pk>/', Asignatura_reportadaView.as_view()),
+    path('causal/', CausalView.as_view()),
+    path('causal/<pk>/', CausalView.as_view()),
+    path('contacto/', ContactoView.as_view()),
+    path('contacto/<pk>/', ContactoView.as_view()),
+    path('derivacion/', DerivacionView.as_view()),
+    path('derivacion/<pk>/', DerivacionView.as_view()),
+    path('reunion/', ReunionView.as_view()),
+    path('reunion/<pk>/', ReunionView.as_view()),
+    path('problema_asociado/', Problema_asociadoView.as_view()),
+    path('problema_asociado/<pk>/', Problema_asociadoView.as_view()),
+    path('recomendacion/', RecomendacionView.as_view()),
+    path('recomendacion/<pk>/', RecomendacionView.as_view()),
+    path('token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+]

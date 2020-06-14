@@ -1,38 +1,47 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 from django.utils.timezone import now
 
-class Administrador(models.Model):
-    rut = models.CharField(max_length=10, primary_key=True, blank=False)
+class User(AbstractUser):
+    pass
+
+class Administrador(User):
+    rut = models.CharField(max_length=10, primary_key=True, blank=False, unique=True)
     nombre = models.CharField(max_length=50, blank=False)
-    correo = models.CharField(max_length=50, blank=True)
     telefono = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return self.nombre
-    
 
-class Coordinador(models.Model):
-    rut = models.CharField(max_length=10, primary_key=True, blank=False)
+    class Meta:
+        verbose_name = 'Administrador'
+
+class Coordinador(User):
+    rut = models.CharField(max_length=10, primary_key=True, blank=False, unique=True)
     nombre = models.CharField(max_length=50, blank=False)
-    correo = models.CharField(max_length=50, blank=True)
     telefono = models.IntegerField(null=True, blank=True)
-    administrador = models.ForeignKey(Administrador, on_delete=models.DO_NOTHING)
+    admin = models.ForeignKey(Administrador, on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return self.nombre
 
-class Profesor(models.Model):
+    class Meta:
+        verbose_name = 'Coordinador'
+
+class Profesor(User):
     nombre = models.CharField(max_length=50, blank=False)
-    correo = models.CharField(max_length=50, blank=True)
     telefono = models.IntegerField(null=True, blank=True)
     jornada = models.SmallIntegerField(null=True, blank=True)
-    administrador = models.ForeignKey(Administrador, on_delete=models.DO_NOTHING)
+    admin = models.ForeignKey(Administrador, on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return self.nombre
 
+    class Meta:
+        verbose_name = 'Profesor'
+
 class Alumno(models.Model):
-    rut = models.CharField(max_length=10, primary_key=True, blank=False)
+    rut = models.CharField(max_length=10, primary_key=True, blank=False, unique=True)
     nombre = models.CharField(max_length=50, blank=False)
     año_nacimiento = models.SmallIntegerField(null=False, blank=False, default=0)
     correo = models.CharField(max_length=50, blank=False)

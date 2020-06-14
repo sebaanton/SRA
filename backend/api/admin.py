@@ -1,5 +1,8 @@
 from django.contrib import admin
-from .models import Administrador, Coordinador, Profesor, Alumno, Reporte, Asignatura, Asignatura_reportada, Causal, Contacto, Derivacion, Reunion, Problema_asociado, Recomendacion
+from django.contrib.auth.admin import UserAdmin
+from .models import (User, Administrador, Coordinador, Profesor, Alumno,
+                     Reporte, Asignatura, Asignatura_reportada, Causal, Contacto,
+                     Derivacion, Reunion, Problema_asociado, Recomendacion)
 
 admin.site.register(Administrador)
 admin.site.register(Coordinador)
@@ -14,3 +17,4 @@ admin.site.register(Derivacion)
 admin.site.register(Reunion)
 admin.site.register(Problema_asociado)
 admin.site.register(Recomendacion)
+admin.site.register(User, UserAdmin)
