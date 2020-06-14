@@ -24,6 +24,7 @@ import Maps from "views/Maps.jsx";
 import Notifications from "views/Notifications.jsx";
 import Login from "views/Login.jsx";
 import Login2 from "views/Login2.jsx";
+import Ver_detalle from "views/Ver_detalle";
 
 const dashboardRoutes = [
   {
@@ -50,7 +51,7 @@ const dashboardRoutes = [
   },
   {
     path: "/table",
-    name: "Listado de alumnos",
+    name: "Notificaciones",
     icon: "pe-7s-note2",
     component: TableList,
     layout: "/admin"
@@ -62,6 +63,20 @@ const dashboardRoutes = [
     component: Login2,
     layout: "/admin"
   },
+  {
+    path: "/Ver_detalle",
+    name: "Ver Detalle",
+    icon: "pe-7s-science",
+    component: Ver_detalle,
+    layout: "/admin"
+  },
+  {
+    path: "#",
+    name: "Ver flujo",
+    icon: "pe-7s-science",
+    component: Ver_detalle,
+    layout: "#"
+  }
 
 ];
 
