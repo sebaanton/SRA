@@ -34,11 +34,8 @@ ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Route path="/admin" render={props => <AdminLayout {...props} />} />
-<<<<<<< HEAD
       <Redirect from="/" to="/admin/AdminLayout" />
-=======
       <Redirect from="/" to="/admin/Login2" />
->>>>>>> b344c5f0ab2f8e3de8f3e3b2e01d95daa8a52568
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")
