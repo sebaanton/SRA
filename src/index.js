@@ -33,8 +33,8 @@ import Login2 from "views/Login2.jsx";
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-      <Route path="/admin" render={props => <Login2 {...props} />} />
-      <Redirect from="/" to="/admin/Login2" />
+      <Route path="/admin" render={props => <AdminLayout {...props} />} />
+      <Redirect from="/" to="/admin/AdminLayout" />
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")

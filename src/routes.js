@@ -39,21 +39,21 @@ const dashboardRoutes = [
     name: " Ver Estadisticas",
     icon: "pe-7s-graph",
     component: Dashboard,
-    layout: "/admin/Login2"
+    layout: "/admin"
   },
   {
     path: "/user",
     name: "Perfil",
     icon: "pe-7s-user",
     component: UserProfile,
-    layout: "/admin/Login2"
+    layout: "/admin"
   },
   {
     path: "/table",
     name: "Listado de alumnos",
     icon: "pe-7s-note2",
     component: TableList,
-    layout: "/admin/Login2"
+    layout: "/admin"
   },
   {
     path: "/Login2",

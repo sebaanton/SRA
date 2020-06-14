@@ -17,7 +17,7 @@
 */
 import React, { Component } from "react";
 import { Grid, Row, Col, Table } from "react-bootstrap";
-
+import Button from "components/CustomButton/CustomButton.jsx";
 import Card from "components/Card/Card.jsx";
 import { thArray, tdArray } from "variables/Variables.jsx";
 
@@ -44,10 +44,14 @@ class TableList extends Component {
                     <tbody>
                       {tdArray.map((prop, key) => {
                         return (
-                          <tr key={key}>
+                          <tr key={key} >
                             {prop.map((prop, key) => {
-                              return <td key={key}>{prop}</td>;
+                              return <td key={key}>{prop}
+                              </td>;
                             })}
+                            <p pullLeft>
+                  <a href="#">Ver detalle</a>
+                    </p>
                           </tr>
                         );
                       })}
