@@ -95,6 +95,8 @@ class Notifications extends Component {
                               return <td key={key}>{prop}</td>;
                             })}
                             <p ><a href="Ver_detalle">Ver Detalle</a>
+                </p> 
+                <p ><a href="Ver_detalle">Ver Registro(s)</a>
                 </p>
                           </tr>
                         );
