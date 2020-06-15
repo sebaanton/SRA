@@ -111,27 +111,15 @@ class Ver_registro extends Component {
                         },
                       ]}
                     />
-                    <FormInputs
-                      ncols={["col-md-8"]}
-                      properties={[
-                        
-                        {
-                          label: "Observaciones",
-                          type: "select",
-                          bsClass: "form-control",
-                          placeholder: "Observaciones ...",
-                          //disabled: "disabled"
-                        },
-                        
-                      ]}
-                    />
                     <form onSubmit={this.handleSubmit}>
                       <label>
                         Observaciones <br />
                         <textarea  className="form-control"
-                            rows="5" /> 
+                            rows="10" cols='80'  /> 
+                            
                       </label>   
                     </form>
+                        <br />
 
                     <Button bsStyle="info" pullRight fill type="submit">
                       Actualizar registro
