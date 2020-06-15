@@ -36,12 +36,6 @@ import {
 } from "variables/Variables.jsx";
 
 
-
-//function onChange(nextValue) {
-//  const [value, setValue] = useState(new Date());
-//  setValue(nextValue);
-//}
-
 class Ver_flujo extends Component {
 
   createLegend(json) {
@@ -77,9 +71,6 @@ class Ver_flujo extends Component {
         <Grid fluid>
           
         <Calendar
-      //onChange={onChange}
-      //value={value}
-      //tileClassName="hoy"
         />
         </Grid>
       </Col>
