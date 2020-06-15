@@ -15,7 +15,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React, { Component } from "react";
+import React, { Component,useState  } from "react";
 import ChartistGraph from "react-chartist";
 import { Grid, Row, Col } from "react-bootstrap";
 import Calendar from 'react-calendar';
@@ -35,7 +35,15 @@ import {
   legendBar
 } from "variables/Variables.jsx";
 
+
+
+//function onChange(nextValue) {
+//  const [value, setValue] = useState(new Date());
+//  setValue(nextValue);
+//}
+
 class Ver_flujo extends Component {
+
   createLegend(json) {
     var legend = [];
     for (var i = 0; i < json["names"].length; i++) {
@@ -44,6 +52,8 @@ class Ver_flujo extends Component {
       legend.push(" ");
       legend.push(json["names"][i]);
     }
+
+
     return legend;
   }
   render() {
@@ -65,14 +75,12 @@ class Ver_flujo extends Component {
       <Col md={5} mdOffset={1} lg={4}>
           
         <Grid fluid>
-        <div className="card">
-          <div className="header">
-            <h2 className="title">{<i className="pe-7s-user" />} Calendario</h2>
-            <h5>Nombre: Juanito Pérez</h5>
-            <h5>Estado: Activo</h5>
-            <h5>Fecha del Registro: 05/05/2020</h5>
-          </div>
-        </div>
+          
+        <Calendar
+      //onChange={onChange}
+      //value={value}
+      //tileClassName="hoy"
+        />
         </Grid>
       </Col>
       <div className="w-100"></div>
@@ -120,7 +128,7 @@ class Ver_flujo extends Component {
               />
             </Col>
 
-            <Calendar />
+         
 
           
       </div>
