@@ -18,7 +18,7 @@
 import React, { Component } from "react";
 import ChartistGraph from "react-chartist";
 import { Grid, Row, Col } from "react-bootstrap";
-
+import Calendar from 'react-calendar';
 import { Card } from "components/Card/Card.jsx";
 import { StatsCard } from "components/StatsCard/StatsCard.jsx";
 import { Tasks } from "components/Tasks/Tasks.jsx";
@@ -63,8 +63,8 @@ class Ver_flujo extends Component {
       </Col>
         <div className="content"></div>
       
-        <Grid fluid>
-          <Row>
+      <Grid>
+ 
             <Col lg={3} sm={6}>
               <StatsCard
                 bigIcon={<i className="pe-7s-server text-warning" />}
@@ -74,6 +74,8 @@ class Ver_flujo extends Component {
                 statsIconText="Updated now"
               />
             </Col>
+            </Grid>
+            <Grid>
             <Col lg={3} sm={6}>
               <StatsCard
                 bigIcon={<i className="pe-7s-wallet text-success" />}
@@ -83,6 +85,7 @@ class Ver_flujo extends Component {
                 statsIconText="Last day"
               />
             </Col>
+            </Grid>
             <Col lg={3} sm={6}>
               <StatsCard
                 bigIcon={<i className="pe-7s-graph1 text-danger" />}
@@ -101,12 +104,15 @@ class Ver_flujo extends Component {
                 statsIconText="Updated now"
               />
             </Col>
-          </Row>
-          
+
+            <Calendar />
 
           
-        </Grid>
       </div>
+  
+                  
+
+
     );
   }
 }

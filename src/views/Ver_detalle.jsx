@@ -30,7 +30,6 @@ class Ver_detalle extends Component {
                       ncols={["col-md-5", "col-md-7"]}
                       properties={[
                         {
-                          //disabled: "disabled",
                           label: "RUT",
                           type: "text",
                           bsClass: "form-control",
