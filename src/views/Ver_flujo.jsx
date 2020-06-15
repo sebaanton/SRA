@@ -49,18 +49,33 @@ class Ver_flujo extends Component {
   render() {
     return (
       <div className="content">
-        <Col md={6} mdOffset={0}>
+        <Col  mdOffset={0}lg={7}>
+          
         <Grid fluid>
         <div className="card">
           <div className="header">
             <h2 className="title">{<i className="pe-7s-user" />} Flujo del Alumno</h2>
             <h5>Nombre: Juanito Pérez</h5>
             <h5>Estado: Activo</h5>
-            <h5>Fecha del Registro: </h5>
+            <h5>Fecha del Registro: 05/05/2020</h5>
           </div>
         </div>
         </Grid>
       </Col>
+      <Col md={5} mdOffset={1} lg={4}>
+          
+        <Grid fluid>
+        <div className="card">
+          <div className="header">
+            <h2 className="title">{<i className="pe-7s-user" />} Calendario</h2>
+            <h5>Nombre: Juanito Pérez</h5>
+            <h5>Estado: Activo</h5>
+            <h5>Fecha del Registro: 05/05/2020</h5>
+          </div>
+        </div>
+        </Grid>
+      </Col>
+      <div className="w-100"></div>
         <div className="content"></div>
       
       <Grid>
