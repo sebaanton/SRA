@@ -52,7 +52,7 @@ class For_ingreso2 extends Component {
                       ]}
                     />
                     <FormInputs
-                      ncols={["col-md-3", "col-md-3", "col-md-5"]}
+                      ncols={["col-md-3", "col-md-4", "col-md-4"]}
                       properties={[
                         
                         {

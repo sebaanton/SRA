@@ -29,6 +29,7 @@ import Ver_flujo from "views/Ver_flujo";
 import Ver_registro from "views/Ver_registro";
 import For_ingreso1 from "views/For_ingreso1"
 import For_ingreso2 from "views/For_ingreso2"
+import Cargar_plantilla from "views/Cargar_plantilla"
 
 const dashboardRoutes = [
   {
@@ -100,6 +101,13 @@ const dashboardRoutes = [
     name: "Formulario ingreso Profesor-alumno",
     icon: "pe-7s-science",
     component: For_ingreso2,
+    layout: "/admin"
+  },
+  {
+    path: "/Cargar_plantilla",
+    name: "Cargar plantilla",
+    icon: "pe-7s-science",
+    component: Cargar_plantilla,
     layout: "/admin"
   },
 

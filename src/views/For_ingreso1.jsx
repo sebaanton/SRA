@@ -167,11 +167,8 @@ class For_ingreso1 extends Component {
 
                         },
                       ]}
-                    
-                      
-
                     />
-                                        <form>
+                   <form>
                       <label>
                         Condiciones impuestas por la carrera <br />
                         <textarea  className="form-control"
