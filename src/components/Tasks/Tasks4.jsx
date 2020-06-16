@@ -20,7 +20,7 @@ render() {
 	return(
 	//<p> status: {this.state.value} </p>
 	<div>
-	<Col md={6} mdOffset={0.5}>
+	<Col md={10} mdOffset={0.5}>
 		<input 
 			type="radio"
 			name="name"
