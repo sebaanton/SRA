@@ -70,8 +70,7 @@ class Ver_flujo extends Component {
           
         <Grid fluid>
           
-        <Calendar
-        />
+        <Calendar/>
         </Grid>
       </Col>
       <div className="w-100"></div>

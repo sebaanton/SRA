@@ -72,7 +72,7 @@ class Ver_registro extends Component {
                             type: "text",
                             bsClass: "form-control",
                             placeholder: "2",
-                            disabled: "disabled"
+                            //disabled: "disabled"
                           },
                         {
                           label: "Tipo de causal                     ",
@@ -111,7 +111,7 @@ class Ver_registro extends Component {
                         },
                       ]}
                     />
-                    <form onSubmit={this.handleSubmit}>
+                    <form>
                       <label>
                         Observaciones <br />
                         <textarea  className="form-control"

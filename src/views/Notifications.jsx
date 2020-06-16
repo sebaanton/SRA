@@ -76,9 +76,11 @@ class Notifications extends Component {
             <Col md={12}>
               <Card
                 //title="Listado de alumnos"
-                ctTableFullWidth
-                ctTableResponsive
+                //ctTableFullWidth
+                //ctTableResponsive
                 content={
+                
+          
                   <Table striped hover>
                     <thead>
                       <tr>
@@ -96,7 +98,7 @@ class Notifications extends Component {
                             })}
                             <p ><a href="Ver_detalle">Ver Detalle</a>
                 </p> 
-                <p ><a href="Ver_detalle">Ver Registro(s)</a>
+                <p ><a href="Ver_registro">Ver Registro(s)</a>
                 </p>
                           </tr>
                         );

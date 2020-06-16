@@ -27,6 +27,7 @@ import Login2 from "views/Login2.jsx";
 import Ver_detalle from "views/Ver_detalle";
 import Ver_flujo from "views/Ver_flujo";
 import Ver_registro from "views/Ver_registro";
+import For_ingreso1 from "views/For_ingreso1"
 
 const dashboardRoutes = [
   {
@@ -84,6 +85,13 @@ const dashboardRoutes = [
     name: "Ver Flujo",
     icon: "pe-7s-science",
     component: Ver_flujo,
+    layout: "/admin"
+  },
+  {
+    path: "/For_ingreso1",
+    name: "Formulario ingreso por causal",
+    icon: "pe-7s-science",
+    component: For_ingreso1,
     layout: "/admin"
   },
 
