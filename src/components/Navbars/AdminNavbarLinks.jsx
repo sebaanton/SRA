@@ -17,6 +17,7 @@
 */
 import React, { Component } from "react";
 import { NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap";
+import Cargar_plantilla from "views/Cargar_plantilla"
 
 class AdminNavbarLinks extends Component {
   render() {
@@ -63,7 +64,8 @@ class AdminNavbarLinks extends Component {
             title="Ingresar Datos"
             id="basic-nav-dropdown-right">
             <MenuItem eventKey={2.1}>Digitación</MenuItem>
-            <MenuItem eventKey={2.2}>Cargar Plantilla</MenuItem>
+            
+            <MenuItem eventKey={2.2} href="Cargar_plantilla">Cargar Plantilla</MenuItem>
            </NavDropdown>
           <NavItem eventKey={3} href="#">
             Cerrar Sesión
