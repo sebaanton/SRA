@@ -192,7 +192,7 @@ class For_ingreso1 extends Component {
                     <br />
 
                     <Button bsStyle="info" pullRight fill type="submit">
-                      Actualizar perfil
+                      Ingresar Datos
                     </Button>
                     <div className="clearfix" />
                   </form>
