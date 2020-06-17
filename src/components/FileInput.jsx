@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Grid, Row, Col} from "react-bootstrap";
-
+import Button from "components/CustomButton/CustomButton.jsx";
 
 export class FileInput extends React.Component {
     constructor(props) {
@@ -19,10 +19,10 @@ export class FileInput extends React.Component {
             <span>Selecionar archivo:</span>     
 
           <div>  
-            
+          
             <input type="file" ref={this.fileInput} /> 
             <Col mdOffset={1}>      
-            <button type="submit" className="pull-right" >Subir</button>
+            <Button bsStyle="info" pullRight fill type="submit">Subir</Button>
             </Col> 
             </div>
         </form>
