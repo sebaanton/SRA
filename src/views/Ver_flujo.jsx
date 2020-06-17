@@ -78,9 +78,9 @@ class Ver_flujo extends Component {
       <Grid fluid>
             <Col lg={3} sm={6}>
               <StatsCard
-                bigIcon={<i className="pe-7s-server text-warning" />}
-                statsText="Capacity"
-                statsValue="105GB"
+                bigIcon={<i className="pe-7s-id text-warning" />}
+                statsText="10/03/2020"
+                statsValue="Contacto: Citación Inicial"
                 statsIcon={<i className="fa fa-refresh" />}
                 statsIconText="Updated now"
               />
@@ -99,22 +99,26 @@ class Ver_flujo extends Component {
            
             <Col lg={3} sm={6}>
               <StatsCard
-                bigIcon={<i className="pe-7s-graph1 text-danger" />}
-                statsText="Errors"
-                statsValue="23"
-                statsIcon={<i className="fa fa-clock-o" />}
-                statsIconText="In the last hour"
-              />
-            </Col>
-            <Col lg={3} sm={6}>
-              <StatsCard
-                bigIcon={<i className="fa fa-twitter text-info" />}
-                statsText="Followers"
-                statsValue="+45"
+                bigIcon={<i className="pe-7s-server text-warning" />}
+                statsText="10/03/2020"
+                statsValue="Contacto: Citación Inicial"
                 statsIcon={<i className="fa fa-refresh" />}
-                statsIconText="Updated now"
+                statsIconText="Se establece el contacto inicial mediante correo, y el alumno acepta ingresar al proceso"
               />
             </Col>
+            <Col mdOffset={2} lg={5} sm={6}>
+              <StatsCard
+                bigIcon={<i className="pe-7s-server text-warning" />}
+                statsText="10/03/2020"
+                statsValue="Contacto: Citación Inicial"
+                statsIcon={<i className="fa fa-refresh" />}
+                statsIconText="Se establece el contacto inicial mediante correo, y el alumno acepta ingresar al proceso"
+              />
+            </Col>
+            </Grid>
+            </Row> 
+            
+            
 
             <Col lg={3} sm={6}>
               <StatsCard

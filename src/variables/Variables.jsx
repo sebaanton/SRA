@@ -266,7 +266,7 @@ var style = {
 // // // For tables
 // //
 //
-const thArray = ["ID", "Nombre y Apellido", "Prioridad", "Estado", "Reincidencia"];
+const thArray = ["rut", "Nombre y Apellido", "correo", "Estado", "Enlaces"];
 const tdArray = [
   ["1", "Dakota Rice", "1.7", "En observación", "si"],
   ["2", "Minerva Hooper", "2.8", "En causal", "no"],

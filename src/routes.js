@@ -129,6 +129,13 @@ const dashboardRoutes = [
     layout: "/admin",
     estado:"True"
   },
+  {
+    path: "/Icons",
+    name: "Iconos",
+    icon: "pe-7s-science",
+    component: Icons,
+    layout: "/admin"
+  },
 
 ];
 
