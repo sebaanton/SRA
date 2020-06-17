@@ -76,51 +76,7 @@ class Ver_flujo extends Component {
    
 
       <Grid fluid>
-            <Col lg={3} sm={6}>
-              <StatsCard
-                bigIcon={<i className="pe-7s-id text-warning" />}
-                statsText="10/03/2020"
-                statsValue="Contacto: Citación Inicial"
-                statsIcon={<i className="fa fa-refresh" />}
-                statsIconText="Updated now"
-              />
-            </Col>
-            
-            
-            <Col lg={3} sm={6}>
-              <StatsCard
-                bigIcon={<i className="pe-7s-wallet text-success" />}
-                statsText="Revenue"
-                statsValue="$1,345"
-                statsIcon={<i className="fa fa-calendar-o" />}
-                statsIconText="Last day"
-              />
-            </Col>
-           
-            <Col lg={3} sm={6}>
-              <StatsCard
-                bigIcon={<i className="pe-7s-server text-warning" />}
-                statsText="10/03/2020"
-                statsValue="Contacto: Citación Inicial"
-                statsIcon={<i className="fa fa-refresh" />}
-                statsIconText="Se establece el contacto inicial mediante correo, y el alumno acepta ingresar al proceso"
-              />
-            </Col>
-            <Col mdOffset={2} lg={5} sm={6}>
-              <StatsCard
-                bigIcon={<i className="pe-7s-server text-warning" />}
-                statsText="10/03/2020"
-                statsValue="Contacto: Citación Inicial"
-                statsIcon={<i className="fa fa-refresh" />}
-                statsIconText="Se establece el contacto inicial mediante correo, y el alumno acepta ingresar al proceso"
-              />
-            </Col>
-            </Grid>
-            </Row> 
-            
-            
-
-            <Col lg={3} sm={6}>
+      <Col lg={3} sm={6}>
               <StatsCard
                 bigIcon={<i className="pe-7s-server text-warning" />}
                 statsText="Capacity"
@@ -159,8 +115,14 @@ class Ver_flujo extends Component {
                 statsIconText="Updated now"
               />
             </Col>
+            </Grid>
+      
+            
+            
 
-            </Grid> 
+            
+
+   
 
 
             
