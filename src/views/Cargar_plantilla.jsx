@@ -16,13 +16,12 @@
 
 */
 import React, { Component } from "react";
-import { Grid, Row, Col, Alert, Table } from "react-bootstrap";
-import { FormInputs } from "components/FormInputs/FormInputs.jsx";
-import Button from "components/CustomButton/CustomButton.jsx";
+import { Grid, Row, Col } from "react-bootstrap";
 import { Card } from "components/Card/Card.jsx";
 import { Tasks } from "components/Tasks/Tasks4.jsx";
-import { thArray, tdArray } from "variables/Variables.jsx";
-import Ver_detalle from "views/Ver_detalle";
+import FileInput from "components/FileInput";
+
+
 class Cargar_plantilla extends Component {
   render() {
     return (
@@ -36,6 +35,7 @@ class Cargar_plantilla extends Component {
               <Card
                 content={
                   <form>
+<<<<<<< HEAD
                     <FormInputs
                       ncols={["col-md-6"]}
                       properties={[
@@ -50,6 +50,9 @@ class Cargar_plantilla extends Component {
                       Buscar
                     </Button>   
                     
+=======
+                                        <FileInput/>
+>>>>>>> 65e21e11c39f563b8bc7bef4c48a9e10503e2fce
                 <h3>Tipo de Ingreso</h3>
                   <div className="table-full-width">
                     <table className="table">
