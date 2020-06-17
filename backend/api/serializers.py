@@ -35,50 +35,50 @@ class ProfesorSerializer(UserSerializer):
 
 class AlumnoSerializer(serializers.ModelSerializer):
     class Meta:
-        model: Alumno
+        model= Alumno
         fields = '__all__'
 
 class ReporteSerializer(serializers.ModelSerializer):
     class Meta:
-        model: Reporte
+        model= Reporte
         fields = '__all__'
 
 class AsignaturaSerializer(serializers.ModelSerializer):
     class Meta:
-        model: Asignatura
+        model= Asignatura
         fields = '__all__'
 
 class Asignatura_reportadaSerializer(serializers.ModelSerializer):
     class Meta:
-        model: Asignatura_reportada
+        model= Asignatura_reportada
         fields = '__all__'
 
 class CausalSerializer(serializers.ModelSerializer):
     class Meta:
-        model: Causal
+        model= Causal
         fields = '__all__'
 
 class ContactoSerializer(serializers.ModelSerializer):
     class Meta:
-        model: Contacto
+        model= Contacto
         fields = '__all__'
 
 class DerivacionSerializer(serializers.ModelSerializer):
     class Meta:
-        model: Derivacion
+        model= Derivacion
         fields = '__all__'
 
 class ReunionSerializer(serializers.ModelSerializer):
     class Meta:
-        model: Reunion
+        model= Reunion
         fields = '__all__'
 
 class Problema_asociadoSerializer(serializers.ModelSerializer):
-    class Meta:
+    class Meta=
         model: Problema_asociado
         fields = '__all__'
 
 class RecomendacionSerializer(serializers.ModelSerializer):
-    class Meta:
+    class Meta=
         model: Recomendacion
         fields = '__all__'
