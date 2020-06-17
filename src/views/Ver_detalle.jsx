@@ -17,10 +17,11 @@ import avatar from "assets/img/faces/face-3.jpg";
 
 class Ver_detalle extends Component {
   state = {
-    alumno: {},
-    rut:[]
+    alumno: [],
+    //rut:[],
   };
 
+  
   componentDidMount() {
     const currenturl = window.location.pathname
     const largo = currenturl.length
@@ -31,8 +32,9 @@ class Ver_detalle extends Component {
     axios.get(`http://localhost:8000/alumno/${urls}`).then(res => {
       this.setState({
         alumno: res.data,
-        rut: res.data.rut
+        //rut: res.data.rut,
       });
+
     });
 }
   render() {
@@ -53,14 +55,15 @@ class Ver_detalle extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "123456789-8",
-                          defaultValue: `${this.state.rut}`,
+                          value: `${this.state.alumno.rut}`,
                           disabled: "disabled"
                         },
                         {
                           label: "Email",
                           type: "email",
                           bsClass: "form-control",
-                          placeholder: `${this.state.alumno.correo}`,
+                          placeholder: "usuario@mail.udp.cl",
+                          value: `${this.state.alumno.correo}`,
                           disabled: "disabled"
                         }
                       ]}
@@ -72,14 +75,16 @@ class Ver_detalle extends Component {
                           label: "Nombre y Apellido",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: `${this.state.alumno.nombre}`,
+                          placeholder: "Juanito Perez",
+                          value: `${this.state.alumno.nombre}`,
                           disabled: "disabled"
                         },
                         {
                           label: "Año de Nacimiento",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: `${this.state.alumno.año_nacimiento}`, 
+                          placeholder: "05/05/1970",  
+                          value: `${this.state.alumno.año_nacimiento}`, 
                           disabled: "disabled"
                         },
                         
@@ -93,21 +98,24 @@ class Ver_detalle extends Component {
                           label: "Teléfonos",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: `${this.state.alumno.telefono}`,
+                          placeholder: "+56997856443",
+                          value: `${this.state.alumno.telefono}`,
                           disabled: "disabled"
                         },
                         {
                           label: "Año de ingreso",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: `${this.state.alumno.año_ingreso}`,
+                          placeholder: "2016",
+                          value: `${this.state.alumno.año_ingreso}`,
                           disabled: "disabled"
                         },
                         {
                           label: "Semestre de ingreso",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: `${this.state.alumno.semestre_ingreso}`,
+                          placeholder: "1er semestre",
+                          value: `${this.state.alumno.semestre_ingreso}`,
                           disabled: "disabled"
                         },
                       ]}
@@ -120,14 +128,16 @@ class Ver_detalle extends Component {
                           label: "Universidad o carrera de origen (si corresponde)",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: `${this.state.alumno.carrera_origen}`,
+                          placeholder: "UDP, industrias",
+                          value: `${this.state.alumno.carrera_origen}`,
                           disabled: "disabled"
                         },
                         {
                           label: "Copia del registro ",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: `${this.state.alumno.copia_registro}`,
+                          placeholder: "(link al registro)",
+                          value: `${this.state.alumno.copia_registro}`,
                           disabled: "disabled"
                         },
                       ]}
@@ -140,14 +150,16 @@ class Ver_detalle extends Component {
                           label: "Fecha del registro",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: `${this.state.alumno.fecha_registro}`,
+                          placeholder: "07/07/2020",
+                          value: `${this.state.alumno.fecha_registro}`,
                           disabled: "disabled"
                         },
                         {
                           label: "Estado actual",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: `${this.state.alumno.estado_actual}`,
+                          placeholder: "Rehabilitado",
+                          value: `${this.state.alumno.estado_actual}`,
                           disabled: "disabled"
                         },
                       ]}
