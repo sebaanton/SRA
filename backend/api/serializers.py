@@ -5,9 +5,10 @@ from .models import (User, Administrador, Coordinador, Profesor, Alumno,
                      Derivacion, Reunion, Problema_asociado, Recomendacion)
 
 class UserSerializer(serializers.ModelSerializer):
+    def validate_password(self, value: str) -> str:
+        return make_password(value)
     class Meta:
         model = User
-        fields = '__all__'
 
 class AdministradorSerializer(UserSerializer):
     def validate_password(self, value: str) -> str:
@@ -15,6 +16,7 @@ class AdministradorSerializer(UserSerializer):
 
     class Meta(UserSerializer.Meta):
         model = Administrador
+        exclude = ['user_ptr']
         
 
 class CoordinadorSerializer(UserSerializer):
@@ -23,6 +25,7 @@ class CoordinadorSerializer(UserSerializer):
 
     class Meta(UserSerializer.Meta):
         model = Coordinador
+        exclude = ['user_ptr']
         
 
 class ProfesorSerializer(UserSerializer):
@@ -31,6 +34,7 @@ class ProfesorSerializer(UserSerializer):
 
     class Meta(UserSerializer.Meta):
         model = Profesor
+        exclude = ['user_ptr']
         
 
 class AlumnoSerializer(serializers.ModelSerializer):

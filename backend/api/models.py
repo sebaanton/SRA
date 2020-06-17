@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.utils.timezone import now
+from django.contrib.auth.hashers import make_password
 
 class UserManager(BaseUserManager):
     """Define a model manager for User model with no username field."""
@@ -54,6 +55,9 @@ class Administrador(User):
 
     def __str__(self):
         return self.nombre
+
+    def validate_password(self, value: str) -> str:
+        return make_password(value)
 
     class Meta:
         verbose_name = 'Administrador'

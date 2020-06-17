@@ -33,9 +33,54 @@ function Login2() {
       localStorage.setItem('token', data.access);
       localStorage.setItem('refresh', data.refresh);
       setJwt(data.access);
+      await getAdmin()
+      await getCord()
+      await getProf()
       history.push("notifications");
     } catch (e) {
       alert(e.message);
+    }
+  }
+  async function getAdmin() {
+    try {
+      const response = await axios.get('http://localhost:8000/administrador/');
+      var i
+      for (i=0; i< response.data.length; i++) {
+        if (response.data[i].email == email) {
+          localStorage.setItem('userID', response.data[i].rut);
+          localStorage.setItem('userType', 'administrador');
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  async function getCord() {
+    try {
+      const response = await axios.get('http://localhost:8000/administrador/');
+      var i
+      for (i=0; i< response.data.length; i++) {
+        if (response.data[i].email == email) {
+          localStorage.setItem('userID', response.data[i].rut);
+          localStorage.setItem('userType', 'cordinador');
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  async function getProf() {
+    try {
+      const response = await axios.get('http://localhost:8000/administrador/');
+      var i
+      for (i=0; i< response.data.length; i++) {
+        if (response.data[i].email == email) {
+          localStorage.setItem('userID', response.data[i].id);
+          localStorage.setItem('userType', 'profesor');
+        }
+      }
+    } catch (error) {
+      console.error(error);
     }
   }
   const [email, setEmail] = useState({
@@ -47,7 +92,6 @@ function Login2() {
   });
 
   function handleChangeE(event) {
-    console.log(email)
     setEmail(event.target.value);
   }
 

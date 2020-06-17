@@ -7,6 +7,7 @@ import {
   ControlLabel,
   FormControl
 } from "react-bootstrap";
+import axios from 'axios';
 
 import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
@@ -16,6 +17,18 @@ import Button from "components/CustomButton/CustomButton.jsx";
 import avatar from "assets/img/faces/face-3.jpg";
 
 class For_ingreso1 extends Component {
+  componentDidMount(){
+    async function getAdmin() {
+      try {
+        const response = await axios.get('http://localhost:8000/administrador/');
+        return response
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    const adminResponse = getAdmin()
+    console.log(adminResponse);
+  }
   render() {
     return (
       <div className="content">
