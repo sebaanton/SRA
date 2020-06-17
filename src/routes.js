@@ -110,6 +110,13 @@ const dashboardRoutes = [
     component: Cargar_plantilla,
     layout: "/admin"
   },
+  {
+    path: "/Icons",
+    name: "Iconos",
+    icon: "pe-7s-science",
+    component: Icons,
+    layout: "/admin"
+  },
 
 ];
 

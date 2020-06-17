@@ -64,7 +64,7 @@ class Ver_registro extends Component {
                       ]}
                     />
                     <FormInputs
-                      ncols={["col-md-5", "col-md-3","col-md-4"]}
+                      ncols={["col-md-5", "col-md-3","col-md-3"]}
                       properties={[
                         
                         {
@@ -75,7 +75,7 @@ class Ver_registro extends Component {
                             //disabled: "disabled"
                           },
                         {
-                          label: "Tipo de causal                     ",
+                          label: "Tipo de causal",
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "1",
