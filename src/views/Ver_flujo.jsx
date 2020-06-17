@@ -106,6 +106,7 @@ class Ver_flujo extends Component {
                 statsIconText="Se le hacen recomendaciones al alumno de carácter académico"
               />
             </Col>
+            <Grid fluid>
             <Col lg={4} sm={6}>
               <StatsCard
                 bigIcon={<i className="pe-7s-id text-info" />}
@@ -115,6 +116,7 @@ class Ver_flujo extends Component {
                 statsIconText="Se deriva al alumno con el profesor Paredes, quién le podría motivar acerca de los ramos de optimización y modelos estocásticos"
               />
             </Col>
+            </Grid>
             </Grid>
       
             
