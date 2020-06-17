@@ -35,7 +35,7 @@ class Cargar_plantilla extends Component {
               <Card
                 content={
                   <form>
-                                        <FileInput/>
+                 <FileInput/>
                 <h3>Tipo de Ingreso</h3>
                   <div className="table-full-width">
                     <table className="table">
