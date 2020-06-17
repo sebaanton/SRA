@@ -23,6 +23,10 @@ import { Card } from "components/Card/Card.jsx";
 import { Tasks } from "components/Tasks/Tasks3.jsx";
 import { thArray, tdArray } from "variables/Variables.jsx";
 import Ver_detalle from "views/Ver_detalle";
+import axios from "axios";
+
+console.log(axios)
+
 class Notifications extends Component {
   render() {
     return (

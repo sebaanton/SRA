@@ -74,11 +74,11 @@ class ReunionSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class Problema_asociadoSerializer(serializers.ModelSerializer):
-    class Meta=
-        model: Problema_asociado
+    class Meta:
+        model= Problema_asociado
         fields = '__all__'
 
 class RecomendacionSerializer(serializers.ModelSerializer):
-    class Meta=
-        model: Recomendacion
+    class Meta:
+        model= Recomendacion
         fields = '__all__'
