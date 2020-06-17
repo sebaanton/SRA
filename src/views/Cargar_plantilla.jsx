@@ -35,24 +35,7 @@ class Cargar_plantilla extends Component {
               <Card
                 content={
                   <form>
-<<<<<<< HEAD
-                    <FormInputs
-                      ncols={["col-md-6"]}
-                      properties={[
-                        {
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "Buscar"
-                        }
-                      ]}
-                    />
-                   <Button bsStyle="info" pullRight fill type="submit">
-                      Buscar
-                    </Button>   
-                    
-=======
                                         <FileInput/>
->>>>>>> 65e21e11c39f563b8bc7bef4c48a9e10503e2fce
                 <h3>Tipo de Ingreso</h3>
                   <div className="table-full-width">
                     <table className="table">
