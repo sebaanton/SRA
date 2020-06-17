@@ -116,7 +116,7 @@ componentDidMount(){
                             <td key={key}>{prop.correo}</td>
                             <td key={key}>{prop.estado_actual}</td>
                             <td>
-                              <p><a href="Ver_detalle">Ver Detalle</a></p>
+                              <p><a href={`Ver_detalle/${prop.rut}`}>Ver Detalle</a></p>
                               <p><a href="Ver_registro">Ver Registro(s)</a></p>
                             </td>
                           </tr>
