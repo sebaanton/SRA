@@ -28,6 +28,17 @@ import axios from "axios";
 console.log(axios)
 
 class Notifications extends Component {
+  state = {
+    alumno:[]
+  };
+
+    axios.get("http://127.0.0.1:8000/alumno/").then(res => {
+      this.setState({
+        alumno: res.data
+      });
+    });
+    }
+  
   render() {
     return (
 
@@ -94,16 +105,18 @@ class Notifications extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {tdArray.map((prop, key) => {
+                      {this.state.alumno.map((prop, key) => {
                         return (
-                          <tr key={key}>
-                            {prop.map((prop, key) => {
-                              return <td key={key}>{prop}</td>;
-                            })}
-                            <p ><a href="Ver_detalle">Ver Detalle</a>
-                </p> 
-                <p ><a href="Ver_registro">Ver Registro(s)</a>
-                </p>
+                          
+                          <tr>
+                            <td key={key}>{prop.rut}</td>
+                            <td key={key}>{prop.nombre}</td>
+                            <td key={key}>{prop.correo}</td>
+                            <td key={key}>{prop.estado_actual}</td>
+                            <td>
+                              <p><a href="Ver_detalle">Ver Detalle</a></p>
+                              <p><a href="Ver_registro">Ver Registro(s)</a></p>
+                            </td>
                           </tr>
                         );
                       })}
