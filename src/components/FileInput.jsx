@@ -20,7 +20,7 @@ export class FileInput extends React.Component {
 
           <div>  
           
-            <input type="file" ref={this.fileInput} /> 
+            <input type="file" ref={this.fileInput}/> 
             <Col mdOffset={1}>      
             <Button bsStyle="info" pullRight fill type="submit">
                       Subir

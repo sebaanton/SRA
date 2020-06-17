@@ -38,77 +38,96 @@ const dashboardRoutes = [
     name: "Home",
     icon: "pe-7s-home",
     component: Notifications,
-    layout: "/admin"
+    layout: "/admin",
+    estado:"True"
   },
    {   
     path: "/dashboard",
     name: " Ver Estadisticas",
     icon: "pe-7s-graph",
     component: Dashboard,
-    layout: "/admin"
+    layout: "/admin",
+    estado:"True"
   },
   {
     path: "/user",
     name: "Perfil",
     icon: "pe-7s-user",
     component: UserProfile,
-    layout: "/admin"
+    layout: "/admin",
+    estado:"True"
   },
   {
     path: "/table",
     name: "Notificaciones",
     icon: "pe-7s-note2",
     component: TableList,
-    layout: "/admin"
+    layout: "/admin",
+    estado:"True"
   },
   {
     path: "/Login2",
     name: "Login2",
     icon: "pe-7s-science",
     component: Login2,
-    layout: "/admin"
+    layout: "/admin",
+    estado:"True"
   },
   {
     path: "/Ver_detalle",
     name: "Ver Detalle",
     icon: "pe-7s-science",
     component: Ver_detalle,
-    layout: "/admin"
+    layout: "/admin",
+    estado:"True"
   },
   {
     path: "/Ver_registro",
     name: "Ver Registro(s)",
     icon: "pe-7s-science",
     component: Ver_registro,
-    layout: "/admin"
+    layout: "/admin",
+    estado:"True"
   },
   {
     path: "/Ver_flujo",
     name: "Ver Flujo",
     icon: "pe-7s-science",
     component: Ver_flujo,
-    layout: "/admin"
+    layout: "/admin",
+    estado:"True"
   },
   {
     path: "/For_ingreso1",
     name: "Formulario ingreso por causal",
     icon: "pe-7s-science",
     component: For_ingreso1,
-    layout: "/admin"
+    layout: "/admin",
+    estado:"True"
   },
   {
     path: "/For_ingreso2",
     name: "Formulario ingreso Profesor-alumno",
     icon: "pe-7s-science",
     component: For_ingreso2,
-    layout: "/admin"
+    layout: "/admin",
+    estado:"True"
   },
   {
     path: "/Cargar_plantilla",
     name: "Cargar plantilla",
     icon: "pe-7s-science",
     component: Cargar_plantilla,
-    layout: "/admin"
+    layout: "/admin",
+    estado:"False"
+  },
+  {
+    path: "/Icons",
+    name: "",
+    icon: "pe-7s-science",
+    component: Icons,
+    layout: "/admin",
+    estado:"True"
   },
 
 ];
