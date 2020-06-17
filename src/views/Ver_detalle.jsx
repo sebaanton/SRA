@@ -12,10 +12,27 @@ import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import { UserCard } from "components/UserCard/UserCard.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
-
+import axios from "axios";
 import avatar from "assets/img/faces/face-3.jpg";
 
 class Ver_detalle extends Component {
+  state = {
+    alumno: {}
+  };
+
+  componentDidMount() {
+    const currenturl = window.location.pathname
+    const largo = currenturl.length
+    const urls = currenturl.slice(19,largo)
+    const alumnoRUT = this.props.match.params.alumnoRUT;
+    
+
+    axios.get(`http://127.0.0.1:8000/alumno/${alumnoRUT}`).then(res => {
+      this.setState({
+        alumno: res.data
+      });
+    });
+}
   render() {
     return (
       <div className="content">
@@ -34,40 +51,33 @@ class Ver_detalle extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "123456789-8",
-                          defaultValue: "123456789",
+                          defaultValue: `${this.props.match.params.alumnoRUT}`,
                           disabled: "disabled"
                         },
                         {
                           label: "Email",
                           type: "email",
                           bsClass: "form-control",
-                          placeholder: "usuario@mail.udp.cl",
+                          placeholder: `${this.state.alumno.correo}`,
                           disabled: "disabled"
                         }
                       ]}
                     />
                     <FormInputs
-                      ncols={["col-md-4", "col-md-4", "col-md-4"]}
+                      ncols={["col-md-8", "col-md-4"]}
                       properties={[
                         {
-                          label: "Nombre",
+                          label: "Nombre y Apellido",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "Juan",
-                          disabled: "disabled"
-                        },
-                        {
-                          label: "Apellido",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "Perez", 
+                          placeholder: `${this.state.alumno.nombre}`,
                           disabled: "disabled"
                         },
                         {
                           label: "Año de Nacimiento",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "05/05/1970", 
+                          placeholder: `${this.state.alumno.año_nacimiento}`, 
                           disabled: "disabled"
                         },
                         
@@ -81,21 +91,21 @@ class Ver_detalle extends Component {
                           label: "Teléfonos",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "+56997856443, 0222879654",
+                          placeholder: `${this.state.alumno.telefono}`,
                           disabled: "disabled"
                         },
                         {
                           label: "Año de ingreso",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "2016",
+                          placeholder: `${this.state.alumno.año_ingreso}`,
                           disabled: "disabled"
                         },
                         {
                           label: "Semestre de ingreso",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "1er semestre",
+                          placeholder: `${this.state.alumno.semestre_ingreso}`,
                           disabled: "disabled"
                         },
                       ]}
@@ -108,14 +118,14 @@ class Ver_detalle extends Component {
                           label: "Universidad o carrera de origen (si corresponde)",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "UDP, industrias",
+                          placeholder: `${this.state.alumno.carrera_origen}`,
                           disabled: "disabled"
                         },
                         {
                           label: "Copia del registro ",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "(link al registro)",
+                          placeholder: `${this.state.alumno.copia_registro}`,
                           disabled: "disabled"
                         },
                       ]}
@@ -128,14 +138,14 @@ class Ver_detalle extends Component {
                           label: "Fecha del registro",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "07/07/2020",
+                          placeholder: `${this.state.alumno.fecha_registro}`,
                           disabled: "disabled"
                         },
                         {
                           label: "Estado actual",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "Rehabilitado",
+                          placeholder: `${this.state.alumno.estado_actual}`,
                           disabled: "disabled"
                         },
                       ]}
