@@ -28,7 +28,7 @@ class Ver_detalle extends Component {
     const alumnoRUT = this.props.match.params.alumnoRUT;
     
 
-    axios.get(`http://127.0.0.1:8000/alumno/${urls}`).then(res => {
+    axios.get(`http://localhost:8000/alumno/${urls}`).then(res => {
       this.setState({
         alumno: res.data,
         rut: res.data.rut
