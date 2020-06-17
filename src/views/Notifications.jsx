@@ -32,10 +32,12 @@ class Notifications extends Component {
     alumno:[]
   };
 
-    axios.get("http://127.0.0.1:8000/alumno/").then(res => {
+componentDidMount(){
+    axios.get("http://127.0.0.1:8000/alumno/").then(res2 => {
       this.setState({
-        alumno: res.data
+        alumno: res2.data
       });
+      console.log(res2.data);
     });
     }
   
