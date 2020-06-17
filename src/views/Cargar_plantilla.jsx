@@ -49,6 +49,7 @@ class Cargar_plantilla extends Component {
                    <Button bsStyle="info" pullRight fill type="submit">
                       Buscar
                     </Button>   
+                    
                 <h3>Tipo de Ingreso</h3>
                   <div className="table-full-width">
                     <table className="table">
