@@ -17,7 +17,8 @@ import avatar from "assets/img/faces/face-3.jpg";
 
 class Ver_detalle extends Component {
   state = {
-    alumno: {}
+    alumno: {},
+    rut:[]
   };
 
   componentDidMount() {
@@ -27,9 +28,10 @@ class Ver_detalle extends Component {
     const alumnoRUT = this.props.match.params.alumnoRUT;
     
 
-    axios.get(`http://127.0.0.1:8000/alumno/${alumnoRUT}`).then(res => {
+    axios.get(`http://localhost:8000/alumno/${urls}`).then(res => {
       this.setState({
-        alumno: res.data
+        alumno: res.data,
+        rut: res.data.rut
       });
     });
 }
@@ -51,7 +53,7 @@ class Ver_detalle extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "123456789-8",
-                          defaultValue: `${this.props.match.params.alumnoRUT}`,
+                          defaultValue: `${this.state.rut}`,
                           disabled: "disabled"
                         },
                         {
