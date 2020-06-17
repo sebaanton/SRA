@@ -22,24 +22,24 @@ export class StatsCard extends Component {
   render() {
     return (
       <div className="card card-stats">
-        <div className="content">
+        <div className="content" contenteditable="true">
           <Row>
-            <Col xs={5}>
+            <Col xs={1}>
               <div className="icon-big text-center icon-warning">
                 {this.props.bigIcon}
               </div>
             </Col>
-            <Col xs={7}>
+            <Col xs={9}>
               <div className="numbers">
-                <p>{this.props.statsText}</p>
-                {this.props.statsValue}
+                <p class="text-center" contenteditable="true">{this.props.statsText}</p>
+                <h4 align="left">{this.props.statsValue}</h4>
               </div>
             </Col>
           </Row>
           <div className="footer">
             <hr />
             <div className="stats">
-              {this.props.statsIcon} {this.props.statsIconText}
+              {this.props.statsIconText}
             </div>
           </div>
         </div>

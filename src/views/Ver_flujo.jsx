@@ -76,43 +76,43 @@ class Ver_flujo extends Component {
    
 
       <Grid fluid>
-      <Col lg={3} sm={6}>
+      <Col lg={4} sm={6}>
               <StatsCard
-                bigIcon={<i className="pe-7s-server text-warning" />}
-                statsText="Capacity"
-                statsValue="105GB"
+                bigIcon={<i className="pe-7s-id text-warning" />}
+                statsText="10/06/2020"
+                statsValue="Contacto: 'Citación Inicial'"
                 statsIcon={<i className="fa fa-refresh" />}
-                statsIconText="Updated now"
+                statsIconText="Se establece el contacto inicial mediante correo electrónico y el alumno acepta ingresar al proceso"
               />
             </Col>
             
             
-            <Col lg={3} sm={6}>
+            <Col lg={4} sm={6}>
               <StatsCard
-                bigIcon={<i className="pe-7s-wallet text-success" />}
-                statsText="Revenue"
-                statsValue="$1,345"
+                bigIcon={<i className="pe-7s-id text-success" />}
+                statsText="11/06/2020"
+                statsValue="Reunión: 'Problemas'"
                 statsIcon={<i className="fa fa-calendar-o" />}
-                statsIconText="Last day"
+                statsIconText="Se definen los problemas que podría tener el alumno de carácter académicos"
               />
             </Col>
            
-            <Col lg={3} sm={6}>
+            <Col lg={4} sm={6}>
               <StatsCard
-                bigIcon={<i className="pe-7s-graph1 text-danger" />}
-                statsText="Errors"
-                statsValue="23"
+                bigIcon={<i className="pe-7s-id text-danger" />}
+                statsText="12/06/2020"
+                statsValue="Reunion: 'Recomendaciones'"
                 statsIcon={<i className="fa fa-clock-o" />}
-                statsIconText="In the last hour"
+                statsIconText="Se le hacen recomendaciones al alumno de carácter académico"
               />
             </Col>
-            <Col lg={3} sm={6}>
+            <Col lg={4} sm={6}>
               <StatsCard
-                bigIcon={<i className="fa fa-twitter text-info" />}
-                statsText="Followers"
-                statsValue="+45"
+                bigIcon={<i className="pe-7s-id text-info" />}
+                statsText="13/06/2020"
+                statsValue="Derivación: 'Motivación'"
                 statsIcon={<i className="fa fa-refresh" />}
-                statsIconText="Updated now"
+                statsIconText="Se deriva al alumno con el profesor Paredes, quién le podría motivar acerca de los ramos de optimización y modelos estocásticos"
               />
             </Col>
             </Grid>
