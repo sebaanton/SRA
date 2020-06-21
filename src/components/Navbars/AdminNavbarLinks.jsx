@@ -18,6 +18,7 @@
 import React, { Component } from "react";
 import { NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap";
 import Cargar_plantilla from "views/Cargar_plantilla"
+import routes from "routes.js";
 
 class AdminNavbarLinks extends Component {
   render() {

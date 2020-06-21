@@ -119,6 +119,7 @@ const dashboardRoutes = [
     icon: "pe-7s-science",
     component: Cargar_plantilla,
     layout: "/admin",
+    estado: "false"
 
   },
 ];
