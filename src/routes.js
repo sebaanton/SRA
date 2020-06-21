@@ -103,6 +103,7 @@ const dashboardRoutes = [
     icon: "pe-7s-science",
     component: For_ingreso1,
     layout: "/admin",
+    estado: "false"
 
   },
   {
@@ -111,6 +112,7 @@ const dashboardRoutes = [
     icon: "pe-7s-science",
     component: For_ingreso2,
     layout: "/admin",
+    estado: "false"
  
   },
   {

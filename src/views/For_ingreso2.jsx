@@ -23,7 +23,7 @@ class For_ingreso2 extends Component {
           <Row>
             <Col md={8} mdOffset={2}>
               <Card
-                title="Ingreso del alumno por causal"
+                title="Ingreso del alumno por autoconsulta"
                 content={
                   <form>
                     <FormInputs
