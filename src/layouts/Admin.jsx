@@ -63,7 +63,7 @@ class Admin extends Component {
   };
   getRoutes = routes => {
     return routes.map((prop, key) => {
-      if (prop.layout === "/admin") {
+      if ((prop.layout === "/admin") ||(prop.layout === "/links")){
         return (
           <Route
             path={prop.layout + prop.path}
@@ -139,6 +139,7 @@ class Admin extends Component {
     }
   }
   render() {
+
     return (
       <div className="wrapper">
         <NotificationSystem ref="notificationSystem" style={style} />
@@ -153,7 +154,8 @@ class Admin extends Component {
           <Switch>{this.getRoutes(routes)}</Switch>
         </div>
       </div>
-    );
+      
+      );
   }
 }
 

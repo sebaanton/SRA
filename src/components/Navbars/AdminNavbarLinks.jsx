@@ -18,6 +18,8 @@
 import React, { Component } from "react";
 import { NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap";
 import Cargar_plantilla from "views/Cargar_plantilla"
+import For_ingreso1 from "views/For_ingreso1"
+import For_ingreso2 from "views/For_ingreso2"
 
 class AdminNavbarLinks extends Component {
   render() {
@@ -63,9 +65,9 @@ class AdminNavbarLinks extends Component {
             eventKey={2}
             title="Ingresar Datos"
             id="basic-nav-dropdown-right">
-            <MenuItem eventKey={2.1}>Digitación</MenuItem>
-            
-            <MenuItem eventKey={2.2} href="Cargar_plantilla">Cargar Plantilla</MenuItem>
+            <MenuItem eventKey={2.1} href="For_ingreso1">Digitación Causal</MenuItem>
+            <MenuItem eventKey={2.2} href="For_ingreso2">Digitación Autoconsulta</MenuItem>
+            <MenuItem eventKey={2.3} href="Cargar_plantilla">Cargar Plantilla</MenuItem>
            </NavDropdown>
           <NavItem eventKey={3} href="#">
             Cerrar Sesión
