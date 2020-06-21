@@ -30,7 +30,8 @@ import Ver_registro from "views/Ver_registro";
 import For_ingreso1 from "views/For_ingreso1"
 import For_ingreso2 from "views/For_ingreso2"
 import Cargar_plantilla from "views/Cargar_plantilla"
-
+import Modificar_detalle from "views/Modificar_detalle";
+import Modificar_registro from "views/Modificar_registro";
 const dashboardRoutes = [
   {
     
@@ -82,11 +83,29 @@ const dashboardRoutes = [
 
   },
   {
+    path: "/Modificar_detalle",
+    name: "Modificar Alumno",
+    icon: "pe-7s-science",
+    component: Modificar_detalle,
+    layout: "/admin",
+    //estado: "false"
+
+  },
+  {
     path: "/Ver_registro",
     name: "Ver Registro(s)",
     icon: "pe-7s-science",
     component: Ver_registro,
     layout: "/admin",
+
+  },
+  {
+    path: "/Modificar_registro",
+    name: "Modificar Registro",
+    icon: "pe-7s-science",
+    component: Modificar_registro,
+    layout: "/admin",
+    //estado: "false"
 
   },
   {
@@ -122,6 +141,8 @@ const dashboardRoutes = [
     estado: "false"
 
   },
+  
+ 
 ];
 
 export default dashboardRoutes;

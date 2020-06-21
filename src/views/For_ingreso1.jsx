@@ -40,7 +40,7 @@ class For_ingreso1 extends Component {
                 content={
                   <form>
                     <FormInputs disabled
-                      ncols={["col-md-5", "col-md-7"]}
+                      ncols={["col-md-5", "col-md-6"]}
                       properties={[
                         {
                           label: "RUT",
@@ -58,7 +58,7 @@ class For_ingreso1 extends Component {
                       ]}
                     />
                     <FormInputs
-                      ncols={["col-md-4", "col-md-4", "col-md-4"]}
+                      ncols={["col-md-4", "col-md-4", "col-md-3"]}
                       properties={[
                         {
                           label: "Nombre",
@@ -82,20 +82,14 @@ class For_ingreso1 extends Component {
                       ]}
                     />
                     <FormInputs
-                      ncols={["col-md-3", "col-md-3", "col-md-3",  "col-md-3"]}
+                      ncols={["col-md-5", "col-md-3",  "col-md-3"]}
                       properties={[
                         
                         {
-                          label: "Teléfono 1",
+                          label: "Teléfonos",
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "+56997856443",
-                        },
-                        {
-                          label: "Teléfono 2",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "0222879654",
                         },
                         {
                           label: "Año de ingreso",
@@ -130,7 +124,7 @@ class For_ingreso1 extends Component {
                       ]}
                     />
                     <FormInputs
-                      ncols={["col-md-4", "col-md-4", "col-md-4"]}
+                      ncols={["col-md-4", "col-md-4", "col-md-3"]}
                       properties={[
                         
                         {

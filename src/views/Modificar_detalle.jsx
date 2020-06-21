@@ -15,7 +15,7 @@ import Button from "components/CustomButton/CustomButton.jsx";
 import axios from "axios";
 import avatar from "assets/img/faces/face-3.jpg";
 
-class Ver_detalle extends Component {
+class Modificar_detalle extends Component {
   state = {
     alumno: [],
     //rut:[],
@@ -44,7 +44,7 @@ class Ver_detalle extends Component {
           <Row>
             <Col md={8} mdOffset={2}>
               <Card
-                title="Detalle del Alumno"
+                title="Modificar datos del alumno"
                 content={
                   <form>
                     <FormInputs disabled
@@ -56,7 +56,7 @@ class Ver_detalle extends Component {
                           bsClass: "form-control",
                           placeholder: "123456789-8",
                           value: `${this.state.alumno.rut}`,
-                          disabled: "disabled"
+                          
                         },
                         {
                           label: "Email",
@@ -64,7 +64,7 @@ class Ver_detalle extends Component {
                           bsClass: "form-control",
                           placeholder: "usuario@mail.udp.cl",
                           value: `${this.state.alumno.correo}`,
-                          disabled: "disabled"
+                          
                         }
                       ]}
                     />
@@ -77,7 +77,7 @@ class Ver_detalle extends Component {
                           bsClass: "form-control",
                           placeholder: "Juanito Perez",
                           value: `${this.state.alumno.nombre}`,
-                          disabled: "disabled"
+                          
                         },
                         {
                           label: "Año de Nacimiento",
@@ -85,7 +85,7 @@ class Ver_detalle extends Component {
                           bsClass: "form-control",
                           placeholder: "05/05/1970",  
                           value: `${this.state.alumno.año_nacimiento}`, 
-                          disabled: "disabled"
+                          
                         },
                         
                       ]}
@@ -100,7 +100,7 @@ class Ver_detalle extends Component {
                           bsClass: "form-control",
                           placeholder: "+56997856443",
                           value: `${this.state.alumno.telefono}`,
-                          disabled: "disabled"
+                          
                         },
                         {
                           label: "Año de ingreso",
@@ -108,7 +108,7 @@ class Ver_detalle extends Component {
                           bsClass: "form-control",
                           placeholder: "2016",
                           value: `${this.state.alumno.año_ingreso}`,
-                          disabled: "disabled"
+                          
                         },
                         {
                           label: "Semestre de ingreso",
@@ -116,7 +116,7 @@ class Ver_detalle extends Component {
                           bsClass: "form-control",
                           placeholder: "1er semestre",
                           value: `${this.state.alumno.semestre_ingreso}`,
-                          disabled: "disabled"
+                          
                         },
                       ]}
                     />
@@ -130,7 +130,7 @@ class Ver_detalle extends Component {
                           bsClass: "form-control",
                           placeholder: "UDP, industrias",
                           value: `${this.state.alumno.carrera_origen}`,
-                          disabled: "disabled"
+                          
                         },
                         {
                           label: "Copia del registro ",
@@ -138,7 +138,7 @@ class Ver_detalle extends Component {
                           bsClass: "form-control",
                           placeholder: "(link al registro)",
                           value: `${this.state.alumno.copia_registro}`,
-                          disabled: "disabled"
+                          
                         },
                       ]}
                     />
@@ -152,7 +152,7 @@ class Ver_detalle extends Component {
                           bsClass: "form-control",
                           placeholder: "07/07/2020",
                           value: `${this.state.alumno.fecha_registro}`,
-                          disabled: "disabled"
+                          
                         },
                         {
                           label: "Estado actual",
@@ -160,12 +160,12 @@ class Ver_detalle extends Component {
                           bsClass: "form-control",
                           placeholder: "Rehabilitado",
                           value: `${this.state.alumno.estado_actual}`,
-                          disabled: "disabled"
+                          
                         },
                       ]}
                     />
-                    <Button bsStyle="info" pullRight fill type="submit" href="Modificar_detalle">
-                      Modificar datos
+                    <Button bsStyle="info" pullRight fill type="submit">
+                      Actualizar perfil
                     </Button>
                     <div className="clearfix" />
                   </form>
@@ -180,5 +180,5 @@ class Ver_detalle extends Component {
   }
 }
 
-export default Ver_detalle;
+export default Modificar_detalle;
   
