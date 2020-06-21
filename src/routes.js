@@ -55,7 +55,7 @@ const dashboardRoutes = [
     icon: "pe-7s-user",
     component: UserProfile,
     layout: "/admin",
-  
+
   },
   {
     path: "/table",
@@ -63,7 +63,7 @@ const dashboardRoutes = [
     icon: "pe-7s-note2",
     component: TableList,
     layout: "/admin",
- 
+
   },
   {
     path: "/Login2",
@@ -71,7 +71,7 @@ const dashboardRoutes = [
     icon: "pe-7s-science",
     component: Login2,
     layout: "/admin",
-
+    estado: "false"
   },
   {
     path: "/Ver_detalle",
@@ -95,7 +95,7 @@ const dashboardRoutes = [
     icon: "pe-7s-science",
     component: Ver_flujo,
     layout: "/admin",
-
+    estado: "false"
   },
   {
     path: "/For_ingreso1",
@@ -103,7 +103,7 @@ const dashboardRoutes = [
     icon: "pe-7s-science",
     component: For_ingreso1,
     layout: "/admin",
-
+    estado: "false"
   },
   {
     path: "/For_ingreso2",
@@ -111,7 +111,7 @@ const dashboardRoutes = [
     icon: "pe-7s-science",
     component: For_ingreso2,
     layout: "/admin",
- 
+    estado: "false"
   },
   {
     path: "/Cargar_plantilla",
