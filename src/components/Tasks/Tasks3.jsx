@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import { Grid, Row, Col, Alert } from "react-bootstrap";
 
+
+
 export class Tasks extends Component{
 	
-constructor(){
-	super();
-
+constructor(props){
+	super(props);
 	this.state={
 		checked: false
 	}
 }
+
+
 handleCheckedChange(event){
 	this.setState( {
 		value: event.target.value
@@ -18,7 +21,7 @@ handleCheckedChange(event){
 
 render() {
 	return(
-	//<p> status: {this.state.value} </p>
+
 	<div>
 	<Col md={6} mdOffset={0.5}>
 		<input 
@@ -58,8 +61,10 @@ render() {
 			onChange={this.handleCheckedChange.bind(this)}
 		/> Asignatura reportada <br />
 	</Col>
-	</div>
-	
+	{localStorage.setItem('atributo', this.state.value)}
+		</div>
+
+		
 )
 }
 }

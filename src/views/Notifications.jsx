@@ -21,6 +21,9 @@ import axios from "axios";
 
 console.log(axios)
 
+
+const valor="cc";
+
 class Notifications extends Component {
   state = {
     alumno:[]
@@ -35,7 +38,10 @@ componentDidMount(){
     });
     }
   
-  render() {
+  render() 
+ 
+  
+  {	
     return (
 
       <div className="content">
@@ -68,8 +74,8 @@ componentDidMount(){
                 <h3>Atributos</h3>
                   <div className="table-full-width">
                     <table className="table">
-                      <Tasks />
-                
+                      <Tasks/>
+                    
                     </table>
                   </div>
 
