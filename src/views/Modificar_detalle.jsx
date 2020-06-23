@@ -13,7 +13,6 @@ import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import { UserCard } from "components/UserCard/UserCard.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
 import axios from "axios";
-import avatar from "assets/img/faces/face-3.jpg";
 
 class Modificar_detalle extends Component {
   state = {
