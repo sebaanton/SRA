@@ -13,7 +13,7 @@ import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import { UserCard } from "components/UserCard/UserCard.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
-
+import Calendar from "components/Calendar/Calendar.jsx";
 import avatar from "assets/img/faces/face-3.jpg";
 
 class For_ingreso1 extends Component {
@@ -58,7 +58,7 @@ class For_ingreso1 extends Component {
                       ]}
                     />
                     <FormInputs
-                      ncols={["col-md-4", "col-md-4", "col-md-3"]}
+                      ncols={["col-md-4", "col-md-4", "col-md-4"]}
                       properties={[
                         {
                           label: "Nombre",
@@ -74,13 +74,15 @@ class For_ingreso1 extends Component {
                         },
                         {
                           label: "Año de Nacimiento",
-                          type: "text",
+                          type: "date",
                           bsClass: "form-control",
                           placeholder: "05/05/1970", 
                         },
                         
                       ]}
+                      //<Calendar/>
                     />
+                    
                     <FormInputs
                       ncols={["col-md-5", "col-md-3",  "col-md-3"]}
                       properties={[
@@ -130,7 +132,7 @@ class For_ingreso1 extends Component {
                         
                         {
                           label: "Fecha del registro",
-                          type: "text",
+                          type: "date",
                           bsClass: "form-control",
                           placeholder: "07/07/2020",
                         },

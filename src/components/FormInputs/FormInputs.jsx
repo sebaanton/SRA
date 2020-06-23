@@ -17,7 +17,8 @@
 */
 import React, { Component } from "react";
 import { FormGroup, ControlLabel, FormControl, Row } from "react-bootstrap";
-
+import Calendar from "components/Calendar/Calendar.jsx";
+import { SelectPicker } from 'rsuite';
 function FieldGroup({ label, ...props }) {
   return (
     <FormGroup>

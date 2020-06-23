@@ -10,11 +10,13 @@
     "chartist": "0.10.1",
     "cookie-parser": "^1.4.5",
     "mdbreact": "^4.27.0",
+    "moment": "^2.27.0",
     "node-sass": "4.12.0",
     "react": "16.8.6",
     "react-bootstrap": "0.32.4",
     "react-calendar": "^3.1.0",
     "react-chartist": "0.13.3",
+    "react-datepicker": "^3.0.0",
     "react-dom": "16.8.6",
     "react-google-maps": "9.4.5",
     "react-notification-system": "0.2.17",
@@ -23,7 +25,8 @@
     "react-scripts": "^3.0.0",
     "react-toggle": "4.0.2",
     "react-token-auth": "^1.1.7",
-    "reactjs-popup": "^1.5.0"
+    "reactjs-popup": "^1.5.0",
+    "rsuite": "^4.7.5"
   },
   "devDependencies": {
     "@types/googlemaps": "3.30.19",

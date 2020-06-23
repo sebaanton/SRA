@@ -104,7 +104,7 @@ class Ver_registro extends Component {
                         },
                         {
                           label: "Fecha",
-                          type: "text",
+                          type: "date",
                           bsClass: "form-control",
                           placeholder: "19/06/2020",
                           disabled: "disabled"

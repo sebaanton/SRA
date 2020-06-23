@@ -3,7 +3,7 @@ import {
   Grid,
   Row,
   Col, Form} from "react-bootstrap";
-
+import { SelectPicker } from 'rsuite';
 import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
@@ -30,9 +30,10 @@ class Modificar_registro extends Component {
           <Row>
             <Col md={8} mdOffset={2}>
               <Card
-                title="Registro RSA Nombre_alumno"
+                title="Modificar Registro RSA Nombre_alumno"
                 content={
                   <form>
+
 
                     <FormInputs
                       ncols={["col-md-3", "col-md-3", "col-md-3"]}
@@ -45,14 +46,16 @@ class Modificar_registro extends Component {
                             placeholder: "2020",
                             defaultValue: "2020",
                             //disabled: "disabled"
-                            
                         },
                         {
                             label: "Semestre",
-                            type: "text",
+                            type: "selectpicker",
                             bsClass: "form-control",
                             placeholder: "1er semestre",
-                            //disabled: "disabled"
+                            option:["combo1", "asd"]
+                            //option: "segundo",
+                            //select:"select",
+                            //multiple:"multiple"
                         },
                         {
                           label: "Prioridad",
@@ -104,7 +107,7 @@ class Modificar_registro extends Component {
                         },
                         {
                           label: "Fecha",
-                          type: "text",
+                          type: "date",
                           bsClass: "form-control",
                           placeholder: "19/06/2020",
                           //disabled: "disabled"
