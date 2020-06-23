@@ -34,7 +34,7 @@ class ProfesorSerializer(UserSerializer):
 
     class Meta(UserSerializer.Meta):
         model = Profesor
-        exclude = ['user_ptr']
+        fields = '__all__'
         
 
 class AlumnoSerializer(serializers.ModelSerializer):

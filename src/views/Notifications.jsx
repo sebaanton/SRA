@@ -20,10 +20,13 @@ import Ver_detalle from "views/Ver_detalle";
 import axios from "axios";
 
 console.log(axios)
+<<<<<<< HEAD
 
 
 const valor="cc";
 
+=======
+>>>>>>> 34ee2dc70d67bb5a4b789857f250c31aee7f44a1
 class Notifications extends Component {
   state = {
     alumno:[]
