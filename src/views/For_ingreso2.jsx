@@ -30,7 +30,7 @@ class For_ingreso2 extends Component {
           <Row>
             <Col md={8} mdOffset={2}>
               <Card
-                title="Ingreso del alumno por autoconsulta"
+                title="Ingreso de alumno autoconsulta/reporte profesor"
                 content={
                   <form action="/send.php" >
                     <FormInputs

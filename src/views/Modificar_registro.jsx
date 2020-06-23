@@ -9,7 +9,7 @@ import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
 
 
-class Ver_registro extends Component {
+class Modificar_registro extends Component {
   constructor(props) {
     super(props);
     this.state = {      value: 'Observaciones.'    };
@@ -44,7 +44,7 @@ class Ver_registro extends Component {
                             bsClass: "form-control",
                             placeholder: "2020",
                             defaultValue: "2020",
-                            disabled: "disabled"
+                            //disabled: "disabled"
                             
                         },
                         {
@@ -52,7 +52,7 @@ class Ver_registro extends Component {
                             type: "text",
                             bsClass: "form-control",
                             placeholder: "1er semestre",
-                            disabled: "disabled"
+                            //disabled: "disabled"
                         },
                         {
                           label: "Prioridad",
@@ -79,7 +79,7 @@ class Ver_registro extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "1",
-                          disabled: "disabled"
+                          //disabled: "disabled"
                         },
                         
                         {
@@ -87,7 +87,7 @@ class Ver_registro extends Component {
                             type: "text",
                             bsClass: "form-control",
                             placeholder: "1",
-                            disabled: "disabled"
+                            //disabled: "disabled"
                           },
                       ]}
                     />
@@ -100,14 +100,14 @@ class Ver_registro extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "Reportado",
-                          disabled: "disabled"
+                          //disabled: "disabled"
                         },
                         {
                           label: "Fecha",
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "19/06/2020",
-                          disabled: "disabled"
+                          //disabled: "disabled"
                         },
                       ]}
                     />
@@ -121,8 +121,8 @@ class Ver_registro extends Component {
                     </form>
                         <br />
 
-                    <Button bsStyle="info" pullRight fill type="submit" href="Modificar_registro">
-                      Modificar registro
+                    <Button bsStyle="info" pullRight fill type="submit">
+                      Actualizar registro
                     </Button>
                     <div className="clearfix" />
                   </form>
@@ -137,4 +137,4 @@ class Ver_registro extends Component {
   }
 }
 
-export default Ver_registro;
+export default Modificar_registro;

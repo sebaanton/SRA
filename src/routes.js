@@ -30,7 +30,8 @@ import Ver_registro from "views/Ver_registro";
 import For_ingreso1 from "views/For_ingreso1"
 import For_ingreso2 from "views/For_ingreso2"
 import Cargar_plantilla from "views/Cargar_plantilla"
-
+import Modificar_detalle from "views/Modificar_detalle";
+import Modificar_registro from "views/Modificar_registro";
 const dashboardRoutes = [
   {
     
@@ -55,7 +56,7 @@ const dashboardRoutes = [
     icon: "pe-7s-user",
     component: UserProfile,
     layout: "/admin",
-  
+
   },
   {
     path: "/table",
@@ -63,7 +64,7 @@ const dashboardRoutes = [
     icon: "pe-7s-note2",
     component: TableList,
     layout: "/admin",
- 
+
   },
   {
     path: "/Login2",
@@ -71,7 +72,7 @@ const dashboardRoutes = [
     icon: "pe-7s-science",
     component: Login2,
     layout: "/admin",
-
+    estado: "false"
   },
   {
     path: "/Ver_detalle",
@@ -79,6 +80,15 @@ const dashboardRoutes = [
     icon: "pe-7s-science",
     component: Ver_detalle,
     layout: "/admin",
+
+  },
+  {
+    path: "/Modificar_detalle",
+    name: "Modificar Alumno",
+    icon: "pe-7s-science",
+    component: Modificar_detalle,
+    layout: "/admin",
+    //estado: "false"
 
   },
   {
@@ -90,12 +100,21 @@ const dashboardRoutes = [
 
   },
   {
+    path: "/Modificar_registro",
+    name: "Modificar Registro",
+    icon: "pe-7s-science",
+    component: Modificar_registro,
+    layout: "/admin",
+    //estado: "false"
+
+  },
+  {
     path: "/Ver_flujo",
     name: "Ver Flujo",
     icon: "pe-7s-science",
     component: Ver_flujo,
     layout: "/admin",
-
+    estado: "false"
   },
   {
     path: "/For_ingreso1",
@@ -104,7 +123,6 @@ const dashboardRoutes = [
     component: For_ingreso1,
     layout: "/admin",
     estado: "false"
-
   },
   {
     path: "/For_ingreso2",
@@ -113,7 +131,6 @@ const dashboardRoutes = [
     component: For_ingreso2,
     layout: "/admin",
     estado: "false"
- 
   },
   {
     path: "/Cargar_plantilla",
@@ -124,6 +141,8 @@ const dashboardRoutes = [
     estado: "false"
 
   },
+  
+ 
 ];
 
 export default dashboardRoutes;

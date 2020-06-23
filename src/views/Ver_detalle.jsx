@@ -164,8 +164,8 @@ class Ver_detalle extends Component {
                         },
                       ]}
                     />
-                    <Button bsStyle="info" pullRight fill type="submit">
-                      Actualizar perfil
+                    <Button bsStyle="info" pullRight fill type="submit" href="Modificar_detalle">
+                      Modificar datos
                     </Button>
                     <div className="clearfix" />
                   </form>

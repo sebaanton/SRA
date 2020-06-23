@@ -22,7 +22,8 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.0.0",
     "react-toggle": "4.0.2",
-    "react-token-auth": "^1.1.7"
+    "react-token-auth": "^1.1.7",
+    "reactjs-popup": "^1.5.0"
   },
   "devDependencies": {
     "@types/googlemaps": "3.30.19",

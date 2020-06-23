@@ -19,6 +19,8 @@ import React, { Component } from "react";
 import { NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap";
 import Cargar_plantilla from "views/Cargar_plantilla"
 import routes from "routes.js";
+//import Popup from "reactjs-popup";
+
 
 class AdminNavbarLinks extends Component {
   render() {
@@ -38,7 +40,9 @@ class AdminNavbarLinks extends Component {
           <NavDropdown
             eventKey={1}
             title="Crear"
-            id="basic-nav-dropdown-right">
+            id="basic-nav-dropdown-right"
+            >
+            
             <MenuItem eventKey={1.1}>Contacto</MenuItem>
             <MenuItem eventKey={1.2}>Reunión</MenuItem>
            </NavDropdown>
