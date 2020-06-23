@@ -44,7 +44,7 @@ class Ver_registro extends Component {
                             bsClass: "form-control",
                             placeholder: "2020",
                             defaultValue: "2020",
-                            disabled: "disabled"
+                            readonly: "readonly"
                             
                         },
                         {
@@ -52,19 +52,19 @@ class Ver_registro extends Component {
                             type: "text",
                             bsClass: "form-control",
                             placeholder: "1er semestre",
-                            disabled: "disabled"
+                            readonly: "readonly"
                         },
                         {
                           label: "Prioridad",
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "3.7",
-                          disabled: "disabled"
+                          readonly: "readonly"
                         },
                       ]}
                     />
                     <FormInputs
-                      ncols={["col-md-5", "col-md-3","col-md-3"]}
+                      ncols={["col-md-5", "col-md-2","col-md-4"]}
                       properties={[
                         
                         {
@@ -72,14 +72,14 @@ class Ver_registro extends Component {
                             type: "text",
                             bsClass: "form-control",
                             placeholder: "2",
-                            //disabled: "disabled"
+                            readonly: "readonly"
                           },
                         {
                           label: "Tipo de causal",
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "1",
-                          disabled: "disabled"
+                          readonly: "readonly"
                         },
                         
                         {
@@ -87,7 +87,7 @@ class Ver_registro extends Component {
                             type: "text",
                             bsClass: "form-control",
                             placeholder: "1",
-                            disabled: "disabled"
+                            readonly: "readonly"
                           },
                       ]}
                     />
@@ -100,14 +100,14 @@ class Ver_registro extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "Reportado",
-                          disabled: "disabled"
+                          readonly: "readonly"
                         },
                         {
                           label: "Fecha",
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "19/06/2020",
-                          disabled: "disabled"
+                          readonly: "readonly"
                         },
                       ]}
                     />
@@ -115,13 +115,13 @@ class Ver_registro extends Component {
                       <label>
                         Observaciones <br />
                         <textarea  className="form-control"
-                            rows="10" cols='80'  /> 
+                            rows="10" cols='80' readonly /> 
                             
                       </label>   
                     </form>
                         <br />
 
-                    <Button bsStyle="info" pullRight fill type="submit" href="Modificar_registro">
+                    <Button bsStyle="info" pullRight fill type="submit" href="Modificar_registro" >
                       Modificar registro
                     </Button>
                     <div className="clearfix" />

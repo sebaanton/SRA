@@ -15,22 +15,22 @@ constructor(props){
 
 handleCheckedChange(event){
 	this.setState( {
-		value: event.target.value
+		value: event.target.value,
 	} )
+	
 }
 
 render() {
 	return(
 
 	<div>
-	<Col md={6} mdOffset={0.5}>
+	<Col md={6} mdOffset={0.5} >
 		<input 
 			type="radio"
 			name="name"
 			value="opt_1"
 			checked={this.state.value === "opt_1"}
 			onChange={this.handleCheckedChange.bind(this)}
-
 		/> Apellido <br />
 		<input 
 			type="radio"
@@ -60,9 +60,13 @@ render() {
 			checked={this.state.value === "opt_5"}
 			onChange={this.handleCheckedChange.bind(this)}
 		/> Asignatura reportada <br />
+
+
 	</Col>
-	{localStorage.setItem('atributo', this.state.value)}
+	{localStorage.setItem('atributo',this.state.value)}
 		</div>
+
+		
 
 		
 )
