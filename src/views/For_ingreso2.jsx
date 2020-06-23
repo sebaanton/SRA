@@ -14,8 +14,15 @@ import { UserCard } from "components/UserCard/UserCard.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
 
 import avatar from "assets/img/faces/face-3.jpg";
+const Nombre = "Juan"
+
+
 
 class For_ingreso2 extends Component {
+  
+
+
+
   render() {
     return (
       <div className="content">
@@ -25,7 +32,7 @@ class For_ingreso2 extends Component {
               <Card
                 title="Ingreso del alumno por autoconsulta"
                 content={
-                  <form>
+                  <form action="/send.php" >
                     <FormInputs
                       ncols={["col-md-4", "col-md-4", "col-md-3"]}
                       properties={[
@@ -33,20 +40,34 @@ class For_ingreso2 extends Component {
                           label: "Nombre",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "Juan",                         
+                          placeholder: "Juan",  
+                          minlength:"4",
+                          maxlength:"25",
+                          pattern: "[a-zA-Z]+",
+                          required:"required",
+                          title:"Letras de la A a la Z (mayúsculas o minúsculas)"                      
                         },
                         {
                           label: "Apellido",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "Perez", 
+                          placeholder: "Perez",
+                          minlength:"4",
+                          maxlength:"25",
+                          pattern: "[a-zA-Z]+",
+                          required:"required",
+                          title:"Letras de la A a la Z (mayúsculas o minúsculas)" 
                         },
                         {
                           label: "RUT",
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "123456789-8",
-                          //defaultValue: "123456789",
+                          minlength:"9",
+                          maxlength:"10",
+                          pattern: "[^a-zA-Z][0-9]{7,8}+-[0-9|Kk]",
+                          required:"required",
+                          title:"Números enteros de 0 al 9 y la letra k en su ́ultima posición (mayúscula o minúscula)" 
                         },
                         
                       ]}
@@ -60,18 +81,33 @@ class For_ingreso2 extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "3.1",
+                          minlength:"3",
+                          maxlength:"3",
+                          pattern: "[0-6][.][0-9]|[7][.][0]",
+                          required:"required",
+                          title:"Números decimales entre 1.0 y 7.0"
                         },
                         {
                           label: "Porcentaje de Asistencia",
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "10%",
+                          minlength:"1",
+                          maxlength:"3",
+                          pattern: "[0-9]|[0-9][0-9]|[1][0][0]",
+                          required:"required",
+                          title:"Números entero entre 0 y 100" 
                         },
                         {
                           label: "Interés Percibido",
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "Alto-Medio-Bajo",
+                          minlength:"4",
+                          maxlength:"5",
+                          pattern: "[aA][lL][tT][oO]|[mM][eE][dD][iI][oO]|[bB][aA][jJ][oO]",
+                          required:"required",
+                          title:"Números decimales entre 1.0 y 7.0" 
                         },
                         
                       ]}

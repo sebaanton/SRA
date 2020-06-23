@@ -87,9 +87,10 @@ class For_ingreso1 extends Component {
                         
                         {
                           label: "Teléfono 1",
-                          type: "text",
+                          type: "select",
                           bsClass: "form-control",
                           placeholder: "+56997856443",
+                          values: "op1"
                         },
                         {
                           label: "Teléfono 2",

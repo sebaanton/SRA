@@ -51,7 +51,7 @@ class AdminNavbarLinks extends Component {
             <MenuItem eventKey={2.2} href="For_ingreso2">Digitación Autoconsulta</MenuItem>
             <MenuItem eventKey={2.3} href="Cargar_plantilla">Cargar Plantilla</MenuItem>
            </NavDropdown>
-          <NavItem eventKey={3} href="#">
+          <NavItem eventKey={3} href="Login2">
             Cerrar Sesión
           </NavItem>
         </Nav>

@@ -69,6 +69,7 @@ componentDidMount(){
                   <div className="table-full-width">
                     <table className="table">
                       <Tasks />
+                
                     </table>
                   </div>
 
