@@ -20,7 +20,6 @@ import Ver_detalle from "views/Ver_detalle";
 import axios from "axios";
 
 console.log(axios)
-
 class Notifications extends Component {
   state = {
     alumno:[]
