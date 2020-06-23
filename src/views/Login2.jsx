@@ -49,6 +49,7 @@ function Login2() {
         if (response.data[i].email == email) {
           localStorage.setItem('userID', response.data[i].rut);
           localStorage.setItem('userType', 'administrador');
+          console.log( localStorage.getItem('userID'));
         }
       }
     } catch (error) {
@@ -57,12 +58,13 @@ function Login2() {
   }
   async function getCord() {
     try {
-      const response = await axios.get('http://localhost:8000/administrador/');
+      const response = await axios.get('http://localhost:8000/coordinador/');
       var i
       for (i=0; i< response.data.length; i++) {
         if (response.data[i].email == email) {
           localStorage.setItem('userID', response.data[i].rut);
-          localStorage.setItem('userType', 'cordinador');
+          localStorage.setItem('userType', 'coordinador');
+          console.log(localStorage.getItem('userID'))
         }
       }
     } catch (error) {
@@ -71,7 +73,7 @@ function Login2() {
   }
   async function getProf() {
     try {
-      const response = await axios.get('http://localhost:8000/administrador/');
+      const response = await axios.get('http://localhost:8000/profesor/');
       var i
       for (i=0; i< response.data.length; i++) {
         if (response.data[i].email == email) {
@@ -111,12 +113,12 @@ function Login2() {
 
           <div className="form-group"  >
               <label>Email address</label>
-              <input type="email" className="form-control" placeholder="Enter email" value={email} onChange={handleChangeE}/>
+              <input type="email" className="form-control" placeholder="Enter email" value={email} onChange={handleChangeE} defaultValue=""/>
           </div>
 
           <div className="form-group">
               <label>Password</label>
-              <input type="password" className="form-control" placeholder="Enter password" value={password} onChange={handleChangeP}/>
+              <input type="password" className="form-control" placeholder="Enter password" value={password} onChange={handleChangeP} defaultValue=""/>
           </div>
 
           <div className="form-group">
