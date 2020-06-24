@@ -492,13 +492,33 @@ const iconsArray = [
 // //
 //
 // Data for Pie Chart
-var dataPie = {
-  labels: ["40%", "20%", "40%"],
-  series: [40, 20, 40]
+var dataPie1 = {
+  labels: ["40%", ""," 20%"  ,"","30%"],
+  series: [40, , 20, ,30]
 };
-var legendPie = {
-  names: ["Open", "Bounce", "Unsubscribe"],
-  types: ["info", "danger", "warning"]
+var legendPie1 = {
+  names: ["En observación", "Recuperado", "En causal"],
+  types: ["info", "success", "warning"]
+};
+
+
+var dataPie2 = {
+  labels: ["40%", ""," 20%"  ,"","30%"],
+  series: [40, , 20, ,30]
+};
+var legendPie2 = {
+  names: ["En observación", "Recuperado", "En causal"],
+  types: ["info", "success", "warning"]
+};
+
+
+var dataPie3 = {
+  labels: ["40%", ""," 20%"  ,"","30%"],
+  series: [40, , 20, ,30]
+};
+var legendPie3 = {
+  names: ["En observación", "Recuperado", "En causal"],
+  types: ["info", "success", "warning"]
 };
 
 // Data for Line Chart
@@ -603,8 +623,12 @@ module.exports = {
   thArray,
   tdArray, // For tables (TableList view)
   iconsArray, // For icons (Icons view)
-  dataPie,
-  legendPie,
+  dataPie1,
+  legendPie1,
+  dataPie2,
+  legendPie2,
+  dataPie3,
+  legendPie3,
   dataSales,
   optionsSales,
   responsiveSales,

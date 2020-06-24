@@ -381,7 +381,7 @@ function For_ingreso1 () {
                         Value: asignatura_reportada,
                         minlength:"5",
                         maxlength:"50",
-                        pattern: "[a-zA-Z,]+",
+                        pattern: "[a-zA-Z, ]+",
                         required:"required",
                         onChange: handleChangeAsignatura_reportada
                       },

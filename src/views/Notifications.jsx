@@ -19,12 +19,9 @@ import { thArray, tdArray } from "variables/Variables.jsx";
 import Ver_detalle from "views/Ver_detalle";
 import axios from "axios";
 
-<<<<<<< Updated upstream
 console.log(axios)
 
 
-=======
->>>>>>> Stashed changes
 class Notifications extends Component {
   state = {
     alumno:[],
@@ -80,52 +77,8 @@ class Notifications extends Component {
                 <h3>Atributos</h3>
                   <div className="table-full-width">
                     <table className="table">
-<<<<<<< Updated upstream
                       <Tasks/>
                       <span>{localStorage.getItem('atributo')}</span>
-=======
-                    <div>
-                    <Col md={6} mdOffset={0.5}>
-                      <input 
-                        type="radio"
-                        name="name"
-                        value="opt_1"
-                        checked={this.state.value === "opt_1"}
-                        onChange={this.handleCheckedChange.bind(this)}
-
-                      /> Apellido <br />
-                      <input 
-                        type="radio"
-                        name="name"
-                        value="opt_2"
-                        checked={this.state.value === "opt_2"}
-                        onChange={this.handleCheckedChange.bind(this)}
-                      /> Rut <br />
-                      <input 
-                        type="radio"
-                        name="name"
-                        value="opt_3"
-                        checked={this.state.value === "opt_3"}
-                        onChange={this.handleCheckedChange.bind(this)}
-                      /> Cantidad de asignaturas reprobadas <br />
-                      <input 
-                        type="radio"
-                        name="name"
-                        value="opt_4"
-                        checked={this.state.value === "opt_4"}
-                        onChange={this.handleCheckedChange.bind(this)}
-                      /> Periodo <br />
-                      <input 
-                        type="radio"
-                        name="name"
-                        value="opt_5"
-                        checked={this.state.value === "opt_5"}
-                        onChange={this.handleCheckedChange.bind(this)}
-                      /> Asignatura reportada <br />
-                    </Col>
-                    </div>
-                
->>>>>>> Stashed changes
                     </table>
                   </div>
               
