@@ -38,12 +38,12 @@ class AdminNavbarLinks extends Component {
     return (
       <div>
         <Nav pullLeft>
-        <NavItem> Coordinador/Ayudante</NavItem>
-
+        <NavItem eventKey={3} href="#">
+            Administrador
+          </NavItem>
         </Nav>
         <Nav pullRight>
-
-          <NavDropdown
+        <NavDropdown
             eventKey={1}
             title="Crear"
             id="basic-nav-dropdown-right"

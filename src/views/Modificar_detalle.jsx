@@ -43,7 +43,7 @@ class Modificar_detalle extends Component {
           <Row>
             <Col md={8} mdOffset={2}>
               <Card
-                title="Modificar datos del alumno"
+                title="Modificar detalle alumno"
                 content={
                   <form>
                     <FormInputs disabled
