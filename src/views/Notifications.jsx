@@ -22,20 +22,76 @@ import axios from "axios";
 class Notifications extends Component {
   state = {
     alumno:[],
-    checked: false
+    alumnoDisplay:[],
+    checked: false,
+    parameter: "",
   };
 
   componentDidMount(){
       axios.get("http://localhost:8000/alumno/").then(res2 => {
         this.setState({
-          alumno: res2.data
+          alumno: res2.data,
+          alumnoDisplay: res2.data
         });
       });
       }
   handleCheckedChange(event){
     this.setState( {
-      value: event.target.value
-    } )
+      value: event.target.value,
+    });
+  }
+  handleChangeParameter(event){
+    this.setState( {
+      parameter: event.target.value,
+    });
+  }
+  
+  onSearch(event){
+    var alum = [];
+    var i;
+    this.setState({
+      alumnoDisplay: [],
+    });
+    if(this.state.value == "opt_1"){
+      for(i=0; i< this.state.alumno.length;i++){
+        if(this.state.alumno[i].nombre == this.state.parameter){
+          alum.push(this.state.alumno[i]);
+        }
+      }
+      this.setState( {
+        alumnoDisplay: alum,
+      });
+    }
+    if(this.state.value == "opt_2"){
+      for(i=0; i< this.state.alumno.length;i++){
+        if(this.state.alumno[i].rut == this.state.parameter){
+          alum.push(this.state.alumno[i]);
+        }
+      }
+      this.setState( {
+        alumnoDisplay: alum,
+      });
+    }
+    if(this.state.value == "opt_3"){
+      for(i=0; i< this.state.alumno.length;i++){
+        if(this.state.alumno[i].correo == this.state.parameter){
+          alum.push(this.state.alumno[i]);
+        }
+      }
+      this.setState( {
+        alumnoDisplay: alum,
+      });
+    }
+    if(this.state.value == "opt_4"){
+      for(i=0; i< this.state.alumno.length;i++){
+        if(this.state.alumno[i].estado_actual == this.state.parameter){
+          alum.push(this.state.alumno[i]);
+        }
+      }
+      this.setState( {
+        alumnoDisplay: alum,
+      });
+    }
   }
   
   render() 
@@ -59,7 +115,9 @@ class Notifications extends Component {
                         {
                           type: "text",
                           bsClass: "form-control",
-                          defaultValue: "Juanito Perez"
+                          defaultValue: "Juanito Perez",
+                          value: this.state.parameter,
+                          onChange: this.handleChangeParameter.bind(this)
                         }
                       ]}
 
@@ -67,7 +125,7 @@ class Notifications extends Component {
 
                     />
 
-                   <Button bsStyle="info" pullRight fill type="submit">
+                   <Button bsStyle="info" pullRight fill onClick={this.onSearch.bind(this)}>
                       Buscar
                     </Button>   
 
@@ -83,7 +141,7 @@ class Notifications extends Component {
                         checked={this.state.value === "opt_1"}
                         onChange={this.handleCheckedChange.bind(this)}
 
-                      /> Apellido <br />
+                      /> Nombre y apellido <br />
                       <input 
                         type="radio"
                         name="name"
@@ -97,21 +155,14 @@ class Notifications extends Component {
                         value="opt_3"
                         checked={this.state.value === "opt_3"}
                         onChange={this.handleCheckedChange.bind(this)}
-                      /> Cantidad de asignaturas reprobadas <br />
+                      /> Correo <br />
                       <input 
                         type="radio"
                         name="name"
                         value="opt_4"
                         checked={this.state.value === "opt_4"}
                         onChange={this.handleCheckedChange.bind(this)}
-                      /> Periodo <br />
-                      <input 
-                        type="radio"
-                        name="name"
-                        value="opt_5"
-                        checked={this.state.value === "opt_5"}
-                        onChange={this.handleCheckedChange.bind(this)}
-                      /> Asignatura reportada <br />
+                      /> Estado <br />
                     </Col>
                     </div>
                 
@@ -147,7 +198,7 @@ class Notifications extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {this.state.alumno.map((prop, key) => {
+                      {this.state.alumnoDisplay.map((prop, key) => {
                         return (
                           
                           <tr>
