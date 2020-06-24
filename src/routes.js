@@ -169,7 +169,7 @@ const dashboardRoutes = [
     icon: "pe-7s-science",
     component: Agendar_reunion,
     layout: "/admin",
-    //estado: "false"
+    estado: "false"
 
   },
   {

@@ -44,7 +44,7 @@ class Modificar_reunion extends Component {
           <Row>
             <Col md={8} mdOffset={2}>
               <Card
-                title="Modificar Reunión"
+                title="Agendar Reunión"
                 content={
                   <form>
                     <FormInputs disabled
