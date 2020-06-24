@@ -55,15 +55,24 @@ class Modificar_reunion extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "123456789-8",
-                          value: `${this.state.reunion.rut}`,
+                          minlength:"9",
+                          maxlength:"10",
+                          pattern: "[^a-zA-Z][0-9]{7,8}+-[0-9|Kk]",
+                          required:"required",
+                          title:"Números enteros de 0 al 9 y la letra k en su ́ultima posición (mayúscula o minúscula)"
+                          //value: `${this.state.reunion.rut}`,
                           //disabled: "disabled"
                         },
                         {
                           label: "Medio de reunión",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "+56997856443",
-                          value: `${this.state.reunion.medio}`,
+                          placeholder: "virtual",
+                          minlength:"7",
+                          maxlength:"10",
+                          pattern: "[Vv][iI][Rr][tT][uU][aA][lL]|[pP][Rr][Ee][sS][Ee][nN][Cc][iI][aA][lL]",
+                          required:"required",
+                          //value: `${this.state.reunion.medio}`,
                           //disabled: "disabled"
                         },
                         {
@@ -71,7 +80,11 @@ class Modificar_reunion extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "1er semestre",
-                          value: `${this.state.reunion.nombre}`,
+                          //value: `${this.state.reunion.nombre}`,
+                          minlength:"3",
+                          maxlength:"25",
+                          pattern: "[a-zA-Z :,.0-9]+",
+                          required:"required",
                           //disabled: "disabled"
                         },
                       ]}
@@ -85,7 +98,7 @@ class Modificar_reunion extends Component {
                           type: "date",
                           bsClass: "form-control",
                           //placeholder: "usuario@mail.udp.cl",
-                          value: `${this.state.reunion.fecha}`,
+                          Defaultvalue: `${this.state.reunion.fecha}`,
                           //disabled: "disabled"
                         },
                         {
@@ -93,16 +106,24 @@ class Modificar_reunion extends Component {
                           type: "text",
                           format:"form-control",
                           bsClass: "form-control",
-                          placeholder: "Juanito Perez",
-                          value: `${this.state.reunion.hora}`,
+                          placeholder: "2300",
+                          //value: `${this.state.reunion.hora}`,
+                          minlength:"4",
+                          maxlength:"4",
+                          pattern: "[0|1][0-9][0-6][0-9]|[2][0-3][0-5][0-9]",
+                          required:"required",
                           //Disabled: "disabled"
                         },
                         {
                           label: "¿Se realizó?",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "05/05/1970",  
-                          value: `${this.state.reunion.interes}`, 
+                          placeholder: "si",  
+                          //value: `${this.state.reunion.interes}`, 
+                          minlength:"2",
+                          maxlength:"2",
+                          pattern: "[sS][Ii]|[Nn][Oo]",
+                          required:"required",
                           //disabled: "disabled"
                         },
                         {
@@ -110,7 +131,11 @@ class Modificar_reunion extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "2016",
-                          value: `${this.state.reunion.autogestion}`,
+                          //value: `${this.state.reunion.autogestion}`,
+                          minlength:"2",
+                          maxlength:"2",
+                          pattern: "[sS][Ii]|[Nn][Oo]",
+                          required:"required",
                           //disabled: "disabled"
                         },
                         
@@ -126,33 +151,29 @@ class Modificar_reunion extends Component {
                     </form>
                     <h3>Realizada</h3>
                     <FormInputs
-                      ncols={["col-md-4", "col-md-3",  "col-md-3"]}
+                      ncols={["col-md-4", "col-md-3"]}
                       properties={[
                         {
                           label: "Iniciales del académico",
                           type: "text",
                           bsClass: "form-control",
                           //placeholder: "usuario@mail.udp.cl",
-                          value: `${this.state.reunion.fecha}`,
-                          disabled: "disabled"
+                          //value: `${this.state.reunion.fecha}`,
+                          minlength:"4",
+                          maxlength:"4",
+                          pattern: "[a-zA-Z]+",
+                          readonly:"readonly",
                         },
                         {
-                          label: "Estado Reunión",
-                          type: "text",
-                          format:"form-control",
+                          label: "Fecha de reunión",
+                          type: "date",
                           bsClass: "form-control",
-                          placeholder: "Pendiente-Realizada",
-                          value: `${this.state.reunion.hora}`,
-                          Disabled: "disabled"
+                          //placeholder: "usuario@mail.udp.cl",
+                          Defaultvalue: `${this.state.reunion.fecha}`,
+                          //disabled: "disabled"
                         },
-                        {
-                          label: "Problemas Asociados",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "05/05/1970",  
-                          value: `${this.state.reunion.interes}`, 
-                          disabled: "disabled"
-                        },
+
+                        
                         
                         
                       ]}
@@ -162,11 +183,11 @@ class Modificar_reunion extends Component {
                       properties={[
                         {
                           label: "Tipo de problema",
-                          type: "date",
+                          type: "text",
                           bsClass: "form-control",
                           //placeholder: "usuario@mail.udp.cl",
-                          value: `${this.state.reunion.fecha}`,
-                          disabled: "disabled"
+                          //value: `${this.state.reunion.fecha}`,
+                          //disabled: "disabled"
                         },
                         {
                           label: "Tipo de recomendación",
@@ -174,16 +195,16 @@ class Modificar_reunion extends Component {
                           format:"form-control",
                           bsClass: "form-control",
                           placeholder: "Pendiente-Realizada",
-                          value: `${this.state.reunion.hora}`,
-                          Disabled: "disabled"
+                          //value: `${this.state.reunion.hora}`,
+                          //Disabled: "disabled"
                         },
                         {
                           label: "Recomendaciones",
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "2016",
-                          value: `${this.state.reunion.autogestion}`,
-                          disabled: "disabled"
+                          //value: `${this.state.reunion.autogestion}`,
+                          //disabled: "disabled"
                         },
                         
                       ]}

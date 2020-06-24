@@ -177,8 +177,8 @@ class Modificar_detalle extends Component {
                           type: "date",
                           bsClass: "form-control",
                           placeholder: "07/07/2020",
-                          value: `${this.state.alumno.fecha_registro}`,
-                          readonly:"readonly"
+                          valuedefaultValue: `${this.state.alumno.fecha_registro}`,
+                          //readonly:"readonly"
                           
                         },
                         {

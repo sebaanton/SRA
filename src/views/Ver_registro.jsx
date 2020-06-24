@@ -111,6 +111,34 @@ class Ver_registro extends Component {
                         },
                       ]}
                     />
+                                        <FormInputs
+                      ncols={["col-md-3", "col-md-4", "col-md-4"]}
+                      properties={[
+                        
+                        {
+                          label: "Calificación Estimada",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "3.1",
+                          readonly: "readonly"
+                        },
+                        {
+                          label: "Porcentaje de Asistencia",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "10%",
+                          readonly: "readonly" 
+                        },
+                        {
+                          label: "Interés Percibido",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "Alto-Medio-Bajo",
+                          readonly: "readonly" 
+                        },
+                        
+                      ]}
+                    />
                     <form>
                       <label>
                         Observaciones <br />

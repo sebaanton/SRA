@@ -111,6 +111,43 @@ class Ingreso_profesor extends Component {
                         
                       ]}
                     />
+
+              <FormInputs
+                      ncols={["col-md-3","col-md-7"]}
+                      properties={[
+                        {
+                          label: "Tipo de ingreso",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "Reportado",
+                          defaultValue: "Reportado",
+                          minlength:"9",
+                          maxlength:"12",
+                          pattern: "[aA][uU][tT][oO]|[Cc][Oo][nN][Ss][Uu][lL][tT][aA]|[Rr][eE][Pp][oO][rR][tT][aA][dD][oO]",
+                          required:"required",
+                          title:"Reportado o autoconsulta (en mayúscula o minúscula)"
+                          //Value: tipo_ingreso,
+                          //onChange: handleChangeTipo_ingreso
+                        },
+
+                        {
+                          label: "Email",
+                          type: "email",
+                          bsClass: "form-control",
+                          placeholder: "usuario@mail.udp.cl",
+                          defaultValue: "",
+                          //Value: email,
+                          minlength:"15",
+                          maxlength:"50",
+                          pattern: "[a-zA-z0-9.]+@mail.udp.cl",
+                          required:"required",
+                          title:"El correo debe ser el institucional",
+                          //onChange: handleChangeEmail
+                        }
+                      ]}
+                  />
+
+                  
                   <form>
                       <label>
                         Observaciones <br />

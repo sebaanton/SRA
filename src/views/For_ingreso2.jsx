@@ -112,7 +112,7 @@ class For_ingreso2 extends Component {
                       ]}
                     />
                     <FormInputs
-                      ncols={["col-md-3"]}
+                      ncols={["col-md-3","col-md-5"]}
                       properties={[
                         {
                           label: "Tipo de ingreso",
@@ -128,6 +128,21 @@ class For_ingreso2 extends Component {
                           //Value: tipo_ingreso,
                           //onChange: handleChangeTipo_ingreso
                         },
+
+                        {
+                          label: "Email",
+                          type: "email",
+                          bsClass: "form-control",
+                          placeholder: "usuario@mail.udp.cl",
+                          defaultValue: "",
+                          //Value: email,
+                          minlength:"15",
+                          maxlength:"50",
+                          pattern: "[a-zA-z0-9.]+@mail.udp.cl",
+                          required:"required",
+                          title:"El correo debe ser el institucional",
+                          //onChange: handleChangeEmail
+                        }
                       ]}
                     />
                   <form>
