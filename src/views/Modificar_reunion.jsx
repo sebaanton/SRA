@@ -78,7 +78,7 @@ class Modificar_reunion extends Component {
                     />
                     
                     <FormInputs
-                      ncols={["col-md-2", "col-md-2",  "col-md-2", "col-md-3"]}
+                      ncols={["col-md-3", "col-md-3",  "col-md-2", "col-md-3"]}
                       properties={[
                         {
                           label: "Fecha de reunión",
@@ -126,7 +126,7 @@ class Modificar_reunion extends Component {
                     </form>
                     <h3>Realizada</h3>
                     <FormInputs
-                      ncols={["col-md-3", "col-md-3",  "col-md-3", "col-md-2"]}
+                      ncols={["col-md-4", "col-md-3",  "col-md-3"]}
                       properties={[
                         {
                           label: "Iniciales del académico",
@@ -153,6 +153,13 @@ class Modificar_reunion extends Component {
                           value: `${this.state.reunion.interes}`, 
                           //disabled: "disabled"
                         },
+                        
+                        
+                      ]}
+                    />
+                     <FormInputs
+                      ncols={["col-md-3", "col-md-3",  "col-md-3"]}
+                      properties={[
                         {
                           label: "Recomendaciones",
                           type: "text",
@@ -161,13 +168,8 @@ class Modificar_reunion extends Component {
                           value: `${this.state.reunion.autogestion}`,
                           //disabled: "disabled"
                         },
-                        
-                      ]}
-                    />
-                     <FormInputs
-                      ncols={["col-md-3", "col-md-3",  "col-md-3"]}
-                      properties={[
                         {
+                          
                           label: "Tipo de problema",
                           type: "date",
                           bsClass: "form-control",
@@ -184,14 +186,7 @@ class Modificar_reunion extends Component {
                           value: `${this.state.reunion.hora}`,
                           //Disabled: "disabled"
                         },
-                        {
-                          label: "Observaciones problema",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "05/05/1970",  
-                          value: `${this.state.reunion.interes}`, 
-                          //disabled: "disabled"
-                        },
+                        
                         
                         
                       ]}
