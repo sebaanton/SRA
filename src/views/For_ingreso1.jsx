@@ -13,6 +13,7 @@ import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import { UserCard } from "components/UserCard/UserCard.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
+import Calendar from "components/Calendar/Calendar.jsx";
 import FileInput from "components/FileInput";
 import avatar from "assets/img/faces/face-3.jpg";
 import { useHistory } from "react-router-dom";

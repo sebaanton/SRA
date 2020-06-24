@@ -32,6 +32,10 @@ import For_ingreso2 from "views/For_ingreso2"
 import Cargar_plantilla from "views/Cargar_plantilla"
 import Modificar_detalle from "views/Modificar_detalle";
 import Modificar_registro from "views/Modificar_registro";
+import Crear_contacto from "views/Crear_contacto";
+import Modificar_contacto from "views/Modificar_contacto";
+import Agendar_reunion from "views/Agendar_reunion";
+import Modificar_reunion from "views/Modificar_reunion";
 const dashboardRoutes = [
   {
     
@@ -141,7 +145,42 @@ const dashboardRoutes = [
     estado: "false"
 
   },
-  
+  {
+    path: "/Crear_contacto",
+    name: "Crear Contacto",
+    icon: "pe-7s-science",
+    component: Crear_contacto,
+    layout: "/admin",
+    estado: "false"
+
+  },
+  {
+    path: "/Modificar_contacto",
+    name: "Modificar Contacto",
+    icon: "pe-7s-science",
+    component: Modificar_contacto,
+    layout: "/admin",
+    //estado: "false"
+
+  },
+  {
+    path: "/Agendar_reunion",
+    name: "Agendar Reunion",
+    icon: "pe-7s-science",
+    component: Agendar_reunion,
+    layout: "/admin",
+    estado: "false"
+
+  },
+  {
+    path: "/Modificar_reunion",
+    name: "Modificar Reunion",
+    icon: "pe-7s-science",
+    component: Modificar_reunion,
+    layout: "/admin",
+    //estado: "false"
+
+  },
  
 ];
 
