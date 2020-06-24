@@ -19,26 +19,85 @@ import { thArray, tdArray } from "variables/Variables.jsx";
 import Ver_detalle from "views/Ver_detalle";
 import axios from "axios";
 
+<<<<<<< HEAD
 console.log(axios)
 
 
+=======
+>>>>>>> 09c79fb2bbec04ca84ef9a8be257fa51b11a7157
 class Notifications extends Component {
   state = {
     alumno:[],
-    checked: false
+    alumnoDisplay:[],
+    checked: false,
+    parameter: "",
   };
 
   componentDidMount(){
       axios.get("http://localhost:8000/alumno/").then(res2 => {
         this.setState({
-          alumno: res2.data
+          alumno: res2.data,
+          alumnoDisplay: res2.data
         });
       });
       }
   handleCheckedChange(event){
     this.setState( {
-      value: event.target.value
-    } )
+      value: event.target.value,
+    });
+  }
+  handleChangeParameter(event){
+    this.setState( {
+      parameter: event.target.value,
+    });
+  }
+  
+  onSearch(event){
+    var alum = [];
+    var i;
+    this.setState({
+      alumnoDisplay: [],
+    });
+    if(this.state.value == "opt_1"){
+      for(i=0; i< this.state.alumno.length;i++){
+        if(this.state.alumno[i].nombre == this.state.parameter){
+          alum.push(this.state.alumno[i]);
+        }
+      }
+      this.setState( {
+        alumnoDisplay: alum,
+      });
+    }
+    if(this.state.value == "opt_2"){
+      for(i=0; i< this.state.alumno.length;i++){
+        if(this.state.alumno[i].rut == this.state.parameter){
+          alum.push(this.state.alumno[i]);
+        }
+      }
+      this.setState( {
+        alumnoDisplay: alum,
+      });
+    }
+    if(this.state.value == "opt_3"){
+      for(i=0; i< this.state.alumno.length;i++){
+        if(this.state.alumno[i].correo == this.state.parameter){
+          alum.push(this.state.alumno[i]);
+        }
+      }
+      this.setState( {
+        alumnoDisplay: alum,
+      });
+    }
+    if(this.state.value == "opt_4"){
+      for(i=0; i< this.state.alumno.length;i++){
+        if(this.state.alumno[i].estado_actual == this.state.parameter){
+          alum.push(this.state.alumno[i]);
+        }
+      }
+      this.setState( {
+        alumnoDisplay: alum,
+      });
+    }
   }
   
   render() 
@@ -62,7 +121,9 @@ class Notifications extends Component {
                         {
                           type: "text",
                           bsClass: "form-control",
-                          defaultValue: "Juanito Perez"
+                          defaultValue: "Juanito Perez",
+                          value: this.state.parameter,
+                          onChange: this.handleChangeParameter.bind(this)
                         }
                       ]}
 
@@ -70,15 +131,52 @@ class Notifications extends Component {
 
                     />
 
-                   <Button bsStyle="info" pullRight fill type="submit">
+                   <Button bsStyle="info" pullRight fill onClick={this.onSearch.bind(this)}>
                       Buscar
                     </Button>   
 
                 <h3>Atributos</h3>
                   <div className="table-full-width">
                     <table className="table">
+<<<<<<< HEAD
                       <Tasks/>
                       <span>{localStorage.getItem('atributo')}</span>
+=======
+                    <div>
+                    <Col md={6} mdOffset={0.5}>
+                      <input 
+                        type="radio"
+                        name="name"
+                        value="opt_1"
+                        checked={this.state.value === "opt_1"}
+                        onChange={this.handleCheckedChange.bind(this)}
+
+                      /> Nombre y apellido <br />
+                      <input 
+                        type="radio"
+                        name="name"
+                        value="opt_2"
+                        checked={this.state.value === "opt_2"}
+                        onChange={this.handleCheckedChange.bind(this)}
+                      /> Rut <br />
+                      <input 
+                        type="radio"
+                        name="name"
+                        value="opt_3"
+                        checked={this.state.value === "opt_3"}
+                        onChange={this.handleCheckedChange.bind(this)}
+                      /> Correo <br />
+                      <input 
+                        type="radio"
+                        name="name"
+                        value="opt_4"
+                        checked={this.state.value === "opt_4"}
+                        onChange={this.handleCheckedChange.bind(this)}
+                      /> Estado <br />
+                    </Col>
+                    </div>
+                
+>>>>>>> 09c79fb2bbec04ca84ef9a8be257fa51b11a7157
                     </table>
                   </div>
               
@@ -111,7 +209,7 @@ class Notifications extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {this.state.alumno.map((prop, key) => {
+                      {this.state.alumnoDisplay.map((prop, key) => {
                         return (
                           
                           <tr>

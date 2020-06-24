@@ -15,10 +15,13 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
+
 import React, { Component } from "react";
 import { NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap";
 import Cargar_plantilla from "views/Cargar_plantilla"
 import routes from "routes.js";
+import Crear_contacto from "views/Crear_contacto";
+import Agendar_reunion from "views/Agendar_reunion";
 //import Popup from "reactjs-popup";
 
 
@@ -43,8 +46,8 @@ class AdminNavbarLinks extends Component {
             id="basic-nav-dropdown-right"
             >
             
-            <MenuItem eventKey={1.1}>Contacto</MenuItem>
-            <MenuItem eventKey={1.2}>Reunión</MenuItem>
+            <MenuItem eventKey={1.1} href = "Crear_contacto">Contacto</MenuItem>
+            <MenuItem eventKey={1.2} href = "Agendar_reunion">Reunión</MenuItem>
            </NavDropdown>
 
           <NavDropdown
