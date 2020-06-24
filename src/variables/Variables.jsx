@@ -275,6 +275,7 @@ const tdArray = [
   ["5", "Doris Greene", "3.3", "En observación", "no"],
   ["6", "Mason Porter", "1.9", "En observación", "no"]
 ];
+const thArray2 = ["id", "Año", "Semestre", "Tipo de causal", "Asignaturas reportadas", "Reiteraciones de causal", "Enlaces"];
 
 //
 // //
@@ -621,6 +622,7 @@ var legendBar = {
 module.exports = {
   style, // For notifications (App container and Notifications view)
   thArray,
+  thArray2,
   tdArray, // For tables (TableList view)
   iconsArray, // For icons (Icons view)
   dataPie1,
