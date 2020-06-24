@@ -224,6 +224,11 @@ function For_ingreso1 () {
                         placeholder: "123456789-8",
                         defaultValue: "",
                         Value: rut,
+                        minlength:"9",
+                        maxlength:"10",
+                        pattern: "[^a-zA-Z][0-9]{7,8}+-[0-9|Kk]",
+                        required:"required",
+                        title:"Números enteros de 0 al 9 y la letra k en su ́ultima posición (mayúscula o minúscula)", 
                         onChange: handleChangeRut
                       },
                       {
@@ -233,6 +238,11 @@ function For_ingreso1 () {
                         placeholder: "usuario@mail.udp.cl",
                         defaultValue: "",
                         Value: email,
+                        minlength:"15",
+                        maxlength:"50",
+                        pattern: "[a-zA-z0-9.]+@mail.udp.cl",
+                        required:"required",
+                        title:"El correo debe ser el institucional",
                         onChange: handleChangeEmail
                       }
                     ]}
@@ -247,15 +257,24 @@ function For_ingreso1 () {
                         placeholder: "Juan",
                         defaultValue: "",
                         Value: nombre,
+                        minlength:"3",
+                        maxlength:"50",
+                        pattern: "[a-zA-Z]+",
+                        required:"required",
+                        title:"Letras de la A a la Z (mayúsculas o minúsculas)",
                         onChange: handleChangeNombre                      
                       },
                       {
                         label: "Año de Nacimiento",
                         type: "text",
                         bsClass: "form-control",
-                        placeholder: "1970", 
+                        placeholder: "1970",
                         defaultValue: "",
                         Value: año_nacimiento,
+                        minlength:"4",
+                        maxlength:"4", 
+                        pattern: "[1][9][6-9][0-9]|[2][0-2][0-9][0-9]",
+                        required:"required",
                         onChange: handleChangeAño_nacimiento
                       },
                       
@@ -269,9 +288,13 @@ function For_ingreso1 () {
                         label: "Teléfono",
                         type: "text",
                         bsClass: "form-control",
-                        placeholder: "+56997856443",
+                        placeholder: "56997856443",
                         defaultValue: "",
                         Value: telefono,
+                        minlength:"11",
+                        maxlength:"11", 
+                        pattern: "56[0-9]{9}",
+                        required:"required",
                         onChange: handleChangeTelefono
                       },
                       {
@@ -281,6 +304,10 @@ function For_ingreso1 () {
                         placeholder: "2016",
                         defaultValue: "",
                         Value: año_ingreso,
+                        minlength:"4",
+                        maxlength:"4", 
+                        pattern: "[1][9][6-9][0-9]|[2][0-2][0-9][0-9]",
+                        required:"required",
                         onChange: handleChangeAño_ingreso
                       },
                       {
@@ -290,6 +317,10 @@ function For_ingreso1 () {
                         placeholder: "1er semestre",
                         defaultValue: "",
                         Value: semestre_ingreso,
+                        minlength:"1",
+                        maxlength:"1", 
+                        pattern: "[1|2]",
+                        required:"required",
                         onChange: handleChangeSemestre_ingreso
                       },
                     ]}
@@ -305,6 +336,10 @@ function For_ingreso1 () {
                         placeholder: "UDP, industrias",
                         defaultValue: "",
                         Value: carrera_origen,
+                        minlength:"10",
+                        maxlength:"30",
+                        pattern: "[a-zA-Z,']+",
+                        required:"required",
                         onChange: handleChangeCarrera_origen
                       },
                     ]}
@@ -317,8 +352,9 @@ function For_ingreso1 () {
                         type: "text",
                         bsClass: "form-control",
                         placeholder: "Rehabilitado",
-                        disabled: "disabled",
+                        readonly: "readonly",
                         defaultValue: "En causal",
+                        required:"required",
                       },
 
                       {
@@ -326,7 +362,7 @@ function For_ingreso1 () {
                         type: "text",
                         bsClass: "form-control",
                         placeholder: "Rehabilitado",
-                        disabled: "disabled",
+                        readonly: "readonly",
                         defaultValue: "Causal",
                         Value: tipo_ingreso,
                         onChange: handleChangeTipo_ingreso
@@ -344,6 +380,10 @@ function For_ingreso1 () {
                         placeholder: "Calculo II,Algebra",
                         defaultValue: "",
                         Value: asignatura_reportada,
+                        minlength:"5",
+                        maxlength:"50",
+                        pattern: "[a-zA-Z,]+",
+                        required:"required",
                         onChange: handleChangeAsignatura_reportada
                       },
                       {
@@ -353,6 +393,10 @@ function For_ingreso1 () {
                         placeholder: "1",
                         defaultValue: "",
                         Value: tipo_causal,
+                        minlength:"1",
+                        maxlength:"1",
+                        pattern: "[1|2|3]",
+                        required:"required",
                         onChange: handleChangeTipo_causal
                       },
                     ]}

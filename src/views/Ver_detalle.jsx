@@ -160,7 +160,7 @@ class Ver_detalle extends Component {
                           bsClass: "form-control",
                           placeholder: "Rehabilitado",
                           value: `${this.state.alumno.estado_actual}`,
-                          disabled: "disabled"
+                          readonly: "readonly"
                         },
                       ]}
                     />
