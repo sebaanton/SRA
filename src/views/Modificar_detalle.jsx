@@ -153,7 +153,7 @@ class Modificar_detalle extends Component {
                           bsClass: "form-control",
                           placeholder: "UDP, industrias",
                           value: `${this.state.alumno.carrera_origen}`,
-                          minlength:"10",
+                          minlength:"11",
                           maxlength:"30",
                           pattern: "[a-zA-Z,']+",
                           
