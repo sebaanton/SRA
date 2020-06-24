@@ -111,6 +111,25 @@ class For_ingreso2 extends Component {
                         
                       ]}
                     />
+                    <FormInputs
+                      ncols={["col-md-3"]}
+                      properties={[
+                        {
+                          label: "Tipo de ingreso",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "Reportado",
+                          defaultValue: "Reportado",
+                          minlength:"9",
+                          maxlength:"12",
+                          pattern: "[aA][uU][tT][oO]|[Cc][Oo][nN][Ss][Uu][lL][tT][aA]|[Rr][eE][Pp][oO][rR][tT][aA][dD][oO]",
+                          required:"required",
+                          title:"Reportado o autoconsulta (en mayúscula o minúscula)"
+                          //Value: tipo_ingreso,
+                          //onChange: handleChangeTipo_ingreso
+                        },
+                      ]}
+                    />
                   <form>
                       <label>
                         Observaciones <br />

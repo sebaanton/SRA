@@ -19,12 +19,6 @@ import { thArray, tdArray } from "variables/Variables.jsx";
 import Ver_detalle from "views/Ver_detalle";
 import axios from "axios";
 
-<<<<<<< HEAD
-console.log(axios)
-
-
-=======
->>>>>>> 09c79fb2bbec04ca84ef9a8be257fa51b11a7157
 class Notifications extends Component {
   state = {
     alumno:[],
@@ -138,10 +132,6 @@ class Notifications extends Component {
                 <h3>Atributos</h3>
                   <div className="table-full-width">
                     <table className="table">
-<<<<<<< HEAD
-                      <Tasks/>
-                      <span>{localStorage.getItem('atributo')}</span>
-=======
                     <div>
                     <Col md={6} mdOffset={0.5}>
                       <input 
@@ -176,7 +166,6 @@ class Notifications extends Component {
                     </Col>
                     </div>
                 
->>>>>>> 09c79fb2bbec04ca84ef9a8be257fa51b11a7157
                     </table>
                   </div>
               
