@@ -38,29 +38,12 @@ class AdminNavbarLinks extends Component {
     return (
       <div>
         <Nav pullLeft>
-        <NavItem> Coordinador/Ayudante</NavItem>
-
+        <NavItem eventKey={3} href="#">
+            Administrador
+          </NavItem>
         </Nav>
         <Nav pullRight>
-
-          <NavDropdown
-            eventKey={1}
-            title="Crear"
-            id="basic-nav-dropdown-right"
-            >
-            
-            <MenuItem eventKey={1.1} href = "Crear_contacto">Contacto</MenuItem>
-            <MenuItem eventKey={1.2} href = "Agendar_reunion">Reunión</MenuItem>
-           </NavDropdown>
-
-          <NavDropdown
-            eventKey={2}
-            title="Ingresar Datos"
-            id="basic-nav-dropdown-right">
-            <MenuItem eventKey={2.1} href="For_ingreso1">Digitación Causal</MenuItem>
-            <MenuItem eventKey={2.2} href="For_ingreso2">Digitación Autoconsulta</MenuItem>
-            <MenuItem eventKey={2.3} href="Cargar_plantilla">Cargar Plantilla</MenuItem>
-           </NavDropdown>
+        
           <NavItem eventKey={3} href="Login2">
             Cerrar Sesión
           </NavItem>

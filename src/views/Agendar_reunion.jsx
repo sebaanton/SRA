@@ -78,7 +78,7 @@ class Modificar_reunion extends Component {
                     />
                     
                     <FormInputs
-                      ncols={["col-md-2", "col-md-2",  "col-md-2", "col-md-3"]}
+                      ncols={["col-md-3", "col-md-3",  "col-md-2", "col-md-3"]}
                       properties={[
                         {
                           label: "Fecha de reunión",
@@ -126,11 +126,11 @@ class Modificar_reunion extends Component {
                     </form>
                     <h3>Realizada</h3>
                     <FormInputs
-                      ncols={["col-md-3", "col-md-3",  "col-md-3", "col-md-2"]}
+                      ncols={["col-md-4", "col-md-3",  "col-md-3"]}
                       properties={[
                         {
                           label: "Iniciales del académico",
-                          type: "date",
+                          type: "text",
                           bsClass: "form-control",
                           //placeholder: "usuario@mail.udp.cl",
                           value: `${this.state.reunion.fecha}`,
@@ -153,14 +153,7 @@ class Modificar_reunion extends Component {
                           value: `${this.state.reunion.interes}`, 
                           disabled: "disabled"
                         },
-                        {
-                          label: "Recomendaciones",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "2016",
-                          value: `${this.state.reunion.autogestion}`,
-                          disabled: "disabled"
-                        },
+                        
                         
                       ]}
                     />
@@ -185,14 +178,13 @@ class Modificar_reunion extends Component {
                           Disabled: "disabled"
                         },
                         {
-                          label: "Observaciones problema",
+                          label: "Recomendaciones",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "05/05/1970",  
-                          value: `${this.state.reunion.interes}`, 
+                          placeholder: "2016",
+                          value: `${this.state.reunion.autogestion}`,
                           disabled: "disabled"
                         },
-                        
                         
                       ]}
                     />
@@ -202,14 +194,14 @@ class Modificar_reunion extends Component {
                         &nbsp;&nbsp;&nbsp;&nbsp;<label>
                         Observaciones Problema<br />
                         <textarea  className="form-control"
-                            rows="5" cols='40' disabled/> 
+                            rows="5" cols='30' disabled/> 
                             
                       </label>   
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <label>
                         Observaciones Recomendación<br />
                         <textarea  className="form-control"
-                            rows="5" cols='40' disabled/> 
+                            rows="5" cols='30' disabled/> 
                             
                       </label>   
                       </Col>

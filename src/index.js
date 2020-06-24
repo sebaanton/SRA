@@ -29,6 +29,8 @@ import "./assets/css/pe-icon-7-stroke.css";
 import axios from 'axios';
 import { Promise } from "es6-promise";
 import AdminLayout from "layouts/Admin.jsx";
+//import AdminLayout from "layouts/Admin_profesor.jsx";
+//import AdminLayout from "layouts/Admin_admin.jsx";
 import Login2 from "views/Login2.jsx";
 
 axios.interceptors.response.use( (response) => {

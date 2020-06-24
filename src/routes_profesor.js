@@ -28,7 +28,7 @@ import Ver_detalle from "views/Ver_detalle";
 import Ver_flujo from "views/Ver_flujo";
 import Ver_registro from "views/Ver_registro";
 import For_ingreso1 from "views/For_ingreso1"
-import For_ingreso2 from "views/For_ingreso2"
+import Ingreso_profesor from "views/Ingreso_profesor"
 import Cargar_plantilla from "views/Cargar_plantilla"
 import Modificar_detalle from "views/Modificar_detalle";
 import Modificar_registro from "views/Modificar_registro";
@@ -36,7 +36,6 @@ import Crear_contacto from "views/Crear_contacto";
 import Modificar_contacto from "views/Modificar_contacto";
 import Agendar_reunion from "views/Agendar_reunion";
 import Modificar_reunion from "views/Modificar_reunion";
-import Lista_reportes from "views/Lista_reportes";
 const dashboardRoutes = [
   {
     
@@ -61,15 +60,6 @@ const dashboardRoutes = [
     icon: "pe-7s-user",
     component: UserProfile,
     layout: "/admin",
-
-  },
-  {
-    path: "/table",
-    name: "Notificaciones",
-    icon: "pe-7s-note2",
-    component: TableList,
-    layout: "/admin",
-
   },
   {
     path: "/Login2",
@@ -130,10 +120,10 @@ const dashboardRoutes = [
     estado: "false"
   },
   {
-    path: "/For_ingreso2",
-    name: "Formulario ingreso Profesor-alumno",
+    path: "/Ingreso_profesor",
+    name: "Formulario ingreso Profesor",
     icon: "pe-7s-science",
-    component: For_ingreso2,
+    component: Ingreso_profesor,
     layout: "/admin",
     estado: "false"
   },
@@ -146,49 +136,9 @@ const dashboardRoutes = [
     estado: "false"
 
   },
-  {
-    path: "/Crear_contacto",
-    name: "Crear Contacto",
-    icon: "pe-7s-science",
-    component: Crear_contacto,
-    layout: "/admin",
-    estado: "false"
-
-  },
-  {
-    path: "/Modificar_contacto",
-    name: "Modificar Contacto",
-    icon: "pe-7s-science",
-    component: Modificar_contacto,
-    layout: "/admin",
-    //estado: "false"
-
-  },
-  {
-    path: "/Agendar_reunion",
-    name: "Agendar Reunion",
-    icon: "pe-7s-science",
-    component: Agendar_reunion,
-    layout: "/admin",
-    estado: "false"
-  },
-  {
-    path: "/Modificar_reunion",
-    name: "Modificar Reunion",
-    icon: "pe-7s-science",
-    component: Modificar_reunion,
-    layout: "/admin",
-    //estado: "false"
-
-  },
-  {
-    path: "/Lista_reportes",
-    name: "Lista reportes",
-    icon: "pe-7s-science",
-    component: Lista_reportes,
-    layout: "/admin",
-    estado: "false"
-  },
+ 
+  
+ 
 ];
 
 export default dashboardRoutes;
