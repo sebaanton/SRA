@@ -19,12 +19,6 @@ import { thArray, tdArray } from "variables/Variables.jsx";
 import Ver_detalle from "views/Ver_detalle";
 import axios from "axios";
 
-<<<<<<< Updated upstream
-console.log(axios)
-
-
-=======
->>>>>>> Stashed changes
 class Notifications extends Component {
   state = {
     alumno:[],
@@ -80,10 +74,6 @@ class Notifications extends Component {
                 <h3>Atributos</h3>
                   <div className="table-full-width">
                     <table className="table">
-<<<<<<< Updated upstream
-                      <Tasks/>
-                      <span>{localStorage.getItem('atributo')}</span>
-=======
                     <div>
                     <Col md={6} mdOffset={0.5}>
                       <input 
@@ -125,7 +115,6 @@ class Notifications extends Component {
                     </Col>
                     </div>
                 
->>>>>>> Stashed changes
                     </table>
                   </div>
               

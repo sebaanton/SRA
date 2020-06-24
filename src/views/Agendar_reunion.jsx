@@ -202,14 +202,14 @@ class Modificar_reunion extends Component {
                         &nbsp;&nbsp;&nbsp;&nbsp;<label>
                         Observaciones Problema<br />
                         <textarea  className="form-control"
-                            rows="5" cols='40'/> 
+                            rows="5" cols='40' disabled/> 
                             
                       </label>   
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <label>
                         Observaciones Recomendación<br />
                         <textarea  className="form-control"
-                            rows="5" cols='40'/> 
+                            rows="5" cols='40' disabled/> 
                             
                       </label>   
                       </Col>
