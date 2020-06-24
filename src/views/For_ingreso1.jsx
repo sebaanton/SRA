@@ -27,7 +27,6 @@ function For_ingreso1 () {
       await setAlumno();
       await setNewAlumno();
       const causalCount =  await getCausal();
-      console.log(causalCount);
       const currentDay = new Date();
       var semestre;
       if (currentDay.getMonth() <= 6){
@@ -37,12 +36,16 @@ function For_ingreso1 () {
       }
       const asignaturaCount = asignatura_reportada.split(",");
       const año = new Date().getFullYear().toString();
+      const prioridad = 0.3*causalCount + 0.7*(asignaturaCount.length());
+      if (prioridad > 4){
+        prioridad = 4;
+      }
       const { data } = await axios.post(`${apiUrl}/reporte/`, {
                                                                año: new Date().getFullYear().toString(),
                                                                semestre: semestre.toString(),
                                                                tipo_causal: tipo_causal,
                                                                asignaturas_reportadas: asignaturaCount.length.toString(),
-                                                               prioridad: '1',
+                                                               prioridad: prioridad.toString(),
                                                                observacion: observacion,
                                                                reiteraciones_causal: causalCount.toString(),
                                                                tipo_ingreso: 'causal',
