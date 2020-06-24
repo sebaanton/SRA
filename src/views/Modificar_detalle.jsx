@@ -55,6 +55,9 @@ class Modificar_detalle extends Component {
                           bsClass: "form-control",
                           placeholder: "123456789-8",
                           value: `${this.state.alumno.rut}`,
+                          minlength:"9",
+                          maxlength:"10",
+                          pattern: "[^a-zA-Z][0-9]{7,8}+-[0-9|Kk]",
                           
                         },
                         {
@@ -63,6 +66,9 @@ class Modificar_detalle extends Component {
                           bsClass: "form-control",
                           placeholder: "usuario@mail.udp.cl",
                           value: `${this.state.alumno.correo}`,
+                          minlength:"15",
+                          maxlength:"50",
+                          pattern: "[a-zA-z0-9.]+@mail.udp.cl",
                           
                         }
                       ]}
@@ -76,13 +82,22 @@ class Modificar_detalle extends Component {
                           bsClass: "form-control",
                           placeholder: "Juanito Perez",
                           value: `${this.state.alumno.nombre}`,
+                          minlength:"3",
+                          maxlength:"50",
+                          pattern: "[a-zA-Z]+",
+                          minlength:"4",
+                          maxlength:"4", 
+                          pattern: "[1][9][6-9][0-9]|[2][0-2][0-9][0-9]",
                           
                         },
                         {
                           label: "Año de Nacimiento",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "05/05/1970",  
+                          placeholder: "1970",  
+                          minlength:"4",
+                          maxlength:"4", 
+                          pattern: "[1][9][6-9][0-9]|[2][0-2][0-9][0-9]",
                           value: `${this.state.alumno.año_nacimiento}`, 
                           
                         },
@@ -94,11 +109,14 @@ class Modificar_detalle extends Component {
                       properties={[
                         
                         {
-                          label: "Teléfonos",
+                          label: "Teléfono",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "+56997856443",
+                          placeholder: "56997856443",
                           value: `${this.state.alumno.telefono}`,
+                          minlength:"11",
+                          maxlength:"11", 
+                          pattern: "56[0-9]{9}",
                           
                         },
                         {
@@ -107,6 +125,9 @@ class Modificar_detalle extends Component {
                           bsClass: "form-control",
                           placeholder: "2016",
                           value: `${this.state.alumno.año_ingreso}`,
+                          minlength:"4",
+                          maxlength:"4", 
+                          pattern: "[1][9][6-9][0-9]|[2][0-2][0-9][0-9]",
                           
                         },
                         {
@@ -115,6 +136,9 @@ class Modificar_detalle extends Component {
                           bsClass: "form-control",
                           placeholder: "1er semestre",
                           value: `${this.state.alumno.semestre_ingreso}`,
+                          minlength:"1",
+                          maxlength:"1", 
+                          pattern: "[1|2]",
                           
                         },
                       ]}
@@ -129,6 +153,9 @@ class Modificar_detalle extends Component {
                           bsClass: "form-control",
                           placeholder: "UDP, industrias",
                           value: `${this.state.alumno.carrera_origen}`,
+                          minlength:"10",
+                          maxlength:"30",
+                          pattern: "[a-zA-Z,']+",
                           
                         },
                         {
@@ -151,6 +178,7 @@ class Modificar_detalle extends Component {
                           bsClass: "form-control",
                           placeholder: "07/07/2020",
                           value: `${this.state.alumno.fecha_registro}`,
+                          readonly:"readonly"
                           
                         },
                         {
@@ -159,7 +187,9 @@ class Modificar_detalle extends Component {
                           bsClass: "form-control",
                           placeholder: "Rehabilitado",
                           value: `${this.state.alumno.estado_actual}`,
-                          
+                          minlength:"9",
+                          maxlength:"20", 
+                          pattern:"[En] [cC][aA][uU][sS][aA][lL]|[eE][Nn] [oO][bB][sS][eE][rR][vV][aA][cC][iI][oO][nN]|[rR][eE][cC][uU][pP][eE][rR][aA][Dd][oO]|[sS][uU][sS][pP][eE][nN][cC][iI][oO][Nn]|[eE][lL][iI][Mm][Aa][cC][iI][oO][nN]|[Rr][eE][nN][uU][Nn][cC][Ii][aA] [Cc][aA][Mm][Bb][iI][Oo] [dD][eE] [Cc][aA][Rr][rR][eE][rR][aA]",
                         },
                       ]}
                     />

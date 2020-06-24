@@ -257,7 +257,7 @@ function For_ingreso1 () {
                         defaultValue: "",
                         Value: nombre,
                         minlength:"3",
-                        maxlength:"25",
+                        maxlength:"50",
                         pattern: "[a-zA-Z]+",
                         required:"required",
                         title:"Letras de la A a la Z (mayúsculas o minúsculas)",
