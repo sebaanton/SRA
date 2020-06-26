@@ -36,39 +36,51 @@ import Crear_contacto from "views/Crear_contacto";
 import Modificar_contacto from "views/Modificar_contacto";
 import Agendar_reunion from "views/Agendar_reunion";
 import Modificar_reunion from "views/Modificar_reunion";
+import Crear_usuario from "views/Crear_usuario";
+import Crear_problema from "views/Crear_problema";
+import Crear_recomendacion from "views/Crear_recomendacion";
+import Busqueda_modificar_usuario from "views/Busqueda_modificar_usuario";
+import Busqueda_modificar_problema from "views/Busqueda_modificar_problema";
+import Busqueda_modificar_recomendacion from "views/Busqueda_modificar_recomendacion";
+import Modificar_usuario from "views/Modificar_usuario";
+import Modificar_problema from "views/Modificar_problema";
+import Modificar_recomendacion from "views/Modificar_recomendacion";
+
 const dashboardRoutes = [
-  {
-    
+  { 
     path: "/notifications",
     name: "Home",
     icon: "pe-7s-home",
     component: Notifications,
     layout: "/admin",
-
-  },
-   {   
-    path: "/dashboard",
-    name: " Ver Estadisticas",
-    icon: "pe-7s-graph",
-    component: Dashboard,
-    layout: "/admin",
-
   },
   {
     path: "/user",
-    name: "Perfil",
+    name: "Ver usuario",
     icon: "pe-7s-user",
     component: UserProfile,
     layout: "/admin",
-
   },
   {
-    path: "/table",
-    name: "Notificaciones",
-    icon: "pe-7s-note2",
-    component: TableList,
+    path: "/Crear_usuario",
+    name: "Crear usuario",
+    icon: "pe-7s-user",
+    component: Crear_usuario,
     layout: "/admin",
-
+  },
+  {
+    path: "/Busqueda_Modificar_usuario",
+    name: "Busqueda Modificar usuario",
+    icon: "pe-7s-user",
+    component: Busqueda_modificar_usuario,
+    layout: "/admin",
+  },
+  {
+    path: "/Modificar_usuario",
+    name: "Modificar usuario",
+    icon: "pe-7s-user",
+    component: Modificar_usuario,
+    layout: "/admin",
   },
   {
     path: "/Login2",
@@ -79,107 +91,48 @@ const dashboardRoutes = [
     estado: "false"
   },
   {
-    path: "/Ver_detalle",
-    name: "Ver Detalle",
-    icon: "pe-7s-science",
-    component: Ver_detalle,
+    path: "/Crear_problema",
+    name: "Crear Problema",
+    icon: "pe-7s-user",
+    component: Crear_problema,
     layout: "/admin",
-
   },
   {
-    path: "/Modificar_detalle",
-    name: "Modificar Alumno",
-    icon: "pe-7s-science",
-    component: Modificar_detalle,
+    path: "/Busqueda_Modificar_problema",
+    name: "Busqueda Modificar Problema",
+    icon: "pe-7s-user",
+    component: Busqueda_modificar_problema,
     layout: "/admin",
-    //estado: "false"
-
+  }, 
+  {
+    path: "/Modificar_problema",
+    name: "Modificar Problema",
+    icon: "pe-7s-user",
+    component: Modificar_problema,
+    layout: "/admin",
   },
   {
-    path: "/Ver_registro",
-    name: "Ver Registro(s)",
-    icon: "pe-7s-science",
-    component: Ver_registro,
+    path: "/Crear_recomendacion",
+    name: "Crear Recomendacion",
+    icon: "pe-7s-user",
+    component: Crear_recomendacion,
     layout: "/admin",
-
   },
   {
-    path: "/Modificar_registro",
-    name: "Modificar Registro",
-    icon: "pe-7s-science",
-    component: Modificar_registro,
+    path: "/Busqueda_Modificar_recomendacion",
+    name: "Busqueda Modificar Recomendación",
+    icon: "pe-7s-user",
+    component: Busqueda_modificar_recomendacion,
     layout: "/admin",
-    //estado: "false"
-
   },
   {
-    path: "/Ver_flujo",
-    name: "Ver Flujo",
-    icon: "pe-7s-science",
-    component: Ver_flujo,
+    path: "/Modificar_recomendacion",
+    name: "Modificar Recomendación",
+    icon: "pe-7s-user",
+    component: Modificar_recomendacion,
     layout: "/admin",
-    estado: "false"
   },
-  {
-    path: "/For_ingreso1",
-    name: "Formulario ingreso por causal",
-    icon: "pe-7s-science",
-    component: For_ingreso1,
-    layout: "/admin",
-    estado: "false"
-  },
-  {
-    path: "/For_ingreso2",
-    name: "Formulario ingreso Profesor-alumno",
-    icon: "pe-7s-science",
-    component: For_ingreso2,
-    layout: "/admin",
-    estado: "false"
-  },
-  {
-    path: "/Cargar_plantilla",
-    name: "Cargar plantilla",
-    icon: "pe-7s-science",
-    component: Cargar_plantilla,
-    layout: "/admin",
-    estado: "false"
-
-  },
-  {
-    path: "/Crear_contacto",
-    name: "Crear Contacto",
-    icon: "pe-7s-science",
-    component: Crear_contacto,
-    layout: "/admin",
-    estado: "false"
-
-  },
-  {
-    path: "/Modificar_contacto",
-    name: "Modificar Contacto",
-    icon: "pe-7s-science",
-    component: Modificar_contacto,
-    layout: "/admin",
-    //estado: "false"
-
-  },
-  {
-    path: "/Agendar_reunion",
-    name: "Agendar Reunion",
-    icon: "pe-7s-science",
-    component: Agendar_reunion,
-    layout: "/admin",
-    estado: "false"
-  },
-  {
-    path: "/Modificar_reunion",
-    name: "Modificar Reunion",
-    icon: "pe-7s-science",
-    component: Modificar_reunion,
-    layout: "/admin",
-    //estado: "false"
-
-  },
+  
  
 ];
 
