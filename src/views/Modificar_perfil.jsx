@@ -52,14 +52,12 @@ class UserProfile extends Component {
                           bsClass: "form-control",
                           placeholder: "RUT",
                           defaultValue: "123456789",
-                          disabled:"disabled"
                         },
                         {
                           label: "Email",
                           type: "email",
                           bsClass: "form-control",
-                          placeholder: "Email",
-                          disabled:"disabled"
+                          placeholder: "Email"
                         }
                       ]}
                     />
@@ -71,22 +69,20 @@ class UserProfile extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "Nombre",
-                          defaultValue: "Mike",
-                          disabled:"disabled"
+                          defaultValue: "Mike"
                         },
                         {
                           label: "Apellido",
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "Apellido",
-                          defaultValue: "Andrew",
-                          disabled:"disabled"
+                          defaultValue: "Andrew"
                         }
                       ]}
                     />
                 
-                    <Button bsStyle="info" pullRight fill type="submit" href="Modificar_perfil">
-                      Modificar perfil
+                    <Button bsStyle="info" pullRight fill type="submit">
+                      Actualizar perfil
                     </Button>
                     <div className="clearfix" />
                   </form>

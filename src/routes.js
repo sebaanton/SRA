@@ -37,6 +37,8 @@ import Modificar_contacto from "views/Modificar_contacto";
 import Agendar_reunion from "views/Agendar_reunion";
 import Modificar_reunion from "views/Modificar_reunion";
 import Lista_reportes from "views/Lista_reportes";
+import Modificar_perfil from "views/Modificar_perfil";
+
 const dashboardRoutes = [
   {
     
@@ -186,6 +188,14 @@ const dashboardRoutes = [
     name: "Lista reportes",
     icon: "pe-7s-science",
     component: Lista_reportes,
+    layout: "/admin",
+    estado: "false"
+  },
+  {
+    path: "/Modificar_perfil",
+    name: "Modificar Perfil",
+    icon: "pe-7s-user",
+    component: Modificar_perfil,
     layout: "/admin",
     estado: "false"
   },
