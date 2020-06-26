@@ -91,7 +91,7 @@ class Modificar_reunion extends Component {
                     />
                     
                     <FormInputs
-                      ncols={["col-md-3", "col-md-3",  "col-md-2", "col-md-3"]}
+                      ncols={["col-md-3", "col-md-3",  "col-md-2", "col-md-4"]}
                       properties={[
                         {
                           label: "Fecha de reunión",
@@ -162,7 +162,7 @@ class Modificar_reunion extends Component {
                           minlength:"4",
                           maxlength:"4",
                           pattern: "[a-zA-Z]+",
-                          readonly:"readonly",
+                          //readonly:"readonly",
                         },
                         {
                           label: "Fecha de reunión",
