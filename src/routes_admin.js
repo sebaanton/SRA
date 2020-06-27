@@ -45,6 +45,7 @@ import Busqueda_modificar_recomendacion from "views/Busqueda_modificar_recomenda
 import Modificar_usuario from "views/Modificar_usuario";
 import Modificar_problema from "views/Modificar_problema";
 import Modificar_recomendacion from "views/Modificar_recomendacion";
+import Modificar_perfil from "views/Modificar_perfil";
 
 const dashboardRoutes = [
   { 
@@ -67,6 +68,7 @@ const dashboardRoutes = [
     icon: "pe-7s-user",
     component: Crear_usuario,
     layout: "/admin",
+    estado: "false"
   },
   {
     path: "/Busqueda_Modificar_usuario",
@@ -74,6 +76,7 @@ const dashboardRoutes = [
     icon: "pe-7s-user",
     component: Busqueda_modificar_usuario,
     layout: "/admin",
+    estado: "false"
   },
   {
     path: "/Modificar_usuario",
@@ -81,6 +84,7 @@ const dashboardRoutes = [
     icon: "pe-7s-user",
     component: Modificar_usuario,
     layout: "/admin",
+    estado: "false"
   },
   {
     path: "/Login2",
@@ -88,7 +92,7 @@ const dashboardRoutes = [
     icon: "pe-7s-science",
     component: Login2,
     layout: "/admin",
-    estado: "false"
+    //estado: "false"
   },
   {
     path: "/Crear_problema",
@@ -96,6 +100,7 @@ const dashboardRoutes = [
     icon: "pe-7s-user",
     component: Crear_problema,
     layout: "/admin",
+    estado: "false"
   },
   {
     path: "/Busqueda_Modificar_problema",
@@ -103,6 +108,7 @@ const dashboardRoutes = [
     icon: "pe-7s-user",
     component: Busqueda_modificar_problema,
     layout: "/admin",
+    estado: "false"
   }, 
   {
     path: "/Modificar_problema",
@@ -110,6 +116,7 @@ const dashboardRoutes = [
     icon: "pe-7s-user",
     component: Modificar_problema,
     layout: "/admin",
+    estado: "false"
   },
   {
     path: "/Crear_recomendacion",
@@ -117,6 +124,7 @@ const dashboardRoutes = [
     icon: "pe-7s-user",
     component: Crear_recomendacion,
     layout: "/admin",
+    estado: "false"
   },
   {
     path: "/Busqueda_Modificar_recomendacion",
@@ -124,6 +132,7 @@ const dashboardRoutes = [
     icon: "pe-7s-user",
     component: Busqueda_modificar_recomendacion,
     layout: "/admin",
+    estado: "false"
   },
   {
     path: "/Modificar_recomendacion",
@@ -131,6 +140,15 @@ const dashboardRoutes = [
     icon: "pe-7s-user",
     component: Modificar_recomendacion,
     layout: "/admin",
+    estado: "false"
+  },
+  {
+    path: "/Modificar_perfil",
+    name: "Modificar Perfil",
+    icon: "pe-7s-user",
+    component: Modificar_perfil,
+    layout: "/admin",
+    estado: "false"
   },
   
  

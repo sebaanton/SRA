@@ -620,7 +620,7 @@ var legendBar = {
 };
 
 module.exports = {
-  style, // For notifications (App container and Notifications view)
+  style, // For notifications (App contayiner and Notifications view)
   thArray,
   thArray2,
   tdArray, // For tables (TableList view)

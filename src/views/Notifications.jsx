@@ -202,7 +202,7 @@ class Notifications extends Component {
                         return (
                           
                           <tr>
-                            <td key={key}>{prop.rut}</td>
+                            <td key={key}>{prop.rut} { } </td>
                             <td key={key}>{prop.nombre}</td>
                             <td key={key}>{prop.correo}</td>
                             <td key={key}>{prop.estado_actual}</td>
