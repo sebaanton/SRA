@@ -17,6 +17,7 @@ class Lista_reportes extends Component {
   };
 
   componentDidMount(){
+      console.log("aqui");
       const currenturl = window.location.pathname
       const largo = currenturl.length
       const rut = currenturl.slice(22,largo)

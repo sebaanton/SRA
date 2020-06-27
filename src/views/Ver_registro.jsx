@@ -7,21 +7,72 @@ import {
 import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
+import axios from "axios";
 
 
 class Ver_registro extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {      value: 'Observaciones.'    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+  state = {
+    reporte: [],
+    fecha: "",
+    alumno: [],
+    calificacion: "No aplica",
+    asistencia: "No aplica",
+    interes: "No aplica"
+  };
+
+  componentDidMount(){
+    const currenturl = window.location.pathname
+    const largo = currenturl.length
+    var asig = []
+    var i
+    var calif = 0
+    var asis = 0
+    var inter = 0
+    var interTex = ""
+    const id = currenturl.slice(20,largo)
+    axios.get(`http://localhost:8000/reporte/${id}`).then(res2 => {
+      this.setState({
+        reporte: res2.data,
+        fecha: res2.data.fecha.slice(0,10)
+      });
+      axios.get(`http://localhost:8000/alumno/${res2.data.alumno}`).then(res3 => {
+        this.setState({
+          alumno: res3.data,
+        });
+      });
+      axios.get(`http://localhost:8000/asignatura_reportada/`).then(res4 => {
+        for (i=0; i<res4.data.length;i++){
+          if (res4.data[i].reporte == id){
+            asig.push(res4.data[i])
+          }
+        }
+        if (asig.length > 0){
+          for (i=0; i<asig.length; i++){
+            calif = calif + asig[i].notas_ponderadas
+            asis = asis + asig[i].asistencia
+            inter = inter + asig[i].participacion
+          }
+          calif = calif/asig.length
+          asis = calif/asig.length
+          inter = calif/asig.length
+          if (inter > asig.length*7/3){
+            interTex = "Alto"
+          }else if (inter > (asig.length*5/3)){
+            interTex = "Medio"
+          }else{
+            interTex = "Bajo"
+          }
+          this.setState({
+            calificacion: calif,
+            asistencia: asis,
+            interes: interTex
+          });
+        }
+      });
+    });
   }
 
-  handleChange(event) {    this.setState({value: event.target.value});  }
-  handleSubmit(event) {
-    alert('An essay was submitted: ' + this.state.value);
-    event.preventDefault();
-  }
+  
 
   render() {
     return (
@@ -30,7 +81,7 @@ class Ver_registro extends Component {
           <Row>
             <Col md={8} mdOffset={2}>
               <Card
-                title="Registro RSA Nombre_alumno"
+                title={`Registro RSA ${this.state.alumno.nombre}`}
                 content={
                   <form>
 
@@ -42,8 +93,8 @@ class Ver_registro extends Component {
                             label: "Año",
                             type: "text",
                             bsClass: "form-control",
-                            placeholder: "2020",
-                            defaultValue: "2020",
+                            placeholder: this.state.reporte.año,
+                            defaultValue: this.state.reporte.año,
                             readonly: "readonly"
                             
                         },
@@ -51,14 +102,16 @@ class Ver_registro extends Component {
                             label: "Semestre",
                             type: "text",
                             bsClass: "form-control",
-                            placeholder: "1er semestre",
+                            placeholder: this.state.reporte.semestre,
+                            defaultValue: this.state.reporte.semestre,
                             readonly: "readonly"
                         },
                         {
                           label: "Prioridad",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "3.7",
+                          placeholder: this.state.reporte.prioridad,
+                          defaultValue: this.state.reporte.prioridad,
                           readonly: "readonly"
                         },
                       ]}
@@ -71,14 +124,16 @@ class Ver_registro extends Component {
                             label: "Cantidad de asignaturas reportadas",
                             type: "text",
                             bsClass: "form-control",
-                            placeholder: "2",
+                            placeholder: this.state.reporte.asignaturas_reportadas,
+                            defaultValue: this.state.reporte.asignaturas_reportadas,
                             readonly: "readonly"
                           },
                         {
                           label: "Tipo de causal",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "1",
+                          placeholder: this.state.reporte.tipo_causal,
+                          defaultValue: this.state.reporte.tipo_causal,
                           readonly: "readonly"
                         },
                         
@@ -86,7 +141,8 @@ class Ver_registro extends Component {
                             label: "Reiteraciones de la causal",
                             type: "text",
                             bsClass: "form-control",
-                            placeholder: "1",
+                            placeholder: this.state.reporte.reiteraciones_causal,
+                            defaultValue: this.state.reporte.reiteraciones_causal,
                             readonly: "readonly"
                           },
                       ]}
@@ -99,14 +155,16 @@ class Ver_registro extends Component {
                           label: "Tipo de ingreso",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "Reportado",
+                          placeholder: this.state.reporte.tipo_ingreso,
+                          defaultValue: this.state.reporte.tipo_ingreso,
                           readonly: "readonly"
                         },
                         {
                           label: "Fecha",
-                          type: "date",
+                          type: "text",
                           bsClass: "form-control",
-                          placeholder: "19/06/2020",
+                          defaultValue: this.state.fecha,
+                          defaultValue: this.state.fecha,
                           readonly: "readonly"
                         },
                       ]}
@@ -119,21 +177,24 @@ class Ver_registro extends Component {
                           label: "Calificación Estimada",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "3.1",
+                          placeholder: this.state.calificacion,
+                          defaultValue: this.state.calificacion,
                           readonly: "readonly"
                         },
                         {
                           label: "Porcentaje de Asistencia",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "10%",
+                          placeholder: this.state.asistencia,
+                          defaultValue: this.state.asistencia,
                           readonly: "readonly" 
                         },
                         {
                           label: "Interés Percibido",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "Alto-Medio-Bajo",
+                          placeholder: this.state.interes,
+                          defaultValue: this.state.interes,
                           readonly: "readonly" 
                         },
                         
@@ -142,14 +203,14 @@ class Ver_registro extends Component {
                     <form>
                       <label>
                         Observaciones <br />
-                        <textarea  className="form-control"
-                            rows="10" cols='80' readonly /> 
+                        <textarea  className="form-control" placeholder={`${this.state.reporte.observacion}`}
+                            rows="10" cols='80' readOnly disabled/> 
                             
                       </label>   
                     </form>
                         <br />
 
-                    <Button bsStyle="info" pullRight fill type="submit" href="Modificar_registro" >
+                    <Button bsStyle="info" pullRight fill type="submit" href={`http://localhost:3000/admin/Modificar_registro/${this.state.reporte.id}`} >
                       Modificar registro
                     </Button>
                     <div className="clearfix" />
