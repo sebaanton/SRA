@@ -83,6 +83,7 @@ function For_ingreso2 () {
     formData.append('calificacion', calificacion);
     formData.append('asistencia', asistencia);
     formData.append('interes', interes);
+    formData.append('asignatura', asignatura_reportada);
     /*formData.append('año_nacimiento', año_nacimiento);
     formData.append('año_ingreso', año_ingreso);
     formData.append('semestre_ingreso', semestre_ingreso);
@@ -101,6 +102,7 @@ function For_ingreso2 () {
     formData.append('calificacion', calificacion);
     formData.append('asistencia', asistencia);
     formData.append('interes', interes);
+    formData.append('asignatura', asignatura_reportada);
     /*formData.append('año_nacimiento', año_nacimiento);
     formData.append('año_ingreso', año_ingreso);
     formData.append('semestre_ingreso', semestre_ingreso);
@@ -160,10 +162,10 @@ function For_ingreso2 () {
   const [tipo_ingreso, setTipo_ingreso] = useState({
     tipo_ingreso: ''
   });
-  /*
+  
   const [asignatura_reportada, setAsignatura_reportada] = useState({
     asignatura_reportada: ''
-  });*/
+  });
 
   const [tipo_causal, setTipo_causal] = useState({
     tipo_causal: ''
@@ -199,9 +201,10 @@ function For_ingreso2 () {
   function handleChangeTipo_ingreso(event) {
     setTipo_ingreso(event.target.value);
   }
-  /*function handleChangeAsignatura_reportada(event) {
+  function handleChangeAsignatura_reportada(event) {
     setAsignatura_reportada(event.target.value);
   }
+  /*
   function handleChangeTipo_causal(event) {
     setTipo_causal(event.target.value);
   }
@@ -310,7 +313,7 @@ function For_ingreso2 () {
                       ]}
                     />
                     <FormInputs
-                      ncols={["col-md-5"]}
+                      ncols={["col-md-5","col-md-5"]}
                       properties={[
                         
 
@@ -327,7 +330,20 @@ function For_ingreso2 () {
                           required:"required",
                           title:"El correo debe ser el institucional",
                           //onChange: handleChangeEmail
-                        }
+                        },
+                        {
+                          label: "Asignatura",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "Calculo 1",  
+                          minlength:"5",
+                          maxlength:"50",
+                          pattern: "[a-zA-Z]+",
+                          required:"required",
+                          title:"Letras de la A a la Z (mayúsculas o minúsculas)",
+                          onChange: handleChangeAsignatura_reportada          
+                        },
+                        
                       ]}
                     />
                   <form>

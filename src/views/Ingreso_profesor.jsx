@@ -36,7 +36,7 @@ class Ingreso_profesor extends Component {
                       ncols={["col-md-4", "col-md-4", "col-md-3"]}
                       properties={[
                         {
-                          label: "Nombre",
+                          label: "Nombre completo",
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "Juan",  
@@ -45,17 +45,6 @@ class Ingreso_profesor extends Component {
                           pattern: "[a-zA-Z]+",
                           required:"required",
                           title:"Letras de la A a la Z (mayúsculas o minúsculas)"                      
-                        },
-                        {
-                          label: "Apellido",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "Perez",
-                          minlength:"3",
-                          maxlength:"25",
-                          pattern: "[a-zA-Z]+",
-                          required:"required",
-                          title:"Letras de la A a la Z (mayúsculas o minúsculas)" 
                         },
                         {
                           label: "RUT",
@@ -68,11 +57,25 @@ class Ingreso_profesor extends Component {
                           required:"required",
                           title:"Números enteros de 0 al 9 y la letra k en su ́ultima posición (mayúscula o minúscula)" 
                         },
+                        {
+                          label: "Tipo de ingreso",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "Reportado",
+                          defaultValue: "Reportado",
+                          minlength:"9",
+                          maxlength:"12",
+                          pattern: "[aA][uU][tT][oO]|[Cc][Oo][nN][Ss][Uu][lL][tT][aA]|[Rr][eE][Pp][oO][rR][tT][aA][dD][oO]",
+                          required:"required",
+                          title:"Reportado o autoconsulta (en mayúscula o minúscula)"
+                          //Value: tipo_ingreso,
+                          //onChange: handleChangeTipo_ingreso
+                        },
                         
                       ]}
                     />
                     <FormInputs
-                      ncols={["col-md-4", "col-md-4", "col-md-4"]}
+                      ncols={["col-md-4", "col-md-4", "col-md-3"]}
                       properties={[
                         
                         {
@@ -113,22 +116,9 @@ class Ingreso_profesor extends Component {
                     />
 
               <FormInputs
-                      ncols={["col-md-3","col-md-7"]}
+                      ncols={["col-md-6","col-md-4"]}
                       properties={[
-                        {
-                          label: "Tipo de ingreso",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "Reportado",
-                          defaultValue: "Reportado",
-                          minlength:"9",
-                          maxlength:"12",
-                          pattern: "[aA][uU][tT][oO]|[Cc][Oo][nN][Ss][Uu][lL][tT][aA]|[Rr][eE][Pp][oO][rR][tT][aA][dD][oO]",
-                          required:"required",
-                          title:"Reportado o autoconsulta (en mayúscula o minúscula)"
-                          //Value: tipo_ingreso,
-                          //onChange: handleChangeTipo_ingreso
-                        },
+                        
 
                         {
                           label: "Email",
@@ -143,7 +133,19 @@ class Ingreso_profesor extends Component {
                           required:"required",
                           title:"El correo debe ser el institucional",
                           //onChange: handleChangeEmail
-                        }
+                        },
+                        {
+                          label: "Asignatura",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "Calculo 1",  
+                          minlength:"5",
+                          maxlength:"50",
+                          pattern: "[a-zA-Z]+",
+                          required:"required",
+                          title:"Letras de la A a la Z (mayúsculas o minúsculas)",
+                          //onChange: handleChangeAsignatura_reportada          
+                        },
                       ]}
                   />
 
