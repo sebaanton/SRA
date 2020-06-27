@@ -18,6 +18,7 @@ import avatar from "assets/img/faces/face-3.jpg";
 class Ver_detalle extends Component {
   state = {
     alumno: [],
+    fecha: "",
     //rut:[],
   };
 
@@ -32,11 +33,16 @@ class Ver_detalle extends Component {
     axios.get(`http://localhost:8000/alumno/${urls}`).then(res => {
       this.setState({
         alumno: res.data,
+        fecha: res.data.fecha_registro.slice(0,10)
         //rut: res.data.rut,
       });
 
     });
-}
+  }
+
+  openRegistro(event){
+    window.open(`${this.state.alumno.copia_registro}`, "_blank")
+  }
   render() {
     return (
       <div className="content">
@@ -121,7 +127,7 @@ class Ver_detalle extends Component {
                       ]}
                     />
                     <FormInputs
-                      ncols={["col-md-7", "col-md-4"]}
+                      ncols={["col-md-7"]}
                       properties={[
                         
                         {
@@ -132,14 +138,6 @@ class Ver_detalle extends Component {
                           value: `${this.state.alumno.carrera_origen}`,
                           disabled: "disabled"
                         },
-                        {
-                          label: "Copia del registro ",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "(link al registro)",
-                          value: `${this.state.alumno.copia_registro}`,
-                          disabled: "disabled"
-                        },
                       ]}
                     />
                     <FormInputs
@@ -148,10 +146,10 @@ class Ver_detalle extends Component {
                         
                         {
                           label: "Fecha del registro",
-                          type: "date",
+                          type: "text",
                           bsClass: "form-control",
                           placeholder: "07/07/2020",
-                          value: `${this.state.alumno.fecha_registro}`,
+                          value: `${this.state.fecha}`,
                           disabled: "disabled"
                         },
                         {
@@ -164,6 +162,9 @@ class Ver_detalle extends Component {
                         },
                       ]}
                     />
+                    <Button bsStyle="info" pullLeft fill onClick={this.openRegistro.bind(this)}>
+                      Ver Registro
+                    </Button>
                     <Button bsStyle="info" pullRight fill type="submit" href="Modificar_detalle">
                       Modificar datos
                     </Button>
