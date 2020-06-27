@@ -29,14 +29,14 @@ class Ingreso_profesor extends Component {
           <Row>
             <Col md={8} mdOffset={2}>
               <Card
-                title="Reporte profesor"
+                title="Detalle de alumno"
                 content={
                   <form action="/send.php" >
                     <FormInputs
                       ncols={["col-md-4", "col-md-4", "col-md-3"]}
                       properties={[
                         {
-                          label: "Nombre completo",
+                          label: "Nombre",
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "Juan",  
@@ -44,7 +44,20 @@ class Ingreso_profesor extends Component {
                           maxlength:"25",
                           pattern: "[a-zA-Z]+",
                           required:"required",
-                          title:"Letras de la A a la Z (mayúsculas o minúsculas)"                      
+                          title:"Letras de la A a la Z (mayúsculas o minúsculas)"  ,
+                                              
+                        },
+                        {
+                          label: "Apellido",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "Perez",
+                          minlength:"3",
+                          maxlength:"25",
+                          pattern: "[a-zA-Z]+",
+                          required:"required",
+                          title:"Letras de la A a la Z (mayúsculas o minúsculas)" ,
+                                  
                         },
                         {
                           label: "RUT",
@@ -55,27 +68,14 @@ class Ingreso_profesor extends Component {
                           maxlength:"10",
                           pattern: "[^a-zA-Z][0-9]{7,8}+-[0-9|Kk]",
                           required:"required",
-                          title:"Números enteros de 0 al 9 y la letra k en su ́ultima posición (mayúscula o minúscula)" 
-                        },
-                        {
-                          label: "Tipo de ingreso",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "Reportado",
-                          defaultValue: "Reportado",
-                          minlength:"9",
-                          maxlength:"12",
-                          pattern: "[aA][uU][tT][oO]|[Cc][Oo][nN][Ss][Uu][lL][tT][aA]|[Rr][eE][Pp][oO][rR][tT][aA][dD][oO]",
-                          required:"required",
-                          title:"Reportado o autoconsulta (en mayúscula o minúscula)"
-                          //Value: tipo_ingreso,
-                          //onChange: handleChangeTipo_ingreso
+                          title:"Números enteros de 0 al 9 y la letra k en su ́ultima posición (mayúscula o minúscula)" ,
+                                  
                         },
                         
                       ]}
                     />
                     <FormInputs
-                      ncols={["col-md-4", "col-md-4", "col-md-3"]}
+                      ncols={["col-md-4", "col-md-4", "col-md-4"]}
                       properties={[
                         
                         {
@@ -87,7 +87,8 @@ class Ingreso_profesor extends Component {
                           maxlength:"3",
                           pattern: "[0-6][.][0-9]|[7][.][0]",
                           required:"required",
-                          title:"Números decimales entre 1.0 y 7.0"
+                          title:"Números decimales entre 1.0 y 7.0",
+                                  
                         },
                         {
                           label: "Porcentaje de Asistencia",
@@ -98,7 +99,8 @@ class Ingreso_profesor extends Component {
                           maxlength:"3",
                           pattern: "[0-9]|[0-9][0-9]|[1][0][0]",
                           required:"required",
-                          title:"Números entero entre 0 y 100" 
+                          title:"Números entero entre 0 y 100" ,
+                                  
                         },
                         {
                           label: "Interés Percibido",
@@ -109,16 +111,31 @@ class Ingreso_profesor extends Component {
                           maxlength:"5",
                           pattern: "[aA][lL][tT][oO]|[mM][eE][dD][iI][oO]|[bB][aA][jJ][oO]",
                           required:"required",
-                          title:"Números decimales entre 1.0 y 7.0" 
+                          title:"Números decimales entre 1.0 y 7.0" ,
+                                  
                         },
                         
                       ]}
                     />
 
               <FormInputs
-                      ncols={["col-md-6","col-md-4"]}
+                      ncols={["col-md-3","col-md-7"]}
                       properties={[
-                        
+                        {
+                          label: "Tipo de ingreso",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "Reportado",
+                          defaultValue: "Reportado",
+                          minlength:"9",
+                          maxlength:"12",
+                          pattern: "[aA][uU][tT][oO]|[Cc][Oo][nN][Ss][Uu][lL][tT][aA]|[Rr][eE][Pp][oO][rR][tT][aA][dD][oO]",
+                          required:"required",
+                          title:"Reportado o autoconsulta (en mayúscula o minúscula)",
+                                  
+                          //Value: tipo_ingreso,
+                          //onChange: handleChangeTipo_ingreso
+                        },
 
                         {
                           label: "Email",
@@ -132,20 +149,9 @@ class Ingreso_profesor extends Component {
                           pattern: "[a-zA-z0-9.]+@mail.udp.cl",
                           required:"required",
                           title:"El correo debe ser el institucional",
+                                  
                           //onChange: handleChangeEmail
-                        },
-                        {
-                          label: "Asignatura",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "Calculo 1",  
-                          minlength:"5",
-                          maxlength:"50",
-                          pattern: "[a-zA-Z]+",
-                          required:"required",
-                          title:"Letras de la A a la Z (mayúsculas o minúsculas)",
-                          //onChange: handleChangeAsignatura_reportada          
-                        },
+                        }
                       ]}
                   />
 
@@ -154,15 +160,15 @@ class Ingreso_profesor extends Component {
                       <label>
                         Observaciones <br />
                         <textarea  className="form-control"
-                            rows="5" cols='80'  /> 
+                            rows="5" cols='80' /> 
                             
                       </label>   
                     </form>
                     <br />
                     <br />
 
-                    <Button bsStyle="info" pullRight fill type="submit">
-                      Ingresar Datos
+                    <Button bsStyle="info" pullRight fill type="submit" href="Modificar_alumno_profesor">
+                      Actualizar Datos
                     </Button>
                     <div className="clearfix" />
                   </form>

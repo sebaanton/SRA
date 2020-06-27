@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import {
   Grid,
   Row,
@@ -7,22 +7,215 @@ import {
   ControlLabel,
   FormControl
 } from "react-bootstrap";
-
+import axios from 'axios';
 import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import { UserCard } from "components/UserCard/UserCard.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
 import avatar from "assets/img/faces/face-3.jpg";
-const Nombre = "Juan"
+import { useHistory } from "react-router-dom";
+//const Nombre = "Juan"
 
+const apiUrl = 'http://localhost:8000';
 
+function For_ingreso2 () {
+  const history = useHistory();
+  const onSubmit = async () => {
+    try {
+      await setAlumno();
+      await setNewAlumno();
+      const causalCount =  await getCausal();
+      const currentDay = new Date();
+      var semestre;
+      if (currentDay.getMonth() <= 6){
+        semestre = 1;
+      } else {
+        semestre = 2;
+      }
+      //const asignaturaCount = asignatura_reportada.split(",");
+      const año = new Date().getFullYear().toString();
+      //const prioridad = 0.3*causalCount + 0.7*(asignaturaCount.length());
+      //if (prioridad > 4){
+      //  prioridad = 4;
+      //}
+      const { data } = await axios.post(`${apiUrl}/reporte/`, {
+                                                               año: new Date().getFullYear().toString(),
+                                                               semestre: semestre.toString(),
+                                                               tipo_causal: tipo_causal,
+                                                               //asignaturas_reportadas: asignaturaCount.length.toString(),
+                                                               //prioridad: prioridad.toString(),
+                                                               observacion: observacion,
+                                                               reiteraciones_causal: causalCount.toString(),
+                                                               tipo_ingreso: 'causal',
+                                                               alumno: rut
+                                                              });
+      await setCausal(data)
+      history.push("/admin/notifications");
+    } catch (e) {
+      alert(e.message);
+    }
+  }
+  async function getCausal(){
+    var count = 0;
+    const data = await axios.get(`${apiUrl}/causal/`);
+    var i
+    for (i=0; i< data.data.length; i++) {
+      if (data.data[i].tipo == tipo_causal) {
+        count = count + await getRep(data.data[i].reporte)
+      }
+    }
+    console.log(count);
+    return count
+  }
+  async function getRep(pk){
+    var count = 0;
+    const data = await axios.get(`${apiUrl}/reporte/${pk}/`);
+    if (data.data.alumno == rut){
+      count = count + 1;
+    }
+    return count
+  }
+  async function setAlumno(){
+    var formData = new FormData();
+    formData.append('rut', rut);
+    formData.append('nombre', nombre);
+    formData.append('correo', email);
+    formData.append('calificacion', calificacion);
+    formData.append('asistencia', asistencia);
+    formData.append('interes', interes);
+    formData.append('asignatura', asignatura_reportada);
+    /*formData.append('año_nacimiento', año_nacimiento);
+    formData.append('año_ingreso', año_ingreso);
+    formData.append('semestre_ingreso', semestre_ingreso);
+    formData.append('telefono', telefono);
+    formData.append('carrera_origen', carrera_origen);*/
+    formData.append('estado_actual', 'reportado');
+    formData.append('coordinador', localStorage.getItem('userID'));// que hace esto??
+    //formData.append('copia_registro', file);
+    await axios.put(`${apiUrl}/alumno/${rut}/`, formData);
+  }
+  async function setNewAlumno(){
+    var formData = new FormData();
+    formData.append('rut', rut);
+    formData.append('nombre', nombre);
+    formData.append('correo', email);
+    formData.append('calificacion', calificacion);
+    formData.append('asistencia', asistencia);
+    formData.append('interes', interes);
+    formData.append('asignatura', asignatura_reportada);
+    /*formData.append('año_nacimiento', año_nacimiento);
+    formData.append('año_ingreso', año_ingreso);
+    formData.append('semestre_ingreso', semestre_ingreso);
+    formData.append('telefono', telefono);
+    formData.append('carrera_origen', carrera_origen);*/
+    formData.append('estado_actual', 'reportado');
+    formData.append('coordinador', localStorage.getItem('userID'));// que hace esto??
+    //formData.append('copia_registro', file);
+    try{
+      await axios.post(`${apiUrl}/alumno/`, formData);
+    }catch(e){
 
-class For_ingreso2 extends Component {
+    }
+  }
+  async function setCausal(rep){
+    const data = await axios.post(`${apiUrl}/causal/`, {año: new Date().getFullYear().toString(),
+                                                            tipo: tipo_causal,
+                                                            //condiciones: condiciones,
+                                                            reporte: rep.id
+                                                           });
+  }
+  const [rut, setRut] = useState({
+    rut: ''
+  });
+  const [email, setEmail] = useState({
+    email: ''
+  });
+  const [nombre, setNombre] = useState({
+    nombre: ''
+  });
+  const [calificacion, setCalificacion] = useState({
+    Calificacion: ''
+  });
+  const [asistencia, setAsistencia] = useState({
+    asistencia: ''
+  });
+  const [interes, setInteres] = useState({
+    interes: ''
+  });
+  /*const [año_nacimiento, setAño_nacimiento] = useState({
+    año_nacimiento: ''
+  });
+
+  const [telefono, setTelefono] = useState({
+    telefono: ''
+  });
+  const [año_ingreso, setAño_ingreso] = useState({
+    año_ingreso: ''
+  });
+
+  const [semestre_ingreso, setSemestre_ingreso] = useState({
+    semestre_ingreso: ''
+  });
+  const [carrera_origen, setCarrera_origen] = useState({
+    carrera_origen: ''
+  });*/
+  const [tipo_ingreso, setTipo_ingreso] = useState({
+    tipo_ingreso: ''
+  });
   
+  const [asignatura_reportada, setAsignatura_reportada] = useState({
+    asignatura_reportada: ''
+  });
+
+  const [tipo_causal, setTipo_causal] = useState({
+    tipo_causal: ''
+  });
+  /*const [condiciones, setCondiciones] = useState({
+    condiciones: ''
+  });
+*/
+  const [observacion, setObservacion] = useState({
+    observacion: ''
+  });
+  /*const [file, setFile] = useState({
+    file: ''
+  });*/
+  function handleChangeRut(event) {
+    setRut(event.target.value);
+  }
+  function handleChangeEmail(event) {
+    setEmail(event.target.value);
+  }
+  function handleChangeNombre(event) {
+    setNombre(event.target.value);
+  }
+  function handleChangeCalificacion(event) {
+    setCalificacion(event.target.value);
+  }
+  function handleChangeAsistencia(event) {
+    setAsistencia(event.target.value);
+  }
+  function handleChangeInteres(event) {
+    setInteres(event.target.value);
+  }
+  function handleChangeTipo_ingreso(event) {
+    setTipo_ingreso(event.target.value);
+  }
+  function handleChangeAsignatura_reportada(event) {
+    setAsignatura_reportada(event.target.value);
+  }
+  /*
+  function handleChangeTipo_causal(event) {
+    setTipo_causal(event.target.value);
+  }
+  function handleChangeCondiciones(event) {
+    setCondiciones(event.target.value);
+  }*/
+  function handleChangeObservacion(event) {
+    setObservacion(event.target.value);
+  }
 
 
-
-  render() {
     return (
       <div className="content">
         <Grid fluid>
@@ -33,29 +226,19 @@ class For_ingreso2 extends Component {
                 content={
                   <form action="/send.php" >
                     <FormInputs
-                      ncols={["col-md-4", "col-md-4", "col-md-3"]}
+                      ncols={["col-md-4", "col-md-4","col-md-4"]}
                       properties={[
                         {
-                          label: "Nombre",
+                          label: "Nombre completo",
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "Juan",  
                           minlength:"3",
-                          maxlength:"25",
+                          maxlength:"50",
                           pattern: "[a-zA-Z]+",
                           required:"required",
-                          title:"Letras de la A a la Z (mayúsculas o minúsculas)"                      
-                        },
-                        {
-                          label: "Apellido",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "Perez",
-                          minlength:"3",
-                          maxlength:"25",
-                          pattern: "[a-zA-Z]+",
-                          required:"required",
-                          title:"Letras de la A a la Z (mayúsculas o minúsculas)" 
+                          title:"Letras de la A a la Z (mayúsculas o minúsculas)",
+                          onChange: handleChangeNombre               
                         },
                         {
                           label: "RUT",
@@ -66,15 +249,9 @@ class For_ingreso2 extends Component {
                           maxlength:"10",
                           pattern: "[^a-zA-Z][0-9]{7,8}+-[0-9|Kk]",
                           required:"required",
-                          title:"Números enteros de 0 al 9 y la letra k en su ́ultima posición (mayúscula o minúscula)" 
+                          title:"Números enteros de 0 al 9 y la letra k en su ́ultima posición (mayúscula o minúscula)",
+                          onChange: handleChangeRut
                         },
-                        
-                      ]}
-                    />
-                    <FormInputs
-                      ncols={["col-md-4", "col-md-4", "col-md-4"]}
-                      properties={[
-                        
                         {
                           label: "Calificación Estimada",
                           type: "text",
@@ -84,8 +261,16 @@ class For_ingreso2 extends Component {
                           maxlength:"3",
                           pattern: "[0-6][.][0-9]|[7][.][0]",
                           required:"required",
-                          title:"Números decimales entre 1.0 y 7.0"
+                          title:"Números decimales entre 1.0 y 7.0",
+                          onChange: handleChangeCalificacion
                         },
+                      ]}
+                    />
+                    <FormInputs
+                      ncols={["col-md-4", "col-md-4", "col-md-4"]}
+                      properties={[
+                        
+                        
                         {
                           label: "Porcentaje de Asistencia",
                           type: "text",
@@ -95,7 +280,8 @@ class For_ingreso2 extends Component {
                           maxlength:"3",
                           pattern: "[0-9]|[0-9][0-9]|[1][0][0]",
                           required:"required",
-                          title:"Números entero entre 0 y 100" 
+                          title:"Números entero entre 0 y 100",
+                          onChange: handleChangeAsistencia
                         },
                         {
                           label: "Interés Percibido",
@@ -106,14 +292,9 @@ class For_ingreso2 extends Component {
                           maxlength:"5",
                           pattern: "[aA][lL][tT][oO]|[mM][eE][dD][iI][oO]|[bB][aA][jJ][oO]",
                           required:"required",
-                          title:"Números decimales entre 1.0 y 7.0" 
+                          title:"Números decimales entre 1.0 y 7.0",
+                          onChange: handleChangeInteres
                         },
-                        
-                      ]}
-                    />
-                    <FormInputs
-                      ncols={["col-md-3","col-md-5"]}
-                      properties={[
                         {
                           label: "Tipo de ingreso",
                           type: "text",
@@ -124,10 +305,17 @@ class For_ingreso2 extends Component {
                           maxlength:"12",
                           pattern: "[aA][uU][tT][oO]|[Cc][Oo][nN][Ss][Uu][lL][tT][aA]|[Rr][eE][Pp][oO][rR][tT][aA][dD][oO]",
                           required:"required",
-                          title:"Reportado o autoconsulta (en mayúscula o minúscula)"
+                          title:"Reportado o autoconsulta (en mayúscula o minúscula)",
                           //Value: tipo_ingreso,
                           //onChange: handleChangeTipo_ingreso
                         },
+                        
+                      ]}
+                    />
+                    <FormInputs
+                      ncols={["col-md-5","col-md-5"]}
+                      properties={[
+                        
 
                         {
                           label: "Email",
@@ -142,7 +330,20 @@ class For_ingreso2 extends Component {
                           required:"required",
                           title:"El correo debe ser el institucional",
                           //onChange: handleChangeEmail
-                        }
+                        },
+                        {
+                          label: "Asignatura",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "Calculo 1",  
+                          minlength:"5",
+                          maxlength:"50",
+                          pattern: "[a-zA-Z]+",
+                          required:"required",
+                          title:"Letras de la A a la Z (mayúsculas o minúsculas)",
+                          onChange: handleChangeAsignatura_reportada          
+                        },
+                        
                       ]}
                     />
                   <form>
@@ -168,8 +369,7 @@ class For_ingreso2 extends Component {
           </Row>
         </Grid>
       </div>
-    );
-  }
+  );
 }
 
 export default For_ingreso2;
