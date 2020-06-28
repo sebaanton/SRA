@@ -38,7 +38,6 @@ class Modificar_detalle extends Component {
     
 
     axios.get(`http://localhost:8000/alumno/${urls}`).then(res => {
-      console.log(res.data)
       this.setState({
         alumno: res.data,
         date: new Date(res.data.fecha_registro).toISOString().split('T')[0],
@@ -115,17 +114,6 @@ class Modificar_detalle extends Component {
     formData.append('estado_actual', this.state.estado_actual);
     formData.append('coordinador', localStorage.getItem('userID'));
     formData.append('copia_registro', this.state.copia_registro);
-    console.log(this.state.alumno.rut)
-    console.log(this.state.nombre)
-    console.log(this.state.correo)
-    console.log(this.state.año_nacimiento.toString())
-    console.log(this.state.año_ingreso.toString())
-    console.log(this.state.semestre_ingreso.toString())
-    console.log(this.state.telefono.toString())
-    console.log(this.state.carrera_origen)
-    console.log(this.state.estado_actual)
-    console.log(localStorage.getItem('userID'))
-    console.log(this.state.copia_registro)
     axios.put(`http://localhost:8000/alumno/${this.state.alumno.rut}/`, formData).then(data =>{
       this.props.history.goBack()                                                          
     });
