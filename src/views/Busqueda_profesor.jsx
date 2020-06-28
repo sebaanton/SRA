@@ -19,7 +19,7 @@ import { thArray, tdArray } from "variables/Variables.jsx";
 import Ver_detalle from "views/Ver_detalle";
 import axios from "axios";
 
-class Notifications extends Component {
+class Busqueda_profesor extends Component {
   state = {
     alumno:[],
     alumnoDisplay:[],
@@ -200,13 +200,13 @@ class Notifications extends Component {
                         return (
                           
                           <tr>
-                            <td key={key}>{prop.rut} { } </td>
+                            <td key={key}>{prop.rut}</td>
                             <td key={key}>{prop.nombre}</td>
                             <td key={key}>{prop.correo}</td>
                             <td key={key}>{prop.estado_actual}</td>
                             <td>
-                              <p><a href={`Ver_detalle/${prop.rut}`}>Ver Detalle</a></p>
-                              <p><a href={`Lista_reportes/${prop.rut}`}>Lista de registros</a></p>
+                              <p><a href={`Ver_detalle_profesor/${prop.rut}`}>Ver Detalle</a></p>
+                              
                             </td>
                           </tr>
                         );
@@ -223,4 +223,4 @@ class Notifications extends Component {
   }
 }
 
-export default Notifications;
+export default Busqueda_profesor;

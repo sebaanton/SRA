@@ -9,6 +9,8 @@ from .serializers import (AdministradorSerializer, CoordinadorSerializer, Profes
                           Asignatura_reportadaSerializer, CausalSerializer, ContactoSerializer,
                           DerivacionSerializer, ReunionSerializer, Problema_asociadoSerializer,
                           RecomendacionSerializer)
+from django.db import connection
+from rest_framework.views import APIView
 
 class AdministradorView(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateModelMixin,
                         mixins.UpdateModelMixin, mixins.RetrieveModelMixin, mixins.DestroyModelMixin):
@@ -79,6 +81,11 @@ class AlumnoView(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateMo
 
     def get(self, request, pk = None):
         if pk:
+            #with connection.cursor() as cursor:
+            #    cursor.execute("""SELECT * FROM api_alumno WHERE api_alumno.rut = '%s'"""%str(pk))
+            #    row = cursor.fetchone()
+            #return self.list(row)
+            #print(self.retrieve(request, pk))
             return self.retrieve(request, pk)
         return self.list(request)
 
@@ -99,6 +106,7 @@ class ReporteView(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateM
 
     def get(self, request, pk = None):
         if pk:
+            print(pk)
             return self.retrieve(request, pk)
         return self.list(request)
 
@@ -270,3 +278,19 @@ class RecomendacionView(generics.GenericAPIView, mixins.ListModelMixin, mixins.C
     
     def delete(self, request, pk = None):
         return self.destroy(request, pk)
+
+
+class CausalAlertaView(APIView):
+    def get(self):
+        now = datetime.now()
+        mes= now.month
+        ao= now.year
+        if(mes<=6):
+            mes=1
+        else:
+            mes=2
+        cursor = connection.cursor()
+        causal_alerta_query = cursor.execute("SELECT count(id) FROM api_reporte where tipo_causal ILIKE 'reportado' and año=%s and semestre=%s",[ao,mes])
+        causal_alerta_result = cursor.fetchall()
+        cursor.close()
+        return causal_alerta_result

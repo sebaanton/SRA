@@ -38,14 +38,14 @@ import Agendar_reunion from "views/Agendar_reunion";
 import Modificar_reunion from "views/Modificar_reunion";
 import Modificar_perfil from "views/Modificar_perfil";
 import Modificar_alumno_profesor from "views/Modificar_alumno_profesor";
-
+import Busqueda_profesor from "views/Busqueda_profesor";
 const dashboardRoutes = [
   {
     
-    path: "/notifications",
+    path: "/Buscar_alumno",
     name: "Home",
     icon: "pe-7s-home",
-    component: Notifications,
+    component: Busqueda_profesor,
     layout: "/admin",
 
   },
@@ -55,7 +55,7 @@ const dashboardRoutes = [
     icon: "pe-7s-graph",
     component: Dashboard,
     layout: "/admin",
-
+    estado:"false"
   },
   {
     path: "/user",
@@ -70,7 +70,7 @@ const dashboardRoutes = [
     icon: "pe-7s-science",
     component: Login2,
     layout: "/admin",
-    estado: "false"
+    //estado: "false"
   },
   {
     path: "/Ver_detalle_profesor",

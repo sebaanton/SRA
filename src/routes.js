@@ -79,7 +79,7 @@ const dashboardRoutes = [
     icon: "pe-7s-science",
     component: Login2,
     layout: "/admin",
-    estado: "false"
+    //estado: "false"
   },
   {
     path: "/Ver_detalle",

@@ -70,7 +70,7 @@ class UserProfile extends Component {
                       ncols={["col-md-5", "col-md-7"]}
                       properties={[
                         {
-                          label: this.state.label,
+                          label: "Rut",
                           type: "text",
                           bsClass: "form-control",
                           placeholder: this.state.noRUT,

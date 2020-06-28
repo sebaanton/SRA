@@ -32,18 +32,18 @@ function For_ingreso2 () {
       } else {
         semestre = 2;
       }
-      //const asignaturaCount = asignatura_reportada.split(",");
+      const asignaturaCount = asignatura_reportada.split(",");
       const año = new Date().getFullYear().toString();
-      //const prioridad = 0.3*causalCount + 0.7*(asignaturaCount.length());
-      //if (prioridad > 4){
-      //  prioridad = 4;
-      //}
+      const prioridad = 0.3*causalCount + 0.7*(asignaturaCount.length());
+      if (prioridad > 4){
+        prioridad = 4;
+      }
       const { data } = await axios.post(`${apiUrl}/reporte/`, {
                                                                año: new Date().getFullYear().toString(),
                                                                semestre: semestre.toString(),
                                                                tipo_causal: tipo_causal,
-                                                               //asignaturas_reportadas: asignaturaCount.length.toString(),
-                                                               //prioridad: prioridad.toString(),
+                                                               asignaturas_reportadas: asignaturaCount.length.toString(),
+                                                               prioridad: prioridad.toString(),
                                                                observacion: observacion,
                                                                reiteraciones_causal: causalCount.toString(),
                                                                tipo_ingreso: 'causal',
@@ -329,7 +329,7 @@ function For_ingreso2 () {
                           pattern: "[a-zA-z0-9.]+@mail.udp.cl",
                           required:"required",
                           title:"El correo debe ser el institucional",
-                          //onChange: handleChangeEmail
+                          onChange: handleChangeEmail
                         },
                         {
                           label: "Asignatura",
@@ -350,14 +350,14 @@ function For_ingreso2 () {
                       <label>
                         Observaciones <br />
                         <textarea  className="form-control"
-                            rows="5" cols='80'  /> 
+                            rows="5" cols='80' value={observacion} onChange={handleChangeObservacion} defaultValue="" /> 
                             
                       </label>   
                     </form>
                     <br />
                     <br />
 
-                    <Button bsStyle="info" pullRight fill type="submit">
+                    <Button bsStyle="info" pullRight fill onClick={onSubmit}>
                       Ingresar Datos
                     </Button>
                     <div className="clearfix" />

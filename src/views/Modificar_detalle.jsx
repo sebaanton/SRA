@@ -148,7 +148,7 @@ class Modificar_detalle extends Component {
                           label: "RUT",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "123456789-8",
+                          placeholder: "1234567898",
                           value: `${this.state.alumno.rut}`,
                           readonly: "readonly"
                           
