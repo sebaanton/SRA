@@ -27,7 +27,7 @@ function For_ingreso2 () {
       const causalCount =  await getCausal();
       const currentDay = new Date();
       var semestre;
-      if (currentDay.getMonth() <= 6){
+      if (currentDay.getMonth() <= 7){
         semestre = 1;
       } else {
         semestre = 2;
