@@ -90,11 +90,13 @@ class Crear_contacto extends Component {
     var reporte;
     var hora;
     var interes;
+    var autogestion;
     var existe = false;
     var fechaUTC;
     for(i=this.state.reportes.length-1;i>=0;i--){
       if(this.state.rut == this.state.reportes[i].alumno){
         reporte = this.state.reportes[i].id;
+        break;
       }
     }
     hora = (this.state.hora.split(":"))[0] + (this.state.hora.split(":"))[1];
@@ -102,6 +104,11 @@ class Crear_contacto extends Component {
       interes = 1;
     } else {
       interes = 0;
+    }
+    if(this.state.autogestion == "si"){
+      autogestion = 1;
+    } else {
+      autogestion = 0;
     }
     axios.get(`http://localhost:8000/contacto/`).then(data2 =>{
       for(i=0;i<data2.data.length;i++){
@@ -111,15 +118,13 @@ class Crear_contacto extends Component {
       }
       if(existe == false){
         fechaUTC = this.state.fecha + "T04:00:00Z";
-        console.log(fechaUTC)
-        console.log(this.state.fecha)
         axios.post(`http://localhost:8000/contacto/`, { reporte: reporte,
                                                         medio_contacto: this.state.medio_contacto,
                                                         nombre_contacto: this.state.nombre_contacto,
                                                         fecha: fechaUTC,
                                                         hora: hora,
                                                         interes: interes.toString(),
-                                                        autogestion: this.state.autogestion
+                                                        autogestion: autogestion.toString(),
                                                       }).then(data =>{
           this.props.history.goBack()
         });                        
