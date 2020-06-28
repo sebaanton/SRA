@@ -165,7 +165,7 @@ class Ver_detalle extends Component {
                     <Button bsStyle="info" pullLeft fill onClick={this.openRegistro.bind(this)}>
                       Ver Registro
                     </Button>
-                    <Button bsStyle="info" pullRight fill type="submit" href="Modificar_detalle">
+                    <Button bsStyle="info" pullRight fill type="submit" href={`http://localhost:3000/admin/Modificar_detalle/${this.state.alumno.rut}`}>
                       Modificar datos
                     </Button>
                     <div className="clearfix" />
