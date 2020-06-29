@@ -12,14 +12,10 @@ from .serializers import (AdministradorSerializer, CoordinadorSerializer, Profes
                           RecomendacionSerializer)
 from django.db import connection
 from rest_framework.views import APIView
-<<<<<<< HEAD
-from datetime import datetime
-=======
 import numpy as np
 import pandas as pd
 import xlrd
 import datetime
->>>>>>> 95d2cdcff9b4864a8fa1e696ca2e5dad5b4f28c0
 
 class AdministradorView(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateModelMixin,
                         mixins.UpdateModelMixin, mixins.RetrieveModelMixin, mixins.DestroyModelMixin):
@@ -288,8 +284,6 @@ class RecomendacionView(generics.GenericAPIView, mixins.ListModelMixin, mixins.C
     def delete(self, request, pk = None):
         return self.destroy(request, pk)
 
-<<<<<<< HEAD
-=======
       
 class CargarArchivo(APIView):
     permission_classes = [IsAuthenticated]
@@ -587,4 +581,3 @@ class CargarArchivo(APIView):
         print("hola")
         return Response(status=status.HTTP_202_ACCEPTED)
 
->>>>>>> 95d2cdcff9b4864a8fa1e696ca2e5dad5b4f28c0
