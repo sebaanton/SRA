@@ -9,6 +9,9 @@ from .serializers import (AdministradorSerializer, CoordinadorSerializer, Profes
                           Asignatura_reportadaSerializer, CausalSerializer, ContactoSerializer,
                           DerivacionSerializer, ReunionSerializer, Problema_asociadoSerializer,
                           RecomendacionSerializer)
+from django.db import connection
+from rest_framework.views import APIView
+from datetime import datetime
 
 class AdministradorView(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateModelMixin,
                         mixins.UpdateModelMixin, mixins.RetrieveModelMixin, mixins.DestroyModelMixin):
@@ -270,3 +273,4 @@ class RecomendacionView(generics.GenericAPIView, mixins.ListModelMixin, mixins.C
     
     def delete(self, request, pk = None):
         return self.destroy(request, pk)
+

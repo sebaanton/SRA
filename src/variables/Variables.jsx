@@ -277,6 +277,7 @@ const tdArray = [
 ];
 const thArray2 = ["id", "Año", "Semestre", "Tipo de causal", "Asignaturas reportadas", "Reiteraciones de causal", "Enlaces"];
 
+
 //
 // //
 // // // For icons
