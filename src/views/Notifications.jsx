@@ -122,8 +122,6 @@ class Notifications extends Component {
                         }
                       ]}
 
-
-
                     />
 
                    <Button bsStyle="info" pullRight fill onClick={this.onSearch.bind(this)}>

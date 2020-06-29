@@ -86,3 +86,6 @@ class RecomendacionSerializer(serializers.ModelSerializer):
     class Meta:
         model= Recomendacion
         fields = '__all__'
+        
+class CargarSerializer(serializers.Serializer):
+    archivo = serializers.FileField(max_length=None, allow_empty_file=False, use_url=True)

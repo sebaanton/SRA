@@ -1,37 +1,37 @@
+/*!
+=========================================================
+* Light Bootstrap Dashboard React - v1.3.0
+=========================================================
+* Product Page: https://www.creative-tim.com/product/light-bootstrap-dashboard-react
+* Copyright 2019 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://github.com/creativetimofficial/light-bootstrap-dashboard-react/blob/master/LICENSE.md)
+* Coded by Creative Tim
+=========================================================
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+*/
 import React, { Component } from "react";
 import { Grid, Row, Col, Alert, Table } from "react-bootstrap";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
 import { Card } from "components/Card/Card.jsx";
 import { Tasks } from "components/Tasks/Tasks3.jsx";
-import { thArray, thArray2, tdArray } from "variables/Variables.jsx";
+import { thArray, tdArray } from "variables/Variables.jsx";
 import Ver_detalle from "views/Ver_detalle";
 import axios from "axios";
 
-class Lista_reportes extends Component {
+class Busqueda_profesor extends Component {
   state = {
-    reporte:[],
-    reporteDisplay:[],
+    alumno:[],
+    alumnoDisplay:[],
     checked: false,
     parameter: "",
   };
 
   componentDidMount(){
-      console.log("aqui");
-      const currenturl = window.location.pathname
-      const largo = currenturl.length
-      const rut = currenturl.slice(22,largo)
-      axios.get("http://localhost:8000/reporte/").then(res2 => {
-        var i;
-        var repo = [];
-        for(i=0;i<res2.data.length;i++){
-            if(rut == res2.data[i].alumno){
-                repo.push(res2.data[i]);
-            }
-        }
+      axios.get("http://localhost:8000/alumno/").then(res2 => {
         this.setState({
-          reporte: repo,
-          reporteDisplay: repo
+          alumno: res2.data,
+          alumnoDisplay: res2.data
         });
       });
       }
@@ -47,71 +47,50 @@ class Lista_reportes extends Component {
   }
   
   onSearch(event){
-    console.log(this.state.reporte);
-    var rep = [];
+    var alum = [];
     var i;
     this.setState({
-      reporteDisplay: [],
+      alumnoDisplay: [],
     });
     if(this.state.value == "opt_1"){
-        for(i=0; i< this.state.reporte.length;i++){
-          if(this.state.reporte[i].id == this.state.parameter){
-            rep.push(this.state.reporte[i]);
-          }
-        }
-        this.setState( {
-          reporteDisplay: rep,
-        });
-      }
-    if(this.state.value == "opt_2"){
-      for(i=0; i< this.state.reporte.length;i++){
-        if(this.state.reporte[i].año == this.state.parameter){
-          rep.push(this.state.reporte[i]);
+      for(i=0; i< this.state.alumno.length;i++){
+        if(this.state.alumno[i].nombre == this.state.parameter){
+          alum.push(this.state.alumno[i]);
         }
       }
       this.setState( {
-        reporteDisplay: rep,
+        alumnoDisplay: alum,
+      });
+    }
+    if(this.state.value == "opt_2"){
+      for(i=0; i< this.state.alumno.length;i++){
+        if(this.state.alumno[i].rut == this.state.parameter){
+          alum.push(this.state.alumno[i]);
+        }
+      }
+      this.setState( {
+        alumnoDisplay: alum,
       });
     }
     if(this.state.value == "opt_3"){
-      for(i=0; i< this.state.reporte.length;i++){
-        if(this.state.reporte[i].semestre == this.state.parameter){
-          rep.push(this.state.reporte[i]);
+      for(i=0; i< this.state.alumno.length;i++){
+        if(this.state.alumno[i].correo == this.state.parameter){
+          alum.push(this.state.alumno[i]);
         }
       }
       this.setState( {
-        reporteDisplay: rep,
+        alumnoDisplay: alum,
       });
     }
     if(this.state.value == "opt_4"){
-      for(i=0; i< this.state.reporte.length;i++){
-        if(this.state.reporte[i].tipo_causal == this.state.parameter){
-          rep.push(this.state.reporte[i]);
+      for(i=0; i< this.state.alumno.length;i++){
+        if(this.state.alumno[i].estado_actual == this.state.parameter){
+          alum.push(this.state.alumno[i]);
         }
       }
       this.setState( {
-        reporteDisplay: rep,
+        alumnoDisplay: alum,
       });
-    }
-    if(this.state.value == "opt_5"){
-      for(i=0; i< this.state.reporte.length;i++){
-        if(this.state.reporte[i].asignaturas_reportadas == this.state.parameter){
-          rep.push(this.state.reporte[i]);
-        }
-      }
-      this.setState( {
-        reporteDisplay: rep,
-      });
-    }
-    if(this.state.value == "opt_6"){
-        for(i=0; i< this.state.reporte.length;i++){
-          if(this.state.reporte[i].reiteraciones_causal == this.state.parameter){
-            rep.push(this.state.reporte[i]);
-          }
-        }
-        this.setState( {
-          reporteDisplay: rep,
-        });
     }
   }
   
@@ -142,8 +121,6 @@ class Lista_reportes extends Component {
                         }
                       ]}
 
-
-
                     />
 
                    <Button bsStyle="info" pullRight fill onClick={this.onSearch.bind(this)}>
@@ -162,43 +139,28 @@ class Lista_reportes extends Component {
                         checked={this.state.value === "opt_1"}
                         onChange={this.handleCheckedChange.bind(this)}
 
-                      /> id <br />
+                      /> Nombre y apellido <br />
                       <input 
                         type="radio"
                         name="name"
                         value="opt_2"
                         checked={this.state.value === "opt_2"}
                         onChange={this.handleCheckedChange.bind(this)}
-
-                      /> Año <br />
+                      /> Rut <br />
                       <input 
                         type="radio"
                         name="name"
                         value="opt_3"
                         checked={this.state.value === "opt_3"}
                         onChange={this.handleCheckedChange.bind(this)}
-                      /> Semestre <br />
+                      /> Correo <br />
                       <input 
                         type="radio"
                         name="name"
                         value="opt_4"
                         checked={this.state.value === "opt_4"}
                         onChange={this.handleCheckedChange.bind(this)}
-                      /> Tipo de causal <br />
-                      <input 
-                        type="radio"
-                        name="name"
-                        value="opt_5"
-                        checked={this.state.value === "opt_5"}
-                        onChange={this.handleCheckedChange.bind(this)}
-                      /> Asignaturas reportadas <br />
-                      <input 
-                        type="radio"
-                        name="name"
-                        value="opt_6"
-                        checked={this.state.value === "opt_6"}
-                        onChange={this.handleCheckedChange.bind(this)}
-                      /> Reiteraciones de causal <br />
+                      /> Estado <br />
                     </Col>
                     </div>
                 
@@ -219,7 +181,7 @@ class Lista_reportes extends Component {
           <Row>
             <Col md={12}>
               <Card
-                //title="Listado de reportes"
+                //title="Listado de alumnos"
                 //ctTableFullWidth
                 //ctTableResponsive
                 content={
@@ -228,24 +190,23 @@ class Lista_reportes extends Component {
                   <Table striped hover>
                     <thead>
                       <tr>
-                        {thArray2.map((prop, key) => {
+                        {thArray.map((prop, key) => {
                           return <th key={key}>{prop}</th>;
                         })}
                       </tr>
                     </thead>
                     <tbody>
-                      {this.state.reporteDisplay.map((prop, key) => {
+                      {this.state.alumnoDisplay.map((prop, key) => {
                         return (
                           
                           <tr>
-                            <td key={key}>{prop.id}</td>
-                            <td key={key}>{prop.año}</td>
-                            <td key={key}>{prop.semestre}</td>
-                            <td key={key}>{prop.tipo_causal}</td>
-                            <td key={key}>{prop.asignaturas_reportadas}</td>
-                            <td key={key}>{prop.reiteraciones_causal}</td>
+                            <td key={key}>{prop.rut}</td>
+                            <td key={key}>{prop.nombre}</td>
+                            <td key={key}>{prop.correo}</td>
+                            <td key={key}>{prop.estado_actual}</td>
                             <td>
-                              <p><a href={`http://localhost:3000/admin/Ver_registro/${prop.id}`}>Ver Registro</a></p>
+                              <p><a href={`Ver_detalle_profesor/${prop.rut}`}>Ver Detalle</a></p>
+                              
                             </td>
                           </tr>
                         );
@@ -262,4 +223,4 @@ class Lista_reportes extends Component {
   }
 }
 
-export default Lista_reportes;
+export default Busqueda_profesor;

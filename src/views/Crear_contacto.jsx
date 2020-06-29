@@ -17,8 +17,14 @@ import avatar from "assets/img/faces/face-3.jpg";
 
 class Crear_contacto extends Component {
   state = {
-    contacto: [],
-    //rut:[],
+    reportes: [],
+    rut: "",
+    medio_contacto: "",
+    nombre_contacto: "",
+    fecha: "",
+    hora: "",
+    interes: "",
+    autogestion: ""
   };
 
   
@@ -29,14 +35,105 @@ class Crear_contacto extends Component {
     const contactoRUT = this.props.match.params.contactoRUT;
     
 
-    axios.get(`http://localhost:8000/contacto/${urls}`).then(res => {
+    axios.get(`http://localhost:8000/reporte/`).then(res => {
       this.setState({
-        contacto: res.data,
+        reportes: res.data,
         //rut: res.data.rut,
       });
-
     });
-}
+  }
+
+  onRutChange(event){
+    this.setState({
+      rut: event.target.value
+    });
+  }
+
+  onMedio_contactoChange(event){
+    this.setState({
+      medio_contacto: event.target.value
+    });
+  }
+
+  onNombre_contactoChange(event){
+    this.setState({
+      nombre_contacto: event.target.value
+    });
+  }
+
+  onFechaChange(event){
+    this.setState({
+      fecha: event.target.value
+    });
+  }
+
+  onHoraChange(event){
+    this.setState({
+      hora: event.target.value
+    });
+  }
+
+  onInteresChange(event){
+    this.setState({
+      interes: event.target.value
+    });
+  }
+
+  onAutogestionChange(event){
+    this.setState({
+      autogestion: event.target.value
+    });
+  }
+
+  onSubmit(event){
+    var i;
+    var reporte;
+    var hora;
+    var interes;
+    var autogestion;
+    var existe = false;
+    var fechaUTC;
+    for(i=this.state.reportes.length-1;i>=0;i--){
+      if(this.state.rut == this.state.reportes[i].alumno){
+        reporte = this.state.reportes[i].id;
+        break;
+      }
+    }
+    hora = (this.state.hora.split(":"))[0] + (this.state.hora.split(":"))[1];
+    if(this.state.interes == "si"){
+      interes = 1;
+    } else {
+      interes = 0;
+    }
+    if(this.state.autogestion == "si"){
+      autogestion = 1;
+    } else {
+      autogestion = 0;
+    }
+    axios.get(`http://localhost:8000/contacto/`).then(data2 =>{
+      for(i=0;i<data2.data.length;i++){
+        if(data2.data[i].reporte == reporte){
+          existe = true;
+        }
+      }
+      if(existe == false){
+        fechaUTC = this.state.fecha + "T04:00:00Z";
+        axios.post(`http://localhost:8000/contacto/`, { reporte: reporte,
+                                                        medio_contacto: this.state.medio_contacto,
+                                                        nombre_contacto: this.state.nombre_contacto,
+                                                        fecha: fechaUTC,
+                                                        hora: hora,
+                                                        interes: interes.toString(),
+                                                        autogestion: autogestion.toString(),
+                                                      }).then(data =>{
+          this.props.history.goBack()
+        });                        
+      } else {
+        alert("Contacto ya realizado")
+      }
+    });                  
+  }
+
   render() {
     return (
       <div className="content">
@@ -55,23 +152,23 @@ class Crear_contacto extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "123456789-8",
-                          value: `${this.state.contacto.rut}`,
+                          onChange: this.onRutChange.bind(this)
                           //disabled: "disabled"
                         },
                         {
                           label: "Medio de contacto",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "+56997856443",
-                          value: `${this.state.contacto.medio}`,
+                          placeholder: "Correo",
+                          onChange: this.onMedio_contactoChange.bind(this)
                           //disabled: "disabled"
                         },
                         {
                           label: "Nombre de contacto",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "1er semestre",
-                          value: `${this.state.contacto.nombre}`,
+                          placeholder: "1er contacto",
+                          onChange: this.onNombre_contactoChange.bind(this)
                           //disabled: "disabled"
                         },
                       ]}
@@ -83,8 +180,8 @@ class Crear_contacto extends Component {
                           label: "Fecha de contacto",
                           type: "date",
                           bsClass: "form-control",
+                          onChange: this.onFechaChange.bind(this)
                           //placeholder: "usuario@mail.udp.cl",
-                          value: `${this.state.contacto.fecha}`,
                           //disabled: "disabled"
                         },
                         {
@@ -92,31 +189,31 @@ class Crear_contacto extends Component {
                           type: "text",
                           format:"form-control",
                           bsClass: "form-control",
-                          placeholder: "Juanito Perez",
-                          value: `${this.state.contacto.hora}`,
+                          placeholder: "19:30",
+                          onChange: this.onHoraChange.bind(this)
                           //Disabled: "disabled"
                         },
                         {
                           label: "¿Manifiesta interés?",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "05/05/1970",  
-                          value: `${this.state.contacto.interes}`, 
+                          placeholder: "si",
+                          onChange: this.onInteresChange.bind(this)
                           //disabled: "disabled"
                         },
                         {
                           label: "¿Autogestión?",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "2016",
-                          value: `${this.state.contacto.autogestion}`,
+                          placeholder: "no",
+                          onChange: this.onAutogestionChange.bind(this)
                           //disabled: "disabled"
                         },
                         
                       ]}
                     />
-                    <Button bsStyle="info" pullRight fill type="submit" href="Modificar_detalle">
-                      Enviar
+                    <Button bsStyle="info" pullRight fill onClick={this.onSubmit.bind(this)}>
+                      Guardar
                     </Button>
                     <div className="clearfix" />
                   </form>

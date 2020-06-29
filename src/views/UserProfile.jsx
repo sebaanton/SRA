@@ -29,10 +29,33 @@ import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import { UserCard } from "components/UserCard/UserCard.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
-
+import axios from "axios"
 import avatar from "assets/img/faces/face-3.jpg";
 
 class UserProfile extends Component {
+  state = {
+    usr: [],
+    label: "",
+    noRUT: ""
+  }
+  componentDidMount(){
+    axios.get(`http://localhost:8000/${localStorage.getItem("userType")}/${localStorage.getItem("userID")}`).then(res2 => {
+      if(res2.data.rut){
+        this.setState({
+          label: "RUT",
+          noRUT: res2.data.rut
+        });
+      } else {
+        this.setState({
+          label: "Jornada",
+          noRUT: res2.data.jornada
+        });
+      }
+      this.setState({
+        usr: res2.data
+      });
+    });
+  }
   render() {
     return (
       <div className="content">
@@ -40,26 +63,27 @@ class UserProfile extends Component {
           <Row>
             <Col md={8} mdOffset={2}>
               <Card
-                title="Editar Perfil"
+                title="Perfil de Usuario"
                 content={
                   <form>
                     <FormInputs
                       ncols={["col-md-5", "col-md-7"]}
                       properties={[
                         {
-                          label: "RUT",
+                          label: "Rut",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "RUT",
-                          defaultValue: "123456789",
-                          disabled:"disabled"
+                          placeholder: this.state.noRUT,
+                          defaultValue: this.state.noRUT,
+                          readonly: "readonly"
                         },
                         {
                           label: "Email",
                           type: "email",
                           bsClass: "form-control",
-                          placeholder: "Email",
-                          disabled:"disabled"
+                          placeholder: this.state.usr.email,
+                          defaultValue: this.state.usr.email,
+                          readonly: "readonly"
                         }
                       ]}
                     />
@@ -70,24 +94,20 @@ class UserProfile extends Component {
                           label: "Nombre",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "Nombre",
-                          defaultValue: "Mike",
-                          disabled:"disabled"
+                          placeholder: this.state.usr.nombre,
+                          defaultValue: this.state.usr.nombre,
+                          readonly: "readonly"
                         },
                         {
-                          label: "Apellido",
+                          label: "Telefono",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "Apellido",
-                          defaultValue: "Andrew",
-                          disabled:"disabled"
+                          placeholder: this.state.usr.telefono,
+                          defaultValue: this.state.usr.telefono,
+                          readonly: "readonly"
                         }
                       ]}
                     />
-                
-                    <Button bsStyle="info" pullRight fill type="submit" href="Modificar_perfil">
-                      Modificar perfil
-                    </Button>
                     <div className="clearfix" />
                   </form>
                 }

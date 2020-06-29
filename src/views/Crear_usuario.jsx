@@ -80,6 +80,19 @@ class Crear_usuario extends Component {
                         }
                       ]}
                     />
+                    <FormInputs
+                      ncols={["col-md-5"]}
+                      properties={[
+                        {
+                          label: "Jornada",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "Cantidad de horas, ej: 6",
+                          //defaultValue: "123456789"
+                        },
+                        
+                      ]}
+                    />
                 
                     <Button bsStyle="info" pullRight fill type="submit">
                       Actualizar perfil

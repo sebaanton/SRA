@@ -24,7 +24,7 @@ import Maps from "views/Maps.jsx";
 import Notifications from "views/Notifications.jsx";
 import Login from "views/Login.jsx";
 import Login2 from "views/Login2.jsx";
-import Ver_detalle from "views/Ver_detalle";
+import Ver_detalle_profesor from "views/Ver_detalle_profesor";
 import Ver_flujo from "views/Ver_flujo";
 import Ver_registro from "views/Ver_registro";
 import For_ingreso1 from "views/For_ingreso1"
@@ -37,14 +37,15 @@ import Modificar_contacto from "views/Modificar_contacto";
 import Agendar_reunion from "views/Agendar_reunion";
 import Modificar_reunion from "views/Modificar_reunion";
 import Modificar_perfil from "views/Modificar_perfil";
-
+import Modificar_alumno_profesor from "views/Modificar_alumno_profesor";
+import Busqueda_profesor from "views/Busqueda_profesor";
 const dashboardRoutes = [
   {
     
-    path: "/notifications",
+    path: "/Buscar_alumno",
     name: "Home",
     icon: "pe-7s-home",
-    component: Notifications,
+    component: Busqueda_profesor,
     layout: "/admin",
 
   },
@@ -54,7 +55,7 @@ const dashboardRoutes = [
     icon: "pe-7s-graph",
     component: Dashboard,
     layout: "/admin",
-
+    estado:"false"
   },
   {
     path: "/user",
@@ -69,41 +70,23 @@ const dashboardRoutes = [
     icon: "pe-7s-science",
     component: Login2,
     layout: "/admin",
-    estado: "false"
+    //estado: "false"
   },
   {
-    path: "/Ver_detalle",
+    path: "/Ver_detalle_profesor",
     name: "Ver Detalle",
     icon: "pe-7s-science",
-    component: Ver_detalle,
+    component: Ver_detalle_profesor,
     layout: "/admin",
 
   },
   {
-    path: "/Modificar_detalle",
-    name: "Modificar Alumno",
-    icon: "pe-7s-science",
-    component: Modificar_detalle,
+    path: "/Modificar_alumno_profesor",
+    name: "Modificar Perfil",
+    icon: "pe-7s-user",
+    component: Modificar_alumno_profesor,
     layout: "/admin",
-    //estado: "false"
-
-  },
-  {
-    path: "/Ver_registro",
-    name: "Ver Registro(s)",
-    icon: "pe-7s-science",
-    component: Ver_registro,
-    layout: "/admin",
-
-  },
-  {
-    path: "/Modificar_registro",
-    name: "Modificar Registro",
-    icon: "pe-7s-science",
-    component: Modificar_registro,
-    layout: "/admin",
-    //estado: "false"
-
+    estado: "false"
   },
   {
     path: "/Ver_flujo",
@@ -146,6 +129,7 @@ const dashboardRoutes = [
     layout: "/admin",
     estado: "false"
   },
+  
  
   
  

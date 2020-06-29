@@ -91,7 +91,7 @@ class Alumno(models.Model):
     nombre = models.CharField(max_length=50, blank=False)
     año_nacimiento = models.SmallIntegerField(null=False, blank=False, default=0)
     correo = models.CharField(max_length=50, blank=False)
-    telefono = models.IntegerField(null=False, blank=False)
+    telefono = models.IntegerField(null=False, blank=False, default=0)
     año_ingreso = models.SmallIntegerField(null=False, blank=False, default=0)
     semestre_ingreso = models.SmallIntegerField(null=False, blank=False, default=1)
     carrera_origen = models.TextField(blank=True)
