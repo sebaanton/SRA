@@ -24,25 +24,6 @@ import Notificaciones_m from "components/Notificaciones/Notificaciones.js";
 import axios from "axios";
 
 class TableList extends React.Component {
-  /*constructor(props){
-    super(props)
-    this.state = {
-      data: [],
-      estado: ['Realizada','Próxima','No realizada'],
-      nombre_alumno: [],
-      fecha: [],
-      hora: [],
-      medio: ['Zoom', 'GoogleMeet', 'presencial', 'llamada', 'correo'],
-      nombre_reu_contacto: [],
-      conectores: ['con', 'mediante'],
-      estilo: ['success','warning', 'danger'],
-    }
-    this.state = { 
-      data: [{
-        "datos varios"
-    }]
-    }
-  }*/
   state = {
     data: [],
     estado: ['Realizada', 'Próxima', 'No realizada'],
@@ -68,18 +49,8 @@ class TableList extends React.Component {
     const data_contacto = await axios.get(`http://localhost:8000/contacto/`);
     const data_reu = await axios.get(`http://localhost:8000/reunion/`);
     const currentDay = new Date();
-    console.log(data_contacto.data)
-    var day = new Date(data_contacto.data[4].fecha)
-
-
     var i;
     var j;
-    console.log(day)
-    if (day > currentDay) {
-      console.log("fecha en 0 es mayor a la actual")
-    } else {
-      console.log("fecha actual es mayor a la fecha en 0")
-    }
     for (i = 0; i < data_contacto.data.length; i++) {
       var condicion = false;
       for (j = 0; j < data_reu.data.length; j++) {
@@ -87,19 +58,22 @@ class TableList extends React.Component {
           var condicion = true;
           if (data_reu.data[j].realizacion == false) {
             var day1 = new Date(data_reu.data[j].fecha)
-            //console.log("holi")
             //si el id del contacto está en una reunion, y la reunion no ha sido realizada, busca si hay alguna próxima o vencida
             if (currentDay > day1) { //atrasada
               var horaa = ((data_reu.data[j].hora - ((data_reu.data[j].hora) % 100)) / 100);
               var minutoos = (data_reu.data[j].hora) % 100;
-              await this.onAddItem(this.state.estado[2], 'Reunion', data_reu.data[j].medio_reunion, this.state.estilo[2], data_reu.data[j].nombre, this.state.conectores[2], day1.toLocaleDateString('es', this.state.opciones)
+              const data_reporte = await axios.get(`http://localhost:8000/reporte/${data_contacto.data[i].reporte}`);
+              const data_alumno = await axios.get(`http://localhost:8000/alumno/${data_reporte.data.alumno}`);
+              await this.onAddItem(this.state.estado[2], 'Reunion', data_alumno.data.nombre, data_reu.data[j].medio_reunion, this.state.estilo[2], data_reu.data[j].nombre, this.state.conectores[2], day1.toLocaleDateString('es', this.state.opciones)
                 .replace(/ /g, '-')
                 .replace('.', '')
                 .replace(/-([a-z])/, function (x) { return '-' + x[1].toUpperCase() }), horaa, minutoos)
             } else {//proxima
               var horaa = ((data_reu.data[j].hora - ((data_reu.data[j].hora) % 100)) / 100);
               var minutoos = (data_reu.data[j].hora) % 100;
-              await this.onAddItem(this.state.estado[1], 'Reunion', data_reu.data[j].medio_reunion, this.state.estilo[1], data_reu.data[j].nombre, this.state.conectores[2], day1.toLocaleDateString('es', this.state.opciones)
+              const data_reporte = await axios.get(`http://localhost:8000/reporte/${data_contacto.data[i].reporte}`);
+              const data_alumno = await axios.get(`http://localhost:8000/alumno/${data_reporte.data.alumno}`);
+              await this.onAddItem(this.state.estado[1], 'Reunion', data_alumno.data.nombre, data_reu.data[j].medio_reunion, this.state.estilo[1], data_reu.data[j].nombre, this.state.conectores[2], day1.toLocaleDateString('es', this.state.opciones)
                 .replace(/ /g, '-')
                 .replace('.', '')
                 .replace(/-([a-z])/, function (x) { return '-' + x[1].toUpperCase() }), horaa, minutoos)
@@ -109,21 +83,21 @@ class TableList extends React.Component {
       }
       if (condicion == false) {
         var day2 = new Date(data_contacto.data[i].fecha)
-        console.log(currentDay)
-        console.log(data_contacto.data[i].fecha)
         if (currentDay > day2) {//atrasada
-          console.log(currentDay)
-          console.log(data_contacto.data[i].fecha)
           var horaa = ((data_contacto.data[i].hora - ((data_contacto.data[i].hora) % 100)) / 100);
           var minutoos = (data_contacto.data[i].hora) % 100;
-          await this.onAddItem(this.state.estado[2], 'Contacto', data_contacto.data[i].medio_contacto, this.state.estilo[2], data_contacto.data[i].nombre, this.state.conectores[2], day2.toLocaleDateString('es', this.state.opciones)
+          const data_reporte = await axios.get(`http://localhost:8000/reporte/${data_contacto.data[i].reporte}`);
+          const data_alumno = await axios.get(`http://localhost:8000/alumno/${data_reporte.data.alumno}`);
+          await this.onAddItem(this.state.estado[2], 'Contacto', data_alumno.data.nombre, data_contacto.data[i].medio_contacto, this.state.estilo[2], data_contacto.data[i].nombre_contacto, this.state.conectores[2], day2.toLocaleDateString('es', this.state.opciones)
             .replace(/ /g, '-')
             .replace('.', '')
             .replace(/-([a-z])/, function (x) { return '-' + x[1].toUpperCase() }), horaa, minutoos)
         } else {
           var horaa = ((data_contacto.data[i].hora - ((data_contacto.data[i].hora) % 100)) / 100);
           var minutoos = (data_contacto.data[i].hora) % 100;
-          await this.onAddItem(this.state.estado[1], 'Contacto', data_contacto.data[i].medio_contacto, this.state.estilo[1], data_contacto.data[i].nombre, this.state.conectores[2], day2.toLocaleDateString('es', this.state.opciones)
+          const data_reporte = await axios.get(`http://localhost:8000/reporte/${data_contacto.data[i].reporte}`);
+          const data_alumno = await axios.get(`http://localhost:8000/alumno/${data_reporte.data.alumno}`);
+          await this.onAddItem(this.state.estado[1], 'Contacto', data_alumno.data.nombre, data_contacto.data[i].medio_contacto, this.state.estilo[1], data_contacto.data[i].nombre_contacto, this.state.conectores[2], day2.toLocaleDateString('es', this.state.opciones)
             .replace(/ /g, '-')
             .replace('.', '')
             .replace(/-([a-z])/, function (x) { return '-' + x[1].toUpperCase() }), horaa, minutoos)
@@ -138,12 +112,12 @@ class TableList extends React.Component {
   nombre_c, 
   conector_c, -> this.state.conectores[i]: 0: con, 1: mediante, 2:via
   fecha_c*/
-  onAddItem = async (estado_c, tipo_c, medio_c, estilo_c, nombre_c, conector_c, fecha_c, hora_c, minutos_c) => {
-    const value = { estado: estado_c, tipo: tipo_c, medio: medio_c, estilo: estilo_c, nombre: nombre_c, conector: conector_c, fecha: fecha_c, hora: hora_c, minutos: minutos_c }
+  onAddItem = async (estado_c, tipo_c, nombre_alumno_c, medio_c, estilo_c, nombre_c, conector_c, fecha_c, hora_c, minutos_c) => {
+    const value = { estado: estado_c, tipo: tipo_c, nombre_alumno: nombre_alumno_c, medio: medio_c, estilo: estilo_c, nombre: nombre_c, conector: conector_c, fecha: fecha_c, hora: hora_c, minutos: minutos_c }
     this.setState({
       data: this.state.data.concat(value)
     }, function () {
-      console.log(this.state.data)
+      //console.log(this.state.data)
     });
   };
   render() {

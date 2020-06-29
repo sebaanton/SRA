@@ -16,7 +16,7 @@ function Notificaciones_m(props){
                     &#x2715;
                 </button>
                 <span>
-                    <b> {notificacion.estado} {notificacion.tipo}- </b> {notificacion.nombre} {notificacion.conector} {notificacion.medio} {notificacion.fecha} a las {notificacion.hora}:{notificacion.minutos}
+                <b> {notificacion.estado} {notificacion.tipo} con {notificacion.nombre_alumno}- </b> {notificacion.nombre} {notificacion.conector} {notificacion.medio} {notificacion.fecha} a las {notificacion.hora}:{notificacion.minutos}
                 </span>
             </Alert>
                 )
