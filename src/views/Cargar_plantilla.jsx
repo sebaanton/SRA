@@ -20,9 +20,33 @@ import { Grid, Row, Col } from "react-bootstrap";
 import { Card } from "components/Card/Card.jsx";
 import { Tasks } from "components/Tasks/Tasks4.jsx";
 import FileInput from "components/FileInput";
-
+import Button from "components/CustomButton/CustomButton.jsx";
+import axios from "axios";
 
 class Cargar_plantilla extends Component {
+  state = {
+    file: '',
+  };
+  onFileChange(event) {
+    this.state.file=event.target.files[0]   
+    
+  }
+
+
+
+
+
+  async onSubmit(){
+    var formData = new FormData();
+    formData.append('archivo', this.state.file);
+    const apiUrl = 'http://localhost:8000';
+    try{
+      await axios.post(`${apiUrl}/cargar/`, formData);
+    }catch(e){
+
+    }
+  }
+
   render() {
     return (
 
@@ -35,7 +59,12 @@ class Cargar_plantilla extends Component {
               <Card
                 content={
                   <form>
-                 <FileInput/>
+                 <form>
+                    <input type="file" onChange={this.onFileChange.bind(this)} /> 
+                  </form>
+                  <Button bsStyle="info" pullRight fill onClick={this.onSubmit.bind(this)}>
+                    Subir
+                  </Button>
                 <h3>Tipo de Ingreso</h3>
                   <div className="table-full-width">
                     <table className="table">
