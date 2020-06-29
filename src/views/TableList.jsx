@@ -53,6 +53,7 @@ class TableList extends React.Component {
     nombre_reu_contacto: ['Contacto inicial'],
     conectores: ['con', 'mediante', 'vía'],
     estilo: ['success', 'warning', 'danger'],
+    opciones: { year: 'numeric', month: 'short', day: 'numeric' },
   }
   /*async componentDidMount(){
     await this.fetchNotificaciones()
@@ -67,7 +68,10 @@ class TableList extends React.Component {
     const data_contacto = await axios.get(`http://localhost:8000/contacto/`);
     const data_reu = await axios.get(`http://localhost:8000/reunion/`);
     const currentDay = new Date();
-    var day = new Date(data_contacto.data[4].fecha).toString().slice(0,10)
+    console.log(data_contacto.data)
+    var day = new Date(data_contacto.data[4].fecha)
+
+
     var i;
     var j;
     console.log(day)
@@ -88,11 +92,17 @@ class TableList extends React.Component {
             if (currentDay > day1) { //atrasada
               var horaa = ((data_reu.data[j].hora - ((data_reu.data[j].hora) % 100)) / 100);
               var minutoos = (data_reu.data[j].hora) % 100;
-              await this.onAddItem(this.state.estado[2], 'Reunion', data_reu.data[j].medio_reunion, this.state.estilo[2], data_reu.data[j].nombre, this.state.conectores[2], data_reu.data[j].fecha, horaa, minutoos)
+              await this.onAddItem(this.state.estado[2], 'Reunion', data_reu.data[j].medio_reunion, this.state.estilo[2], data_reu.data[j].nombre, this.state.conectores[2], day1.toLocaleDateString('es', this.state.opciones)
+                .replace(/ /g, '-')
+                .replace('.', '')
+                .replace(/-([a-z])/, function (x) { return '-' + x[1].toUpperCase() }), horaa, minutoos)
             } else {//proxima
               var horaa = ((data_reu.data[j].hora - ((data_reu.data[j].hora) % 100)) / 100);
               var minutoos = (data_reu.data[j].hora) % 100;
-              await this.onAddItem(this.state.estado[1], 'Reunion', data_reu.data[j].medio_reunion, this.state.estilo[1], data_reu.data[j].nombre, this.state.conectores[2], data_reu.data[j].fecha, horaa, minutoos)
+              await this.onAddItem(this.state.estado[1], 'Reunion', data_reu.data[j].medio_reunion, this.state.estilo[1], data_reu.data[j].nombre, this.state.conectores[2], day1.toLocaleDateString('es', this.state.opciones)
+                .replace(/ /g, '-')
+                .replace('.', '')
+                .replace(/-([a-z])/, function (x) { return '-' + x[1].toUpperCase() }), horaa, minutoos)
             }
           }
         }
@@ -106,11 +116,17 @@ class TableList extends React.Component {
           console.log(data_contacto.data[i].fecha)
           var horaa = ((data_contacto.data[i].hora - ((data_contacto.data[i].hora) % 100)) / 100);
           var minutoos = (data_contacto.data[i].hora) % 100;
-          await this.onAddItem(this.state.estado[2], 'Contacto', data_contacto.data[i].medio_contacto, this.state.estilo[2], data_contacto.data[i].nombre, this.state.conectores[2], data_contacto.data[i].fecha, horaa, minutoos)
+          await this.onAddItem(this.state.estado[2], 'Contacto', data_contacto.data[i].medio_contacto, this.state.estilo[2], data_contacto.data[i].nombre, this.state.conectores[2], day2.toLocaleDateString('es', this.state.opciones)
+            .replace(/ /g, '-')
+            .replace('.', '')
+            .replace(/-([a-z])/, function (x) { return '-' + x[1].toUpperCase() }), horaa, minutoos)
         } else {
           var horaa = ((data_contacto.data[i].hora - ((data_contacto.data[i].hora) % 100)) / 100);
           var minutoos = (data_contacto.data[i].hora) % 100;
-          await this.onAddItem(this.state.estado[1], 'Contacto', data_contacto.data[i].medio_contacto, this.state.estilo[1], data_contacto.data[i].nombre, this.state.conectores[2], data_contacto.data[i].fecha, horaa, minutoos)
+          await this.onAddItem(this.state.estado[1], 'Contacto', data_contacto.data[i].medio_contacto, this.state.estilo[1], data_contacto.data[i].nombre, this.state.conectores[2], day2.toLocaleDateString('es', this.state.opciones)
+            .replace(/ /g, '-')
+            .replace('.', '')
+            .replace(/-([a-z])/, function (x) { return '-' + x[1].toUpperCase() }), horaa, minutoos)
 
         }
       }
