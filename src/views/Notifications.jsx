@@ -19,6 +19,7 @@ import { thArray, tdArray } from "variables/Variables.jsx";
 import Ver_detalle from "views/Ver_detalle";
 import axios from "axios";
 
+
 class Notifications extends Component {
   state = {
     alumno:[],
@@ -198,7 +199,7 @@ class Notifications extends Component {
                     <tbody>
                       {this.state.alumnoDisplay.map((prop, key) => {
                         return (
-                          
+
                           <tr>
                             <td key={key}>{prop.rut} { } </td>
                             <td key={key}>{prop.nombre}</td>

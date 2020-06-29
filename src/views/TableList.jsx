@@ -67,7 +67,7 @@ class TableList extends React.Component {
     const data_contacto = await axios.get(`http://localhost:8000/contacto/`);
     const data_reu = await axios.get(`http://localhost:8000/reunion/`);
     const currentDay = new Date();
-    var day = new Date(data_contacto.data[4].fecha, Number).toString().slice(0,10)
+    var day = new Date(data_contacto.data[4].fecha).toString().slice(0,10)
     var i;
     var j;
     console.log(day)
