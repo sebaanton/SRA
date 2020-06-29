@@ -77,7 +77,7 @@ axios.interceptors.response.use( (response) => {
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-      <Route path="/admin" render={props => <ProfesorLayout {...props} />} />
+      <Route path="/admin" render={props => <CoordinadorLayout {...props} />} />
       <Redirect from="/" to="/admin/AdminLayout" />
     </Switch>
   </BrowserRouter>,

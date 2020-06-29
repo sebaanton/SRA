@@ -277,7 +277,7 @@ class Modificar_detalle extends Component {
                     <form>
                       <input type="file" onChange={this.onFileChange.bind(this)} /> 
                     </form>
-                    <Button bsStyle="info" onClick={this.onSubmit.bind(this)}>
+                    <Button bsStyle="info" pullRight fill onClick={this.onSubmit.bind(this)}>
                       Actualizar perfil
                     </Button>
                     <div className="clearfix" />

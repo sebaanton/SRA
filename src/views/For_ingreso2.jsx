@@ -18,7 +18,9 @@ import { useHistory } from "react-router-dom";
 
 const apiUrl = 'http://localhost:8000';
 
-function For_ingreso2 () {
+
+function For_ingreso2 () { 
+
   const history = useHistory();
   const onSubmit = async () => {
     try {
@@ -27,18 +29,31 @@ function For_ingreso2 () {
       const causalCount =  await getCausal();
       const currentDay = new Date();
       var semestre;
-      if (currentDay.getMonth() <= 7){
+      if (currentDay.getMonth() <= 6){
         semestre = 1;
       } else {
         semestre = 2;
       }
+      
       const asignaturaCount = asignatura_reportada.split(",");
       const año = new Date().getFullYear().toString();
-      const prioridad = 0.3*causalCount + 0.7*(asignaturaCount.length());
-      if (prioridad > 4){
-        prioridad = 4;
+      var año_semestre_m = año.concat(semestre.toString);
+      const { data2 } = await axios.get(`${apiUrl}/reporte/`);
+      var i;
+      var id_reporte = 0;
+      for(i; i<data2.length;i++){
+        if ((data2[i].alumno == rut)&((data2[i].año == año)&(data2[i].semestre == semestre))){
+          id_reporte = data2[i].id;
+        }
       }
-      const { data } = await axios.post(`${apiUrl}/reporte/`, {
+      
+      if (id_reporte == 0){
+        const prioridad = 0.3*causalCount + 0.7*(asignaturaCount.length());
+        if (prioridad > 4){
+          prioridad = 4;
+        }
+        const { data } = await axios.post(`${apiUrl}/reporte/`, {
+                                                               
                                                                año: new Date().getFullYear().toString(),
                                                                semestre: semestre.toString(),
                                                                tipo_causal: tipo_causal,
@@ -46,15 +61,38 @@ function For_ingreso2 () {
                                                                prioridad: prioridad.toString(),
                                                                observacion: observacion,
                                                                reiteraciones_causal: causalCount.toString(),
-                                                               tipo_ingreso: 'causal',
-                                                               alumno: rut
-                                                              });
-      await setCausal(data)
-      history.push("/admin/notifications");
+                                                               tipo_ingreso: tipo_ingreso,
+                                                               alumno: rut,
+                                                              });                                                    
+
+        await setAsignatura(data.id)
+        history.push("/admin/Ingreso_profesor");
+      }else{
+        const prioridad = 0.3*causalCount + 0.7*(asignaturaCount.length());
+        if (prioridad > 4){
+          prioridad = 4;
+        }
+        const cantidad_asignaturas  = await getCantAsigna(id_reporte);
+        const { data } = await axios.put(`${apiUrl}/reporte/${id_reporte}`, {
+                                                              año: new Date().getFullYear().toString(),
+                                                              semestre: semestre.toString(),
+                                                              tipo_causal: tipo_causal,
+                                                              asignaturas_reportadas: cantidad_asignaturas.toString(),
+                                                              prioridad: prioridad.toString(),
+                                                              observacion: observacion,
+                                                              reiteraciones_causal: causalCount.toString(),
+                                                              tipo_ingreso: tipo_ingreso,
+                                                              alumno: rut,
+                                                            });                                                    
+
+        await setAsignatura(data.id)
+        history.push("/admin/Ingreso_profesor");
+      }
     } catch (e) {
       alert(e.message);
     }
   }
+  
   async function getCausal(){
     var count = 0;
     const data = await axios.get(`${apiUrl}/causal/`);
@@ -80,18 +118,7 @@ function For_ingreso2 () {
     formData.append('rut', rut);
     formData.append('nombre', nombre);
     formData.append('correo', email);
-    formData.append('calificacion', calificacion);
-    formData.append('asistencia', asistencia);
-    formData.append('interes', interes);
-    formData.append('asignatura', asignatura_reportada);
-    /*formData.append('año_nacimiento', año_nacimiento);
-    formData.append('año_ingreso', año_ingreso);
-    formData.append('semestre_ingreso', semestre_ingreso);
-    formData.append('telefono', telefono);
-    formData.append('carrera_origen', carrera_origen);*/
-    formData.append('estado_actual', 'reportado');
-    formData.append('coordinador', localStorage.getItem('userID'));// que hace esto??
-    //formData.append('copia_registro', file);
+    formData.append('profesor', localStorage.getItem('userID'));
     await axios.put(`${apiUrl}/alumno/${rut}/`, formData);
   }
   async function setNewAlumno(){
@@ -99,31 +126,59 @@ function For_ingreso2 () {
     formData.append('rut', rut);
     formData.append('nombre', nombre);
     formData.append('correo', email);
-    formData.append('calificacion', calificacion);
-    formData.append('asistencia', asistencia);
-    formData.append('interes', interes);
-    formData.append('asignatura', asignatura_reportada);
-    /*formData.append('año_nacimiento', año_nacimiento);
-    formData.append('año_ingreso', año_ingreso);
-    formData.append('semestre_ingreso', semestre_ingreso);
-    formData.append('telefono', telefono);
-    formData.append('carrera_origen', carrera_origen);*/
-    formData.append('estado_actual', 'reportado');
-    formData.append('coordinador', localStorage.getItem('userID'));// que hace esto??
-    //formData.append('copia_registro', file);
+    formData.append('profesor', localStorage.getItem('userID'));
     try{
       await axios.post(`${apiUrl}/alumno/`, formData);
     }catch(e){
 
     }
   }
-  async function setCausal(rep){
-    const data = await axios.post(`${apiUrl}/causal/`, {año: new Date().getFullYear().toString(),
-                                                            tipo: tipo_causal,
-                                                            //condiciones: condiciones,
-                                                            reporte: rep.id
-                                                           });
+                                           
+  
+  async function setAsignatura(rep){
+    const currentDay = new Date();
+    var semestre;
+    if (currentDay.getMonth() <= 7){
+      semestre = 1;
+    } else {
+      semestre = 2;
+    }
+    var año_C = new Date().getFullYear().toString();
+    var año_semestre = año_C.concat(semestre.toString);
+    console.log(año_semestre)
+    const data = await axios.post(`${apiUrl}/asignatura_reportada/`, {
+                                                                      asistencia: asistencia,
+                                                                      participacion: interes,
+                                                                      notas_ponderadas: calificacion,
+                                                                      año: año_semestre,
+                                                                      observaciones:observacion,
+                                                                      asignatura:asignatura_reportada,
+                                                                      reporte: rep,
+                                                                      });
   }
+  async function getCantAsigna(id_reporte){// dado un id_reporte, calcula la cantidad de asignaturas reportadas
+    var count = 0;
+    /*const año = new Date().getFullYear().toString();
+    const currentDay = new Date();
+    var semestre;
+    if (currentDay.getMonth() <= 6){
+      semestre = 1;
+    } else {
+      semestre = 2;
+    }
+    var año_semestre_m = año.concat(semestre.toString);
+    */
+    var i = 0;
+    const data = await axios.get(`${apiUrl}/asignatura_reportada/`);
+    for (i=0; i<data.length;i++){
+      //if ((data.data[i].reporte == id_reporte) & (data[i].año_semestre == año_semestre_m)){
+      if ((data.data[i].reporte == id_reporte)){
+          count = count + 1;
+      }
+    }
+    return count;
+  }         
+  
   const [rut, setRut] = useState({
     rut: ''
   });
@@ -134,7 +189,7 @@ function For_ingreso2 () {
     nombre: ''
   });
   const [calificacion, setCalificacion] = useState({
-    Calificacion: ''
+    calificacion: ''
   });
   const [asistencia, setAsistencia] = useState({
     asistencia: ''
@@ -142,23 +197,6 @@ function For_ingreso2 () {
   const [interes, setInteres] = useState({
     interes: ''
   });
-  /*const [año_nacimiento, setAño_nacimiento] = useState({
-    año_nacimiento: ''
-  });
-
-  const [telefono, setTelefono] = useState({
-    telefono: ''
-  });
-  const [año_ingreso, setAño_ingreso] = useState({
-    año_ingreso: ''
-  });
-
-  const [semestre_ingreso, setSemestre_ingreso] = useState({
-    semestre_ingreso: ''
-  });
-  const [carrera_origen, setCarrera_origen] = useState({
-    carrera_origen: ''
-  });*/
   const [tipo_ingreso, setTipo_ingreso] = useState({
     tipo_ingreso: ''
   });
@@ -170,16 +208,9 @@ function For_ingreso2 () {
   const [tipo_causal, setTipo_causal] = useState({
     tipo_causal: ''
   });
-  /*const [condiciones, setCondiciones] = useState({
-    condiciones: ''
-  });
-*/
   const [observacion, setObservacion] = useState({
     observacion: ''
   });
-  /*const [file, setFile] = useState({
-    file: ''
-  });*/
   function handleChangeRut(event) {
     setRut(event.target.value);
   }
@@ -200,21 +231,14 @@ function For_ingreso2 () {
   }
   function handleChangeTipo_ingreso(event) {
     setTipo_ingreso(event.target.value);
+    console.log(event.target.value)
   }
   function handleChangeAsignatura_reportada(event) {
     setAsignatura_reportada(event.target.value);
   }
-  /*
-  function handleChangeTipo_causal(event) {
-    setTipo_causal(event.target.value);
-  }
-  function handleChangeCondiciones(event) {
-    setCondiciones(event.target.value);
-  }*/
   function handleChangeObservacion(event) {
     setObservacion(event.target.value);
   }
-
 
     return (
       <div className="content">
@@ -226,7 +250,7 @@ function For_ingreso2 () {
                 content={
                   <form action="/send.php" >
                     <FormInputs
-                      ncols={["col-md-4", "col-md-4","col-md-4"]}
+                      ncols={["col-md-4", "col-md-4", "col-md-3"]}
                       properties={[
                         {
                           label: "Nombre completo",
@@ -234,11 +258,11 @@ function For_ingreso2 () {
                           bsClass: "form-control",
                           placeholder: "Juan",  
                           minlength:"3",
-                          maxlength:"50",
+                          maxlength:"25",
                           pattern: "[a-zA-Z]+",
                           required:"required",
                           title:"Letras de la A a la Z (mayúsculas o minúsculas)",
-                          onChange: handleChangeNombre               
+                          onChange: handleChangeNombre                   
                         },
                         {
                           label: "RUT",
@@ -253,6 +277,28 @@ function For_ingreso2 () {
                           onChange: handleChangeRut
                         },
                         {
+                          label: "Tipo de ingreso",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "Reportado",
+                          defaultValue: "Reportado",
+                          minlength:"9",
+                          maxlength:"12",
+                          pattern: "[aA][uU][tT][oO]|[Cc][Oo][nN][Ss][Uu][lL][tT][aA]|[Rr][eE][Pp][oO][rR][tT][aA][dD][oO]",
+                          required:"required",
+                          title:"Reportado o autoconsulta (en mayúscula o minúscula)",
+
+                          //Value: tipo_ingreso,
+                          onChange: handleChangeTipo_ingreso
+                        },
+                        
+                      ]}
+                    />
+                    <FormInputs
+                      ncols={["col-md-4", "col-md-4", "col-md-3"]}
+                      properties={[
+                        
+                        {
                           label: "Calificación Estimada",
                           type: "text",
                           bsClass: "form-control",
@@ -264,13 +310,6 @@ function For_ingreso2 () {
                           title:"Números decimales entre 1.0 y 7.0",
                           onChange: handleChangeCalificacion
                         },
-                      ]}
-                    />
-                    <FormInputs
-                      ncols={["col-md-4", "col-md-4", "col-md-4"]}
-                      properties={[
-                        
-                        
                         {
                           label: "Porcentaje de Asistencia",
                           type: "text",
@@ -295,25 +334,12 @@ function For_ingreso2 () {
                           title:"Números decimales entre 1.0 y 7.0",
                           onChange: handleChangeInteres
                         },
-                        {
-                          label: "Tipo de ingreso",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "Reportado",
-                          defaultValue: "Reportado",
-                          minlength:"9",
-                          maxlength:"12",
-                          pattern: "[aA][uU][tT][oO]|[Cc][Oo][nN][Ss][Uu][lL][tT][aA]|[Rr][eE][Pp][oO][rR][tT][aA][dD][oO]",
-                          required:"required",
-                          title:"Reportado o autoconsulta (en mayúscula o minúscula)",
-                          //Value: tipo_ingreso,
-                          //onChange: handleChangeTipo_ingreso
-                        },
                         
                       ]}
                     />
-                    <FormInputs
-                      ncols={["col-md-5","col-md-5"]}
+
+              <FormInputs
+                      ncols={["col-md-6","col-md-4"]}
                       properties={[
                         
 
@@ -343,9 +369,10 @@ function For_ingreso2 () {
                           title:"Letras de la A a la Z (mayúsculas o minúsculas)",
                           onChange: handleChangeAsignatura_reportada          
                         },
-                        
                       ]}
-                    />
+                  />
+
+                  
                   <form>
                       <label>
                         Observaciones <br />
@@ -369,7 +396,7 @@ function For_ingreso2 () {
           </Row>
         </Grid>
       </div>
-  );
+    );
 }
 
 export default For_ingreso2;
