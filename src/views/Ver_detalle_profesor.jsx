@@ -42,6 +42,7 @@ class Ver_detalle_profesor extends Component {
     var interTex = ""
     var asignatura = 0
     
+    
     const id = currenturl.slice(28,largo)
     const alumnoRUT = this.props.match.params.alumnoRUT;
     
@@ -72,7 +73,7 @@ class Ver_detalle_profesor extends Component {
         reporteDisplay: repo[repo.length -1],
         
       },function(){
-        //console.log(this.state.reporteDisplay.id);
+        console.log(this.state.reporteDisplay.id);
         //console.log(this.state.reporteDisplay);
       }
       );
@@ -282,7 +283,7 @@ class Ver_detalle_profesor extends Component {
                     <br />
                     <br />
 
-                    <Button bsStyle="info" pullRight fill type="submit" href={`http://localhost:3000/admin/Modificar_alumno_profesor/${this.state.alumno.rut}`}>
+                    <Button bsStyle="info" pullRight fill type="submit" href={`http://localhost:3000/admin/Modificar_alumno_profesor/${this.state.reporteDisplay.id}`}>
                       Modificar Datos
                     </Button>
                     <div className="clearfix" />

@@ -121,7 +121,7 @@ const dashboardRoutes = [
     icon: "pe-7s-science",
     component: Ver_flujo,
     layout: "/admin",
-    estado: "false"
+    //estado: "false"
   },
   {
     path: "/For_ingreso1",

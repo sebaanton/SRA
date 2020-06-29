@@ -280,17 +280,3 @@ class RecomendacionView(generics.GenericAPIView, mixins.ListModelMixin, mixins.C
         return self.destroy(request, pk)
 
 
-class CausalAlertaView(APIView):
-    def get(self):
-        now = datetime.now()
-        mes= now.month
-        ao= now.year
-        if(mes<=6):
-            mes=1
-        else:
-            mes=2
-        cursor = connection.cursor()
-        causal_alerta_query = cursor.execute("SELECT count(id) FROM api_reporte where tipo_causal ILIKE 'reportado' and año=%s and semestre=%s",[ao,mes])
-        causal_alerta_result = cursor.fetchall()
-        cursor.close()
-        return causal_alerta_result
