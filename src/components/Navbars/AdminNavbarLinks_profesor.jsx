@@ -49,11 +49,11 @@ class AdminNavbarLinks extends Component {
             eventKey={2}
             title="Ingresar Datos"
             id="basic-nav-dropdown-right">
-            <MenuItem eventKey={2.2} href="Ingreso_profesor">Reporte por Digitación</MenuItem>
-            <MenuItem eventKey={2.3} href="Cargar_plantilla">Cargar Plantilla</MenuItem>
+            <MenuItem eventKey={2.2} href="http://localhost:3000/admin/Ingreso_profesor">Reporte por Digitación</MenuItem>
+            <MenuItem eventKey={2.3} href="http://localhost:3000/admin/Cargar_plantilla">Cargar Plantilla</MenuItem>
            </NavDropdown>
           
-          <NavItem eventKey={3} href="Login2">
+          <NavItem eventKey={3} href="http://localhost:3000/admin/Login2">
             Cerrar Sesión
           </NavItem>
         </Nav>

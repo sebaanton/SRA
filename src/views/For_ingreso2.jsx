@@ -68,7 +68,7 @@ function For_ingreso2 () {
         await setAsignatura(data.id)
         history.push("/admin/Ingreso_profesor");
       }else{
-        const prioridad = 0.3*causalCount + 0.7*(asignaturaCount.length());
+        const prioridad = 0.3*causalCount + 0.7*asignaturaCount.length;
         if (prioridad > 4){
           prioridad = 4;
         }
@@ -78,7 +78,7 @@ function For_ingreso2 () {
                                                               semestre: semestre.toString(),
                                                               tipo_causal: tipo_causal,
                                                               asignaturas_reportadas: cantidad_asignaturas.toString(),
-                                                              prioridad: prioridad.toString(),
+                                                              prioridad: Math.round( prioridad ).toString(),
                                                               observacion: observacion,
                                                               reiteraciones_causal: causalCount.toString(),
                                                               tipo_ingreso: tipo_ingreso,

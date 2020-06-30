@@ -22,7 +22,7 @@ export class StatsCard extends Component {
   render() {
     return (
       <div className="card card-stats">
-        <div className="content" contenteditable="true">
+        <div className="content" contenteditable="false">
           <Row>
             <Col xs={1}>
               <div className="icon-big text-center icon-warning">
@@ -31,14 +31,17 @@ export class StatsCard extends Component {
             </Col>
             <Col xs={9}>
               <div className="numbers">
-                <p class="text-center" contenteditable="true">{this.props.statsText}</p>
+                <p class="text-center" contenteditable="false">{this.props.statsText}</p>
                 <h4 align="left">{this.props.statsValue}</h4>
               </div>
             </Col>
           </Row>
           <div className="footer">
-            <hr />
+            {this.props.statsIcon}
+            
             <div className="stats">
+            <hr/>
+            
               {this.props.statsIconText}
             </div>
           </div>
