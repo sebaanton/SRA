@@ -409,11 +409,12 @@ class Modificar_reunion extends Component {
     var i
     var j
     var contacto
+    var derivaciones = []
     var fechaUTC
     var hora
     var realizacion
     var cumplimiento_objetivos
-    var iniciales_academico
+    var existe = false
     hora = (this.state.hora.split(":"))[0] + (this.state.hora.split(":"))[1];
     fechaUTC = this.state.fecha + "T04:00:00Z";
     if(this.state.realizacion == "si"){
@@ -493,39 +494,95 @@ class Modificar_reunion extends Component {
           if(this.state.recomendacionCAP == "CAP"){
             axios.post(`http://localhost:8000/problema_asociado/`, {tipo: "15", reunion: res.data.id})
           }
-          if(this.state.derivacionBEst == "BEst"){
-            var fechaBEstUTC
-            fechaBEstUTC = this.state.fechaBEst + "T04:00:00Z";
-            axios.post(`http://localhost:8000/derivacion/`, {entidad_derivacion: "BEst",
-                                                             fecha: fechaBEstUTC,
-                                                             observacion: this.state.observacionBEst,
-                                                             contacto: contacto})
-          }
-          if(this.state.derivacionDCP == "DCP"){
-            var fechaDCPUTC
-            fechaDCPUTC = this.state.fechaDCP + "T04:00:00Z";
-            axios.post(`http://localhost:8000/derivacion/`, {entidad_derivacion: "DCP",
-                                                             fecha: fechaDCPUTC,
-                                                             observacion: this.state.observacionDCP,
-                                                             contacto: contacto})
-          }
-          if(this.state.derivacionSE == "SE"){
-            var fechaSEUTC
-            fechaSEUTC = this.state.fechaSE + "T04:00:00Z";
-            axios.post(`http://localhost:8000/derivacion/`, {entidad_derivacion: "SE",
-                                                             fecha: fechaSEUTC,
-                                                             observacion: this.state.observacionSE,
-                                                             contacto: contacto})
-          }
-          if(this.state.derivacionDC == "DC"){
-            var fechaDCUTC
-            fechaDCUTC = this.state.fechaDC + "T04:00:00Z";
-            axios.post(`http://localhost:8000/derivacion/`, {entidad_derivacion: "DC",
-                                                             fecha: fechaDCUTC,
-                                                             observacion: this.state.observacionDC,
-                                                             contacto: contacto})
-          }
+          axios.get(`http://localhost:8000/derivacion/`).then(res2=>{
+            for(i=0;i<res2.data.length;i++){
+              if(res2.data[i].contacto == contacto){
+                derivaciones.push(res2.data[i])
+              }
+            }
+            if(this.state.derivacionBEst == "BEst"){
+              var fechaBEstUTC
+              fechaBEstUTC = this.state.fechaBEst + "T04:00:00Z";
+              for(i=0;i<derivaciones.length;i++){
+                if(derivaciones[i].entidad_derivacion == "BEst"){
+                  existe = true
+                  axios.put(`http://localhost:8000/derivacion/${derivaciones[i].id}/`, {entidad_derivacion: "BEst",
+                                                                                       fecha: fechaBEstUTC,
+                                                                                       observacion: this.state.observacionBEst,
+                                                                                       contacto: contacto})
+                }
+              }
+              if(!existe){
+                existe = false
+                axios.post(`http://localhost:8000/derivacion/`, {entidad_derivacion: "BEst",
+                                                                    fecha: fechaBEstUTC,
+                                                                    observacion: this.state.observacionBEst,
+                                                                    contacto: contacto})
+              }
+            }
+            if(this.state.derivacionDCP == "DCP"){
+              var fechaDCPUTC
+              fechaDCPUTC = this.state.fechaDCP + "T04:00:00Z";
+              for(i=0;i<derivaciones.length;i++){
+                if(derivaciones[i].entidad_derivacion == "DCP"){
+                  existe = true
+                  axios.put(`http://localhost:8000/derivacion/${derivaciones[i].id}/`, {entidad_derivacion: "DCP",
+                                                                                        fecha: fechaDCPUTC,
+                                                                                        observacion: this.state.observacionDCP,
+                                                                                        contacto: contacto})
+                }
+              }
+              if(!existe){
+                existe = false
+                axios.post(`http://localhost:8000/derivacion/`, {entidad_derivacion: "DCP",
+                                                                fecha: fechaDCPUTC,
+                                                                observacion: this.state.observacionDCP,
+                                                                contacto: contacto})
+              }
+            }
+            if(this.state.derivacionSE == "SE"){
+              var fechaSEUTC
+              fechaSEUTC = this.state.fechaSE + "T04:00:00Z";
+              for(i=0;i<derivaciones.length;i++){
+                if(derivaciones[i].entidad_derivacion == "SE"){
+                  existe = true
+                    axios.put(`http://localhost:8000/derivacion/${derivaciones[i].id}/`, {entidad_derivacion: "SE",
+                                                                                          fecha: fechaSEUTC,
+                                                                                          observacion: this.state.observacionSE,
+                                                                                          contacto: contacto})
+                }
+              }
+              if(!existe){
+                existe = false
+                  axios.post(`http://localhost:8000/derivacion/`, {entidad_derivacion: "SE",
+                                                                  fecha: fechaSEUTC,
+                                                                  observacion: this.state.observacionSE,
+                                                                  contacto: contacto})
+              }
+            }
+            if(this.state.derivacionDC == "DC"){
+              var fechaDCUTC
+              fechaDCUTC = this.state.fechaDC + "T04:00:00Z";
+              for(i=0;i<derivaciones.length;i++){
+                if(derivaciones[i].entidad_derivacion == "DC"){
+                  existe = true
+                  axios.put(`http://localhost:8000/derivacion/${derivaciones[i].id}/`, {entidad_derivacion: "DC",
+                                                                                        fecha: fechaDCUTC,
+                                                                                        observacion: this.state.observacionDC,
+                                                                                        contacto: contacto})
+                }
+              }
+              if(!existe){
+                existe = false
+                axios.post(`http://localhost:8000/derivacion/`, {entidad_derivacion: "DC",
+                                                                 fecha: fechaDCUTC,
+                                                                 observacion: this.state.observacionDC,
+                                                                 contacto: contacto})
+              }
+            }
+          })
         }
+        this.props.history.push("Ver_flujo")  
       });
     });
   }
