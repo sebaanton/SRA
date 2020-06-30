@@ -90,6 +90,7 @@ class Cargar_plantilla extends Component {
                 const apiUrl = 'http://localhost:8000';
                 try{
                    axios.post(`${apiUrl}/cargar/`, formData);
+                   alert("Se han cargado los datos correctamente")
                 }catch(e){
 
                 }
