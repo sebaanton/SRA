@@ -52,6 +52,7 @@ class Modificar_registro extends Component {
   }
 
   onSubmit(event){
+    event.preventDefault();
     axios.put(`http://localhost:8000/reporte/${this.state.reporte.id}/`, {
                                                                           tipo_ingreso: this.state.reporte.tipo_ingreso,
                                                                           asignaturas_reportadas: this.state.cantidad,
@@ -74,6 +75,7 @@ class Modificar_registro extends Component {
               <Card
                 title={`Modificar Registro RSA ${this.state.alumno.nombre}`}
                 content={
+                  <form onSubmit={this.onSubmit.bind(this)}>
                   <form>
                     <FormInputs
                       ncols={["col-md-3", "col-md-3", "col-md-3"]}
@@ -196,10 +198,11 @@ class Modificar_registro extends Component {
                     </form>
                         <br />
 
-                    <Button bsStyle="info" pullRight fill onClick={this.onSubmit.bind(this)}>
+                    <Button bsStyle="info" pullRight fill type="submit">
                       Actualizar registro
                     </Button>
                     <div className="clearfix" />
+                  </form>
                   </form>
                 }
               />

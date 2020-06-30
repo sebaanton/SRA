@@ -640,6 +640,7 @@ class Modificar_reunion extends Component {
   }
 
   onSubmit(event){
+    event.preventDefault();
     var fechaUTC
     var hora
     var realizacion
@@ -862,6 +863,7 @@ class Modificar_reunion extends Component {
               <Card
                 title="Modificar Reunión"
                 content={
+                  <form onSubmit={this.onSubmit.bind(this)}>
                   <form>
                     <FormInputs disabled
                       ncols={["col-md-3", "col-md-4", "col-md-4"]}
@@ -914,6 +916,7 @@ class Modificar_reunion extends Component {
                           bsClass: "form-control",
                           defaultValue: this.state.fecha,
                           onChange: this.onFechaChange.bind(this),
+                          required:"required",
                           //placeholder: "usuario@mail.udp.cl",
                           //disabled: "disabled"
                         },
@@ -928,7 +931,7 @@ class Modificar_reunion extends Component {
                           //value: `${this.state.reunion.hora}`,
                           minlength:"5",
                           maxlength:"5",
-                          pattern: "[0|1][0-9][0-6][0-9]|[2][0-3][0-5][0-9]",
+                          pattern: "[0-1][0-9][:][0-5][0-9]|[2][0-3][:][0-5][0-9]",
                           required:"required",
                           //Disabled: "disabled"
                         },
@@ -955,8 +958,8 @@ class Modificar_reunion extends Component {
                           defaultValue: this.state.reunion.iniciales_academico,
                           onChange: this.onIniciales_academicoChange.bind(this),
                           //value: `${this.state.reunion.fecha}`,
-                          minlength:"4",
-                          maxlength:"4",
+                          minlength:"2",
+                          maxlength:"2",
                           pattern: "[a-zA-Z]+",
                           //readonly:"readonly",
                         },
@@ -986,7 +989,6 @@ class Modificar_reunion extends Component {
                           minlength:"2",
                           maxlength:"2",
                           pattern: "[sS][Ii]|[Nn][Oo]",
-                          required:"required",
                           //disabled: "disabled"
                         },
                       ]}
@@ -1184,10 +1186,11 @@ class Modificar_reunion extends Component {
                     </Row>
                     </div>
                     <br></br>
-                    <Button bsStyle="info" pullRight fill onClick={this.onSubmit.bind(this)}>
+                    <Button bsStyle="info" pullRight fill type="submit">
                       Guardar Reunión
                     </Button>
                     <div className="clearfix" />
+                  </form>
                   </form>
                 }
               />
