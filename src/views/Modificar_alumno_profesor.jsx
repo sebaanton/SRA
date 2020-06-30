@@ -271,6 +271,7 @@ class Ingreso_profesor extends Component {
     axios.put(`${apiUrl}/alumno/${this.state.rut}/`, formData_alumno);
     axios.put(`${apiUrl}/asignatura_reportada/${this.state.id_asignatura_reportada}/`, formData_asignatura);
     axios.put(`http://localhost:8000/reporte/${this.state.id_reporte_n}/`, formData_reporte).then(data => {///////////////////////
+      	alert("Alumno modificado correctamente")
       this.props.history.goBack()
     });
   }
