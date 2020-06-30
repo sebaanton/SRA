@@ -37,7 +37,7 @@ function For_ingreso1 () {
       }
       const asignaturaCount = asignatura_reportada.split(",");
       const año = new Date().getFullYear().toString();
-      const prioridad = 0.3*causalCount + 0.7*(asignaturaCount.length());
+      const prioridad = 0.3*causalCount + 0.7*asignaturaCount.length;
       if (prioridad > 4){
         prioridad = 4;
       }
@@ -46,7 +46,7 @@ function For_ingreso1 () {
                                                                semestre: semestre.toString(),
                                                                tipo_causal: tipo_causal,
                                                                asignaturas_reportadas: asignaturaCount.length.toString(),
-                                                               prioridad: prioridad.toString(),
+                                                               prioridad: Math.round( prioridad ).toString(),
                                                                observacion: observacion,
                                                                reiteraciones_causal: causalCount.toString(),
                                                                tipo_ingreso: 'causal',
@@ -67,7 +67,6 @@ function For_ingreso1 () {
         count = count + await getRep(data.data[i].reporte)
       }
     }
-    console.log(count);
     return count
   }
   async function getRep(pk){
@@ -91,7 +90,11 @@ function For_ingreso1 () {
     formData.append('estado_actual', 'causal');
     formData.append('coordinador', localStorage.getItem('userID'));
     formData.append('copia_registro', file);
-    await axios.put(`${apiUrl}/alumno/${rut}/`, formData);
+    try{
+      await axios.put(`${apiUrl}/alumno/${rut}/`, formData);
+    }catch(e){
+
+    }
   }
   async function setNewAlumno(){
     var formData = new FormData();
@@ -257,7 +260,7 @@ function For_ingreso1 () {
                         label: "Nombre Completo",
                         type: "text",
                         bsClass: "form-control",
-                        placeholder: "Juan",
+                        placeholder: "Juan Perez",
                         defaultValue: "",
                         Value: nombre,
                         minlength:"3",
@@ -291,7 +294,7 @@ function For_ingreso1 () {
                         label: "Teléfono",
                         type: "text",
                         bsClass: "form-control",
-                        placeholder: "56997856443",
+                        placeholder: "997856443",
                         defaultValue: "",
                         Value: telefono,
                         minlength:"11",
@@ -317,7 +320,7 @@ function For_ingreso1 () {
                         label: "Semestre de ingreso",
                         type: "text",
                         bsClass: "form-control",
-                        placeholder: "1er semestre",
+                        placeholder: "1",
                         defaultValue: "",
                         Value: semestre_ingreso,
                         minlength:"1",

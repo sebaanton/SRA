@@ -437,14 +437,6 @@ class Modificar_reunion extends Component {
           }
         }
       }
-      console.log(this.state.nombre)
-      console.log(hora)
-      console.log(realizacion.toString())
-      console.log(cumplimiento_objetivos.toString())
-      console.log(this.state.medio_reunion)
-      console.log(this.state.observaciones)
-      console.log(this.state.iniciales_academico)
-      console.log(contacto.toString())
       axios.post(`http://localhost:8000/reunion/`, {nombre: this.state.nombre,
                                                     fecha: fechaUTC,
                                                     hora: hora,
