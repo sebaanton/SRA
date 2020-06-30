@@ -396,6 +396,7 @@ class CargarArchivo(APIView):
                     prioridad=1
                 elif prioridad>4:
                     prioridad=4
+                prioridad = round(prioridad,0)
                 if ingresado[i]:
                     for j in range(0,len(queryset4)):
                         if valor[i][8]==queryset4[j].glosa:
@@ -412,7 +413,7 @@ class CargarArchivo(APIView):
                         "semestre":semestre, 
                         #"tipo_causal":, 
                         "asignaturas_reportadas":1, 
-                        "prioridad":prioridad, 
+                        "prioridad":int(prioridad), 
                         "observacion":valor[i][7], 
                         "reiteraciones_causal":cantidad_causales[i], 
                         "tipo_ingreso" :valor[i][3],
@@ -478,7 +479,7 @@ class CargarArchivo(APIView):
                         "semestre":semestre, 
                         #"tipo_causal":, 
                         "asignaturas_reportadas":1, 
-                        "prioridad":prioridad, 
+                        "prioridad":int(prioridad), 
                         "observacion":valor[i][7], 
                         "reiteraciones_causal":cantidad_causales[i], 
                         "tipo_ingreso" :valor[i][3],
@@ -516,7 +517,7 @@ class CargarArchivo(APIView):
                     prioridad=1
                 elif prioridad>4:
                     prioridad=4
-
+                prioridad = round(prioridad,0)
                 if ingresado[i]:
                     if len(queryset6)!=0:
                         RepId = len(queryset6) +1+i
@@ -527,7 +528,7 @@ class CargarArchivo(APIView):
                         "semestre": semestre, 
                         "tipo_causal":valor[i][12], 
                         "asignaturas_reportadas":valor[i][10], 
-                        "prioridad": int(prioridad*10), 
+                        "prioridad": int(prioridad), 
                         "observacion":valor[i][11], 
                         "reiteraciones_causal":cantidad_causales[i], 
                         "tipo_ingreso" :valor[i][9],
@@ -577,7 +578,7 @@ class CargarArchivo(APIView):
                         "semestre": semestre, 
                         "tipo_causal":valor[i][12], 
                         "asignaturas_reportadas":valor[i][10], 
-                        "prioridad": int(prioridad*10), 
+                        "prioridad": int(prioridad), 
                         "observacion":valor[i][11], 
                         "reiteraciones_causal":cantidad_causales[i], 
                         "tipo_ingreso" :valor[i][9],
