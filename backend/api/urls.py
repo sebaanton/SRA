@@ -4,7 +4,7 @@ from .views import (AdministradorView, CoordinadorView, ProfesorView,
                     AlumnoView, ReporteView, AsignaturaView,
                     Asignatura_reportadaView, CausalView, ContactoView,
                     DerivacionView, ReunionView, Problema_asociadoView,
-                    RecomendacionView,CargarArchivo)
+                    RecomendacionView,CargarArchivo,Largo)
 
 urlpatterns = [
     path('administrador/', AdministradorView.as_view()),
@@ -36,5 +36,6 @@ urlpatterns = [
     path('token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
     path('cargar/', CargarArchivo.as_view()),
+    path('largo/', Largo.as_view()),
     #path('causal_alert/', CausalAlertaView.as_view()),
 ]
