@@ -31,7 +31,7 @@ class Crear_contacto extends Component {
   componentDidMount() {
     const currenturl = window.location.pathname
     const largo = currenturl.length
-    const contactoID = currenturl.slice(26,largo)
+    const contactoID = currenturl.slice(32,largo)
     const contactoRUT = this.props.match.params.contactoRUT;
     var autog = "no"
     var inter = "no"

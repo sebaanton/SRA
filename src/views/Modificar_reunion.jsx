@@ -100,7 +100,7 @@ class Modificar_reunion extends Component {
   componentDidMount() {
     const currenturl = window.location.pathname
     const largo = currenturl.length
-    const urls = currenturl.slice(25,largo)
+    const urls = currenturl.slice(31,largo)
     const reunionRUT = this.props.match.params.reunionRUT;
     axios.get(`http://localhost:8000/reunion/${urls}`).then(res => {
       var real

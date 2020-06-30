@@ -31,7 +31,7 @@ function Flujo_m(props) {
                             statsValue={flujo.tipo_nombre}// tipo de contacto: nombre_contacto/reunion
                             statsIconText={flujo.observaciones}//observaciones
                             statsIcon={
-                                <Button bsStyle="info" simple type="button" bsSize="xs" pullRight type="submit" href={`http://localhost:3000/admin/Modificar_${flujo.tipo}/${flujo.id}`}>
+                                <Button bsStyle="info" simple type="button" bsSize="xs" pullRight type="submit" href={`http://localhost:3000/coordinador/Modificar_${flujo.tipo}/${flujo.id}`}>
                                   <i className="fa fa-edit" />
                                 </Button>}
                         />
