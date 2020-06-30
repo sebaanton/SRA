@@ -26,25 +26,86 @@ import axios from "axios";
 class Cargar_plantilla extends Component {
   state = {
     file: '',
+    largo:'',
+    reporte:'http://localhost:8000/media/uploads/DatosReporte.xlsx',
+    causal:'http://localhost:8000/media/uploads/DatosCausal.xlsx',
   };
-  onFileChange(event) {
+  async onFileChange(event) {
     this.state.file=event.target.files[0]   
-    
+    var fileUpload = event.target.files[0]
+    console.log(fileUpload)
+    var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.xls|.xlsx)$/;
+        if (regex.test(fileUpload["name"].toLowerCase())) {
+          var formData = new FormData();
+          formData.append('archivo', this.state.file);
+          const apiUrl = 'http://localhost:8000';
+          try{
+            await axios.post(`${apiUrl}/largo/`, formData);
+            axios.get("http://localhost:8000/largo/").then(res2 => {
+              this.setState({
+                largo: res2.data,
+              });
+              if (this.state.largo["largo"] == 9 || this.state.largo["largo"] == 14){
+                
+              }
+              else{
+                alert("No es el formato correcto")
+              }
+              
+            });
+          }catch(e){
+      
+          }
+        } else {
+            alert("Por favor ingrese un archivo Excel valido.");
+        }
   }
 
+  openCausal(event){
+    
+    window.open(`${this.state.causal}`, "_blank")
+  }
 
-
-
+  openPlantilla(event){
+   
+    window.open(`${this.state.reporte}`, "_blank")
+  }
 
   async onSubmit(){
-    var formData = new FormData();
-    formData.append('archivo', this.state.file);
-    const apiUrl = 'http://localhost:8000';
-    try{
-      await axios.post(`${apiUrl}/cargar/`, formData);
-    }catch(e){
+    var fileUpload = this.state.file
+    var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.xls|.xlsx)$/;
+        if (regex.test(fileUpload["name"].toLowerCase())) {
+          var formData = new FormData();
+          formData.append('archivo', this.state.file);
+          const apiUrl = 'http://localhost:8000';
+          try{
+            await axios.post(`${apiUrl}/largo/`, formData);
+            axios.get("http://localhost:8000/largo/").then(res2 => {
+              this.setState({
+                largo: res2.data,
+              });
+              if (this.state.largo["largo"] == 9 || this.state.largo["largo"] == 14){
+                var formData = new FormData();
+                formData.append('archivo', this.state.file);
+                const apiUrl = 'http://localhost:8000';
+                try{
+                   axios.post(`${apiUrl}/cargar/`, formData);
+                }catch(e){
 
-    }
+                }
+              }
+              else{
+                alert("No es el formato correcto")
+              }
+              
+            });
+          }catch(e){
+      
+          }
+        } else {
+            alert("Por favor ingrese un archivo Excel valido.");
+        }
+    
   }
 
   render() {
@@ -76,15 +137,27 @@ class Cargar_plantilla extends Component {
                   </form>
                 }
               />
+              <Col md={4} >
+              <Button bsStyle="Secondary" pullLeft fill onClick={this.openPlantilla.bind(this)}>
+                      Descargar Plantilla de Reporte
+                    </Button>
+              </Col>
+              <Col md={4} mdOffset={1}>
+                    <Button bsStyle="Secondary" pullLeft fill onClick={this.openCausal.bind(this)}>
+                    Descargar Plantilla de Causal
+                    </Button>
+                    </Col>
             </Col>
           </Row>
         </Grid>
+                    
       </div>
         </div>
-       
+        
       </div>
     );
   }
 }
 
 export default Cargar_plantilla;
+
