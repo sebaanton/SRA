@@ -38,17 +38,18 @@ function Ingreso_profesor () {
       const asignaturaCount = asignatura_reportada.split(",");
       const año = new Date().getFullYear().toString();
       var año_semestre_m = año.concat(semestre.toString);
-      const { data2 } = await axios.get(`${apiUrl}/reporte/`);
+      const { data2 } = await axios.get(`${apiUrl}/reporte`);
+      console.log(data2.data)
       var i;
       var id_reporte = 0;
-      for(i; i<data2.length;i++){
-        if ((data2[i].alumno == rut)&((data2[i].año == año)&(data2[i].semestre == semestre))){
-          id_reporte = data2[i].id;
+      for(i; i<data2.data.length;i++){
+        if ((data2.data[i].alumno == rut)&((data2.data[i].año == año)&(data2.data[i].semestre == semestre))){
+          id_reporte = data2.data[i].id;
         }
       }
       
       if (id_reporte == 0){
-        const prioridad = 0.3*causalCount + 0.7*(asignaturaCount.length());
+        const prioridad = 0.3*causalCount + 0.7*(asignaturaCount.length);
         if (prioridad > 4){
           prioridad = 4;
         }
@@ -58,12 +59,12 @@ function Ingreso_profesor () {
                                                                semestre: semestre.toString(),
                                                                tipo_causal: tipo_causal,
                                                                asignaturas_reportadas: asignaturaCount.length.toString(),
-                                                               prioridad: prioridad.toString(),
+                                                               prioridad: Math.round(prioridad).toString(),
                                                                observacion: observacion,
                                                                reiteraciones_causal: causalCount.toString(),
                                                                tipo_ingreso: 'reportado',
                                                                alumno: rut,
-                                                              });                                                    
+                                                              }, function(){console.log(data)});                                                    
 
         await setAsignatura(data.id)
         history.push("/profesor/Buscar_alumno");
@@ -154,7 +155,7 @@ function Ingreso_profesor () {
                                                                       observaciones:observacion,
                                                                       asignatura:asignatura_reportada,
                                                                       reporte: rep,
-                                                                      });
+                                                                      }, function(){console.log(data)});
   }
   async function getCantAsigna(id_reporte){// dado un id_reporte, calcula la cantidad de asignaturas reportadas
     var count = 0;
