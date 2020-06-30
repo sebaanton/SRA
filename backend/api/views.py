@@ -9,7 +9,7 @@ from .serializers import (AdministradorSerializer, CoordinadorSerializer, Profes
                           AlumnoSerializer, ReporteSerializer, AsignaturaSerializer,
                           Asignatura_reportadaSerializer, CausalSerializer, ContactoSerializer,
                           DerivacionSerializer, ReunionSerializer, Problema_asociadoSerializer,
-                          RecomendacionSerializer)
+                          RecomendacionSerializer,LargoSerializer,CargarSerializer)
 from django.db import connection
 from rest_framework.views import APIView
 import numpy as np
@@ -285,6 +285,31 @@ class RecomendacionView(generics.GenericAPIView, mixins.ListModelMixin, mixins.C
         return self.destroy(request, pk)
 
       
+class  Largo(APIView):
+    permission_classes = [IsAuthenticated]
+    queryset = Recomendacion.objects.all()
+
+    def get(self, request):
+        f= open("largo.txt","r")
+        n = f.read()
+        f.close() 
+        n = int(n)
+        serializer = LargoSerializer(data={"largo":n})
+        serializer.is_valid(raise_exception=True)
+        return Response(serializer.data)
+    
+    def post(self, request):
+        f= open("largo.txt","w+")
+        excel = request.data["archivo"]
+        df = pd.read_excel(excel)
+        n = len(df.axes[1])
+        f.write(str(n))
+        f.close()
+        
+        return Response(status=status.HTTP_202_ACCEPTED)
+
+
+
 class CargarArchivo(APIView):
     permission_classes = [IsAuthenticated]
     queryset = Recomendacion.objects.all()
@@ -343,7 +368,7 @@ class CargarArchivo(APIView):
                         except:
                             valor2.append(df.iat[i,j]) ## Saca el valor de la columna i y fila j
                     valor.append(valor2)
-        print(valor[1])
+        
         for i in range(0,n):
             cantidad_causales.append(0)
         if len(queryset7)!=0: #cantidad de causales
@@ -352,11 +377,6 @@ class CargarArchivo(APIView):
                     for k in range(0,len(queryset7)):
                         if queryset7[k].reporte == queryset6[j]:
                             if queryset6[j].alumno.rut  == valor[i][0]:
-                                print(queryset7[k].reporte)
-                                print(queryset6[j])
-                                print(cantidad_causales)
-                                print(valor[i][0])
-                                print(queryset6[j].alumno.rut)
                                 cantidad_causales[i] = cantidad_causales[i]+1
 
         for i in range(0,n):
@@ -501,8 +521,7 @@ class CargarArchivo(APIView):
                     if len(queryset6)!=0:
                         RepId = len(queryset6) +1+i
                     else:
-                        RepId = 1   
-                    print(RepId)                
+                        RepId = 1                  
                     datos_reportes={
                         "año": año,
                         "semestre": semestre, 
@@ -578,6 +597,6 @@ class CargarArchivo(APIView):
                     causal = CausalSerializer(data=datos_causal)
                     causal.is_valid(raise_exception=True)
                     causal.save()
-        print("hola")
+
         return Response(status=status.HTTP_202_ACCEPTED)
 
