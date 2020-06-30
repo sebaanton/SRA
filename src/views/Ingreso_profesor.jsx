@@ -36,31 +36,33 @@ function Ingreso_profesor () {
       }
       
       const asignaturaCount = asignatura_reportada.split(",");
-      const año = new Date().getFullYear().toString();
-      var año_semestre_m = año.concat(semestre.toString);
-      const { data2 } = await axios.get(`${apiUrl}/reporte/`);
+      var año = new Date().getFullYear();
+      
+      const data2 = await axios.get(`${apiUrl}/reporte`);
+      console.log(data2.data[0].alumno)
       var i;
       var id_reporte = 0;
-      for(i; i<data2.length;i++){
-        if ((data2[i].alumno == rut)&((data2[i].año == año)&(data2[i].semestre == semestre))){
-          id_reporte = data2[i].id;
+      for(i; i<data2.data.length;i++){
+        if ((data2.data[i].alumno == rut)&((data2.data[i].año == año)&(data2.data[i].semestre == semestre))){
+          id_reporte = data2.data[i].id;
         }
       }
-      
+      var año_semestre_m = año*10+semestre;
+
       if (id_reporte == 0){
-        const prioridad = 0.3*causalCount + 0.7*(asignaturaCount.length());
+        const prioridad = 0.3*causalCount + 0.7*(asignaturaCount.length);
         if (prioridad > 4){
           prioridad = 4;
         }
         const { data } = await axios.post(`${apiUrl}/reporte/`, {
                                                                
-                                                               año: new Date().getFullYear().toString(),
-                                                               semestre: semestre.toString(),
+                                                               año: new Date().getFullYear(),
+                                                               semestre: semestre,
                                                                tipo_causal: tipo_causal,
-                                                               asignaturas_reportadas: asignaturaCount.length.toString(),
-                                                               prioridad: prioridad.toString(),
+                                                               asignaturas_reportadas: asignaturaCount.length,
+                                                               prioridad: Math.round( prioridad ),
                                                                observacion: observacion,
-                                                               reiteraciones_causal: causalCount.toString(),
+                                                               reiteraciones_causal: causalCount,
                                                                tipo_ingreso: 'reportado',
                                                                alumno: rut,
                                                               });                                                    
@@ -68,22 +70,22 @@ function Ingreso_profesor () {
         await setAsignatura(data.id)
         history.push("/profesor/Buscar_alumno");
       }else{
-        const prioridad = 0.3*causalCount + 0.7*(asignaturaCount.length());
+        const prioridad = 0.3*causalCount + 0.7*(asignaturaCount.length);
         if (prioridad > 4){
           prioridad = 4;
         }
         const cantidad_asignaturas  = await getCantAsigna(id_reporte);
         const { data } = await axios.put(`${apiUrl}/reporte/${id_reporte}`, {
-                                                              año: new Date().getFullYear().toString(),
-                                                              semestre: semestre.toString(),
+                                                              año: new Date().getFullYear(),
+                                                              semestre: semestre,
                                                               tipo_causal: tipo_causal,
-                                                              asignaturas_reportadas: cantidad_asignaturas.toString(),
-                                                              prioridad: prioridad.toString(),
+                                                              asignaturas_reportadas: cantidad_asignaturas,
+                                                              prioridad: Math.round( prioridad ),
                                                               observacion: observacion,
-                                                              reiteraciones_causal: causalCount.toString(),
+                                                              reiteraciones_causal: causalCount,
                                                               tipo_ingreso: 'reportado',
                                                               alumno: rut,
-                                                            });                                                    
+                                                            });                                                   
 
         await setAsignatura(data.id)
         history.push("/profesor/Buscar_alumno");
@@ -119,7 +121,11 @@ function Ingreso_profesor () {
     formData.append('nombre', nombre);
     formData.append('correo', email);
     formData.append('profesor', localStorage.getItem('userID'));
+    try{
     await axios.put(`${apiUrl}/alumno/${rut}/`, formData);
+  }catch(e){
+
+  }
   }
   async function setNewAlumno(){
     var formData = new FormData();
@@ -143,8 +149,8 @@ function Ingreso_profesor () {
     } else {
       semestre = 2;
     }
-    var año_C = new Date().getFullYear().toString();
-    var año_semestre = año_C.concat(semestre.toString);
+    var año_C = new Date().getFullYear();
+    var año_semestre = año_C*10+semestre;
     console.log(año_semestre)
     const data = await axios.post(`${apiUrl}/asignatura_reportada/`, {
                                                                       asistencia: asistencia,
