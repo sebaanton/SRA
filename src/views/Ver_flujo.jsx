@@ -116,13 +116,13 @@ class Ver_flujo extends React.Component {
         await this.onAddItem(this.state.estilo[2], fecha.toLocaleDateString('es', this.state.opciones)
           .replace(/ /g, '-')
           .replace('.', '')
-          .replace(/-([a-z])/, function (x) { return '-' + x[1].toUpperCase() }).concat(', ',horaa, ':', minutoos), "Contacto (\ ".concat(this.state.contacto.medio_contacto,"'\) ",this.state.contacto.nombre), this.state.contacto.observaciones)
+          .replace(/-([a-z])/, function (x) { return '-' + x[1].toUpperCase() }).concat(', ',horaa, ':', minutoos), "Contacto (\ ".concat(this.state.contacto.medio_contacto,"'\) ",this.state.contacto.nombre), this.state.contacto.observaciones, 'contacto', this.state.contacto.id)
       } else {// si la fecha actual es menor que la del contacto, entonces esta fijada (pendiente)
         const fecha = new Date(this.state.contacto.fecha)
         await this.onAddItem(this.state.estilo[1], fecha.toLocaleDateString('es', this.state.opciones)
           .replace(/ /g, '-')
           .replace('.', '')
-          .replace(/-([a-z])/, function (x) { return '-' + x[1].toUpperCase() }).concat(', ',horaa, ':', minutoos), "Contacto (\ ".concat(this.state.contacto.medio_contacto,"'\) ",this.state.contacto.nombre), this.state.contacto.observaciones)
+          .replace(/-([a-z])/, function (x) { return '-' + x[1].toUpperCase() }).concat(', ',horaa, ':', minutoos), "Contacto (\ ".concat(this.state.contacto.medio_contacto,"'\) ",this.state.contacto.nombre), this.state.contacto.observaciones, 'contacto', this.state.contacto.id)
       }
     } else {// si tiene reuniones, entonces ya se realizó el contacto
       const fecha = new Date(this.state.contacto.fecha)
@@ -134,7 +134,7 @@ class Ver_flujo extends React.Component {
       await this.onAddItem(this.state.estilo[0], fecha.toLocaleDateString('es', this.state.opciones)
         .replace(/ /g, '-')
         .replace('.', '')
-        .replace(/-([a-z])/, function (x) { return '-' + x[1].toUpperCase() }).concat(', ',horaa, ':', minutoos), "Contacto (\'".concat(this.state.contacto.medio_contacto,"'\) ",this.state.contacto.nombre_contacto), this.state.contacto.observaciones)
+        .replace(/-([a-z])/, function (x) { return '-' + x[1].toUpperCase() }).concat(', ',horaa, ':', minutoos), "Contacto (\'".concat(this.state.contacto.medio_contacto,"'\) ",this.state.contacto.nombre_contacto), this.state.contacto.observaciones, 'contacto', this.state.contacto.id)
     }
     var k;
     for (k = 0; k < this.state.reuniones_ord.length; k++) {
@@ -149,18 +149,18 @@ class Ver_flujo extends React.Component {
         await this.onAddItem(this.state.estilo[0], fecha_c2.toLocaleDateString('es', this.state.opciones)
           .replace(/ /g, '-')
           .replace('.', '')
-          .replace(/-([a-z])/, function (x) { return '-' + x[1].toUpperCase() }).concat(', ',horaa, ':', minutoos), "Reunión (\'".concat(this.state.reuniones_ord[k].medio_reunion,"'\) ",this.state.reuniones_ord[k].nombre), this.state.reuniones_ord[k].observaciones)
+          .replace(/-([a-z])/, function (x) { return '-' + x[1].toUpperCase() }).concat(', ',horaa, ':', minutoos), "Reunión (\'".concat(this.state.reuniones_ord[k].medio_reunion,"'\) ",this.state.reuniones_ord[k].nombre), this.state.reuniones_ord[k].observaciones, 'reunion', this.state.reuniones[k].id)
       } else if(today2 < fecha_c2) {//si está fijada pero no realizada (puede ser que aun no sea la fecha o esté atrasada)
         await this.onAddItem(this.state.estilo[1], fecha_c2.toLocaleDateString('es', this.state.opciones)
           .replace(/ /g, '-')
           .replace('.', '')
-          .replace(/-([a-z])/, function (x) { return '-' + x[1].toUpperCase() }).concat(', ',horaa, ':', minutoos), "Reunión (\'".concat(this.state.reuniones_ord[k].medio_reunion,"'\) ",this.state.reuniones_ord[k].nombre), this.state.reuniones_ord[k].observaciones)
+          .replace(/-([a-z])/, function (x) { return '-' + x[1].toUpperCase() }).concat(', ',horaa, ':', minutoos), "Reunión (\'".concat(this.state.reuniones_ord[k].medio_reunion,"'\) ",this.state.reuniones_ord[k].nombre), this.state.reuniones_ord[k].observaciones, 'reunion', this.state.reuniones[k].id)
      
       }else{
         await this.onAddItem(this.state.estilo[2], fecha_c2.toLocaleDateString('es', this.state.opciones)
           .replace(/ /g, '-')
           .replace('.', '')
-          .replace(/-([a-z])/, function (x) { return '-' + x[1].toUpperCase() }).concat(', ',horaa, ':', minutoos), "Reunión (\'".concat(this.state.reuniones_ord[k].medio_reunion,"'\) ",this.state.reuniones_ord[k].nombre), this.state.reuniones_ord[k].observaciones)
+          .replace(/-([a-z])/, function (x) { return '-' + x[1].toUpperCase() }).concat(', ',horaa, ':', minutoos), "Reunión (\'".concat(this.state.reuniones_ord[k].medio_reunion,"'\) ",this.state.reuniones_ord[k].nombre), this.state.reuniones_ord[k].observaciones, 'reunion', this.state.reuniones[k].id)
       }
 
     }
@@ -187,8 +187,8 @@ setReunonOrd = async (reuss) => {
       console.log(this.state.reuniones)
     })
   }
-  onAddItem = async (estilo_c, fecha_c, tipo_nombre_c, observaciones_c) => {
-    const value = { estilo: estilo_c, fecha: fecha_c, tipo_nombre: tipo_nombre_c, observaciones: observaciones_c }
+  onAddItem = async (estilo_c, fecha_c, tipo_nombre_c, observaciones_c, tipo_c, id_c) => {
+    const value = { estilo: estilo_c, fecha: fecha_c, tipo_nombre: tipo_nombre_c, observaciones: observaciones_c, tipo: tipo_c, id: id_c }
     this.setState({
       data: this.state.data.concat(value)
     }, function () {
