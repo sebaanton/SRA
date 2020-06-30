@@ -15,9 +15,9 @@ class Ver_registro extends Component {
     reporte: [],
     fecha: "",
     alumno: [],
-    calificacion: "No aplica",
-    asistencia: "No aplica",
-    interes: "No aplica"
+    calificacion: "",
+    asistencia: "",
+    interes: ""
   };
 
   componentDidMount(){
@@ -52,9 +52,9 @@ class Ver_registro extends Component {
             asis = asis + asig[i].asistencia
             inter = inter + asig[i].participacion
           }
-          calif = calif/asig.length
-          asis = calif/asig.length
-          inter = calif/asig.length
+          calif = calif/(asig.length*10)
+          asis = asis/asig.length
+          inter = inter/asig.length
           if (inter > asig.length*7/3){
             interTex = "Alto"
           }else if (inter > (asig.length*5/3)){

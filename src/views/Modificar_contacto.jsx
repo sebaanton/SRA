@@ -98,6 +98,7 @@ class Crear_contacto extends Component {
   }
 
   onSubmit(event){
+    event.preventDefault();
     var i;
     var hora;
     var interes;
@@ -140,6 +141,7 @@ class Crear_contacto extends Component {
               <Card
                 title="Modificar contacto"
                 content={
+                  <form onSubmit={this.onSubmit.bind(this)}>
                   <form>
                     <FormInputs disabled
                       ncols={["col-md-4", "col-md-4", "col-md-4"]}
@@ -159,6 +161,9 @@ class Crear_contacto extends Component {
                           bsClass: "form-control",
                           placeholder: this.state.contacto.medio_contacto,
                           defaultValue: this.state.contacto.medio_contacto,
+                          maxlength:"30",
+                          required:"required",
+                          pattern: "[a-zA-Z ]+",
                           onChange: this.onMedio_contactoChange.bind(this)
                           //disabled: "disabled"
                         },
@@ -168,6 +173,9 @@ class Crear_contacto extends Component {
                           bsClass: "form-control",
                           placeholder: this.state.contacto.nombre_contacto,
                           defaultValue: this.state.contacto.nombre_contacto,
+                          maxlength:"30",
+                          required:"required",
+                          pattern: "[a-zA-Z0-9 ]+",
                           onChange: this.onNombre_contactoChange.bind(this)
                           //disabled: "disabled"
                         },
@@ -182,6 +190,7 @@ class Crear_contacto extends Component {
                           bsClass: "form-control",
                           placeholder: this.state.fecha,
                           defaultValue: this.state.fecha,
+                          required:"required",
                           onChange: this.onFechaChange.bind(this)
                           //placeholder: "usuario@mail.udp.cl",
                           //disabled: "disabled"
@@ -191,6 +200,10 @@ class Crear_contacto extends Component {
                           type: "text",
                           format:"form-control",
                           bsClass: "form-control",
+                          minlength:"5",
+                          maxlength:"5",
+                          pattern: "[0-1][0-9][:][0-5][0-9]|[2][0-3][:][0-5][0-9]",
+                          required:"required",
                           placeholder: this.state.hora,
                           defaultValue: this.state.hora,
                           onChange: this.onHoraChange.bind(this)
@@ -202,6 +215,10 @@ class Crear_contacto extends Component {
                           bsClass: "form-control",
                           placeholder: this.state.interes,
                           defaultValue: this.state.interes,
+                          minlength:"2",
+                          maxlength:"2",
+                          pattern: "[sS][iI]|[nN][oO]",
+                          required:"required",
                           onChange: this.onInteresChange.bind(this)
                           //disabled: "disabled"
                         },
@@ -211,16 +228,21 @@ class Crear_contacto extends Component {
                           bsClass: "form-control",
                           placeholder: this.state.autogestion,
                           defaultValue: this.state.autogestion,
+                          minlength:"2",
+                          maxlength:"2",
+                          pattern: "[sS][iI]|[nN][oO]",
+                          required:"required",
                           onChange: this.onAutogestionChange.bind(this)
                           //disabled: "disabled"
                         },
                         
                       ]}
                     />
-                    <Button bsStyle="info" pullRight fill onClick={this.onSubmit.bind(this)}>
+                    <Button bsStyle="info" pullRight fill type="submit">
                       Guardar
                     </Button>
                     <div className="clearfix" />
+                  </form>
                   </form>
                 }
               />

@@ -86,6 +86,7 @@ class Crear_contacto extends Component {
   }
 
   onSubmit(event){
+    event.preventDefault();
     var i;
     var reporte;
     var hora;
@@ -126,7 +127,7 @@ class Crear_contacto extends Component {
                                                         interes: interes.toString(),
                                                         autogestion: autogestion.toString(),
                                                       }).then(data =>{
-          this.props.history.push("Ver_flujo")
+          this.props.history.push(`Ver_flujo/${reporte}`)
         });                        
       } else {
         alert("Contacto ya realizado")
@@ -143,6 +144,7 @@ class Crear_contacto extends Component {
               <Card
                 title="Crear contacto"
                 content={
+                  <form onSubmit={this.onSubmit.bind(this)}>
                   <form>
                     <FormInputs disabled
                       ncols={["col-md-4", "col-md-4", "col-md-4"]}
@@ -152,6 +154,10 @@ class Crear_contacto extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "123456789-8",
+                          minlength:"9",
+                          maxlength:"10",
+                          required:"required",
+                          pattern: "[^a-zA-Z][0-9]{7,8}+-[0-9|Kk]",
                           onChange: this.onRutChange.bind(this)
                           //disabled: "disabled"
                         },
@@ -160,6 +166,9 @@ class Crear_contacto extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "Correo",
+                          maxlength:"30",
+                          required:"required",
+                          pattern: "[a-zA-Z ]+",
                           onChange: this.onMedio_contactoChange.bind(this)
                           //disabled: "disabled"
                         },
@@ -168,6 +177,9 @@ class Crear_contacto extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "1er contacto",
+                          maxlength:"30",
+                          required:"required",
+                          pattern: "[a-zA-Z0-9 ]+",
                           onChange: this.onNombre_contactoChange.bind(this)
                           //disabled: "disabled"
                         },
@@ -180,7 +192,8 @@ class Crear_contacto extends Component {
                           label: "Fecha de contacto",
                           type: "date",
                           bsClass: "form-control",
-                          onChange: this.onFechaChange.bind(this)
+                          onChange: this.onFechaChange.bind(this),
+                          required:"required",
                           //placeholder: "usuario@mail.udp.cl",
                           //disabled: "disabled"
                         },
@@ -190,6 +203,10 @@ class Crear_contacto extends Component {
                           format:"form-control",
                           bsClass: "form-control",
                           placeholder: "19:30",
+                          minlength:"5",
+                          maxlength:"5",
+                          pattern: "[0-1][0-9][:][0-5][0-9]|[2][0-3][:][0-5][0-9]",
+                          required:"required",
                           onChange: this.onHoraChange.bind(this)
                           //Disabled: "disabled"
                         },
@@ -198,6 +215,10 @@ class Crear_contacto extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "si",
+                          minlength:"2",
+                          maxlength:"2",
+                          pattern: "[sS][iI]|[nN][oO]",
+                          required:"required",
                           onChange: this.onInteresChange.bind(this)
                           //disabled: "disabled"
                         },
@@ -206,16 +227,21 @@ class Crear_contacto extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "no",
+                          minlength:"2",
+                          maxlength:"2",
+                          pattern: "[sS][iI]|[nN][oO]",
+                          required:"required",
                           onChange: this.onAutogestionChange.bind(this)
                           //disabled: "disabled"
                         },
                         
                       ]}
                     />
-                    <Button bsStyle="info" pullRight fill onClick={this.onSubmit.bind(this)}>
+                    <Button bsStyle="info" pullRight fill type="submit">
                       Guardar
                     </Button>
                     <div className="clearfix" />
+                  </form>
                   </form>
                 }
               />

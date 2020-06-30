@@ -49,7 +49,6 @@ class Modificar_detalle extends Component {
         telefono: res.data.telefono,
         carrera_origen: res.data.carrera_origen,
         estado_actual: res.data.estado_actual,
-        copia_registro: res.data.copia_registro
         //rut: res.data.rut,
       });
 
@@ -102,6 +101,7 @@ class Modificar_detalle extends Component {
     });
   }
   onSubmit(event){
+    event.preventDefault();
     var formData = new FormData();
     formData.append('rut', this.state.alumno.rut);
     formData.append('nombre', this.state.nombre);
@@ -113,7 +113,9 @@ class Modificar_detalle extends Component {
     formData.append('carrera_origen', this.state.carrera_origen);
     formData.append('estado_actual', this.state.estado_actual);
     formData.append('coordinador', localStorage.getItem('userID'));
-    formData.append('copia_registro', this.state.copia_registro);
+    if(this.state.copia_registro){
+      formData.append('copia_registro', this.state.copia_registro);
+    }
     axios.put(`http://localhost:8000/alumno/${this.state.alumno.rut}/`, formData).then(data =>{
       this.props.history.goBack()                                                          
     });
@@ -128,6 +130,7 @@ class Modificar_detalle extends Component {
               <Card
                 title="Modificar detalle alumno"
                 content={
+                  <form onSubmit={this.onSubmit.bind(this)}>
                   <form>
                     <FormInputs disabled
                       ncols={["col-md-5", "col-md-7"]}
@@ -167,11 +170,7 @@ class Modificar_detalle extends Component {
                           onChange: this.onNombreChange.bind(this),
                           minlength:"3",
                           maxlength:"50",
-                          pattern: "[a-zA-Z]+",
-                          minlength:"4",
-                          maxlength:"4", 
-                          pattern: "[1][9][6-9][0-9]|[2][0-2][0-9][0-9]",
-                          
+                          pattern: "[a-zA-Z ]+"    
                         },
                         {
                           label: "Año de Nacimiento",
@@ -182,7 +181,6 @@ class Modificar_detalle extends Component {
                           minlength:"4",
                           maxlength:"4", 
                           pattern: "[1][9][6-9][0-9]|[2][0-2][0-9][0-9]",
-                          value: `${this.state.alumno.año_nacimiento}`,
                           onChange: this.onAño_nacimientoChange.bind(this),              
                         },
                         
@@ -199,9 +197,9 @@ class Modificar_detalle extends Component {
                           placeholder: this.state.alumno.telefono,
                           defaultValue: this.state.alumno.telefono,
                           onChange: this.onTelefonoChange.bind(this),
-                          minlength:"11",
-                          maxlength:"11", 
-                          pattern: "56[0-9]{9}",
+                          minlength:"9",
+                          maxlength:"9", 
+                          pattern: "[0-9]{9}",
                           
                         },
                         {
@@ -243,7 +241,7 @@ class Modificar_detalle extends Component {
                           onChange: this.onCarrera_origenChange.bind(this),
                           minlength:"11",
                           maxlength:"30",
-                          pattern: "[a-zA-Z,']+",
+                          pattern: "[a-zA-Z,' ]+",
                           
                         },
                       ]}
@@ -270,17 +268,18 @@ class Modificar_detalle extends Component {
                           onChange: this.onEstado_actualChange.bind(this),
                           minlength:"9",
                           maxlength:"20", 
-                          pattern:"[En] [cC][aA][uU][sS][aA][lL]|[eE][Nn] [oO][bB][sS][eE][rR][vV][aA][cC][iI][oO][nN]|[rR][eE][cC][uU][pP][eE][rR][aA][Dd][oO]|[sS][uU][sS][pP][eE][nN][cC][iI][oO][Nn]|[eE][lL][iI][Mm][Aa][cC][iI][oO][nN]|[Rr][eE][nN][uU][Nn][cC][Ii][aA] [Cc][aA][Mm][Bb][iI][Oo] [dD][eE] [Cc][aA][Rr][rR][eE][rR][aA]",
+                          pattern:"[Rr][eE][pP][oO][rR][tT][aA][dD][oO]|[eE][Nn] [cC][aA][uU][sS][aA][lL]|[eE][Nn] [oO][bB][sS][eE][rR][vV][aA][cC][iI][oO][nN]|[rR][eE][cC][uU][pP][eE][rR][aA][Dd][oO]|[sS][uU][sS][pP][eE][nN][cC][iI][oO][Nn]|[eE][lL][iI][Mm][Aa][cC][iI][oO][nN]|[Rr][eE][nN][uU][Nn][cC][Ii][aA] [Cc][aA][Mm][Bb][iI][Oo] [dD][eE] [Cc][aA][Rr][rR][eE][rR][aA]",
                         },
                       ]}
                     />
                     <form>
                       <input type="file" onChange={this.onFileChange.bind(this)} /> 
                     </form>
-                    <Button bsStyle="info" pullRight fill onClick={this.onSubmit.bind(this)}>
+                    <Button bsStyle="info" pullRight fill type='submit'>
                       Actualizar perfil
                     </Button>
                     <div className="clearfix" />
+                  </form>
                   </form>
                 }
               />

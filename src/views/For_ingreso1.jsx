@@ -23,7 +23,8 @@ const apiUrl = 'http://localhost:8000';
 
 function For_ingreso1 () {
   const history = useHistory();
-  const onSubmit = async () => {
+  const onSubmit = async event => {
+    event.preventDefault();
     try {
       await setAlumno();
       await setNewAlumno();
@@ -53,7 +54,7 @@ function For_ingreso1 () {
                                                                alumno: rut
                                                               });
       await setCausal(data)
-      history.push("/admin/notifications");
+      history.push("/coordinador/notifications");
     } catch (e) {
       alert(e.message);
     }
@@ -109,6 +110,15 @@ function For_ingreso1 () {
     formData.append('estado_actual', 'causal');
     formData.append('coordinador', localStorage.getItem('userID'));
     formData.append('copia_registro', file);
+    console.log(rut)
+    console.log(nombre)
+    console.log(email)
+    console.log(año_nacimiento)
+    console.log(semestre_ingreso)
+    console.log(telefono)
+    console.log(carrera_origen)
+    console.log(localStorage.getItem('userID'))
+    console.log(file)
     try{
       await axios.post(`${apiUrl}/alumno/`, formData);
     }catch(e){
@@ -218,6 +228,7 @@ function For_ingreso1 () {
             <Card
               title="Ingreso del alumno por causal"
               content={
+                <form onSubmit={onSubmit}>
                 <form>
                   
                   <FormInputs
@@ -265,7 +276,7 @@ function For_ingreso1 () {
                         Value: nombre,
                         minlength:"3",
                         maxlength:"50",
-                        pattern: "[a-zA-Z]+",
+                        pattern: "[a-zA-Z ]+",
                         required:"required",
                         title:"Letras de la A a la Z (mayúsculas o minúsculas)",
                         onChange: handleChangeNombre                      
@@ -297,9 +308,9 @@ function For_ingreso1 () {
                         placeholder: "997856443",
                         defaultValue: "",
                         Value: telefono,
-                        minlength:"11",
-                        maxlength:"11", 
-                        pattern: "56[0-9]{9}",
+                        minlength:"9",
+                        maxlength:"9", 
+                        pattern: "[0-9]{9}",
                         required:"required",
                         onChange: handleChangeTelefono
                       },
@@ -344,7 +355,7 @@ function For_ingreso1 () {
                         Value: carrera_origen,
                         minlength:"10",
                         maxlength:"30",
-                        pattern: "[a-zA-Z,']+",
+                        pattern: "[a-zA-Z,' ]+",
                         required:"required",
                         onChange: handleChangeCarrera_origen
                       },
@@ -429,10 +440,11 @@ function For_ingreso1 () {
                   <form>
                     <input type="file" onChange={onFileChange} /> 
                   </form>
-                  <Button bsStyle="info" pullRight fill onClick={onSubmit}>
+                  <Button bsStyle="info" pullRight fill type="submit">
                     Ingresar Datos
                   </Button>
                   <div className="clearfix" />
+                </form>
                 </form>
               }
             />
