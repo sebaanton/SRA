@@ -127,6 +127,7 @@ class Crear_contacto extends Component {
                                                         interes: interes.toString(),
                                                         autogestion: autogestion.toString(),
                                                       }).then(data =>{
+          alert("Contacto creado correctamente") 
           this.props.history.push(`Ver_flujo/${reporte}`)
         });                        
       } else {
