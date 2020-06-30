@@ -43,30 +43,10 @@ class AdminNavbarLinks extends Component {
           </NavItem>
         </Nav>
         <Nav pullRight>
-        <NavDropdown
-            eventKey={2}
-            title="Gestionar Usuarios"
-            id="basic-nav-dropdown-right">
-            <MenuItem eventKey={2.1} href="Crear_usuario">Crear Usuario</MenuItem>
-            <MenuItem eventKey={2.2} href="Busqueda_modificar_usuario">Modificar Usuario</MenuItem>
-            <MenuItem eventKey={2.3} href="Busqueda_modificar_usuario">Eliminar Usuario</MenuItem>
-           </NavDropdown>
-           <NavDropdown
-            eventKey={2}
-            title="Gestionar Problemas"
-            id="basic-nav-dropdown-right">
-            <MenuItem eventKey={2.1} href="Crear_problema">Crear Problema</MenuItem>
-            <MenuItem eventKey={2.2} href="Busqueda_modificar_problema">Modificar Problema</MenuItem>
-            <MenuItem eventKey={2.3} href="Busqueda_modificar_problema">Eliminar Problema</MenuItem>
-           </NavDropdown>
-           <NavDropdown
-            eventKey={2}
-            title="Gestionar Recomendaciones"
-            id="basic-nav-dropdown-right">
-            <MenuItem eventKey={2.1} href="Crear_recomendacion">Crear Recomendación</MenuItem>
-            <MenuItem eventKey={2.2} href="Busqueda_modificar_recomendacion">Modificar Recomendación</MenuItem>
-            <MenuItem eventKey={2.3} href="Busqueda_modificar_recomendacion">Eliminar Recomendación</MenuItem>
-           </NavDropdown>
+
+           <NavItem eventKey={2} href="Crear_usuario">
+           Crear Usuario
+          </NavItem>
           <NavItem eventKey={3} href="Login2">
             Cerrar Sesión
           </NavItem>
