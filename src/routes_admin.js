@@ -42,6 +42,7 @@ import Crear_recomendacion from "views/Crear_recomendacion";
 import Busqueda_modificar_usuario from "views/Busqueda_modificar_usuario";
 import Busqueda_modificar_problema from "views/Busqueda_modificar_problema";
 import Busqueda_modificar_recomendacion from "views/Busqueda_modificar_recomendacion";
+import Busqueda_admin from "views/Busqueda_admin";
 import Modificar_usuario from "views/Modificar_usuario";
 import Modificar_problema from "views/Modificar_problema";
 import Modificar_recomendacion from "views/Modificar_recomendacion";
@@ -49,10 +50,10 @@ import Modificar_perfil from "views/Modificar_perfil";
 
 const dashboardRoutes = [
   { 
-    path: "/notifications",
+    path: "/Busqueda_modificar_usuario",
     name: "Home",
     icon: "pe-7s-home",
-    component: Notifications,
+    component: Busqueda_modificar_usuario,
     layout: "/admin",
   },
   {

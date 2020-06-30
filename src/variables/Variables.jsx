@@ -267,6 +267,7 @@ var style = {
 // //
 //
 const thArray = ["rut", "Nombre y Apellido", "correo", "Estado", "Enlaces"];
+const thArray3 = ["Tipo","Nombre y Apellido","Correo","Telefono","Enlaces"];
 const tdArray = [
   ["1", "Dakota Rice", "1.7", "En observación", "si"],
   ["2", "Minerva Hooper", "2.8", "En causal", "no"],
@@ -624,6 +625,7 @@ module.exports = {
   style, // For notifications (App contayiner and Notifications view)
   thArray,
   thArray2,
+  thArray3,
   tdArray, // For tables (TableList view)
   iconsArray, // For icons (Icons view)
   dataPie1,
