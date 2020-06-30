@@ -111,15 +111,15 @@ class Crear_usuario extends Component {
 
     if(this.state.realizacion.toLowerCase() == "profesor"){
       axios.post(`http://localhost:8000/profesor/`, {nombre:this.state.nombre, telefono:this.state.telefono, jornada: this.state.jornada, admin:localStorage.getItem('userID'), email:this.state.email ,password: password}).then(respuesta=>{
-      this.props.history.push("notifications")
+      this.props.history.push("Busqueda_modificar_usuario")
       });
     } else if(this.state.realizacion.toLowerCase() == "administrador"){
       axios.post(`http://localhost:8000/administrador/`, { rut: this.state.rut, nombre:this.state.nombre, telefono: this.state.telefono, email: this.state.email,password: password}).then(respuesta=>{
-        this.props.history.push("notifications")
+        this.props.history.push("Busqueda_modificar_usuario")
         });
     } else if (this.state.realizacion.toLowerCase() == "coordinador"){
       axios.post(`http://localhost:8000/coordinador/`, { rut: this.state.rut, nombre: this.state.nombre, telefono: this.state.telefono, admin:localStorage.getItem('userID'), email:this.state.email, password:password}).then(respuesta=>{
-        this.props.history.push("notifications")
+        this.props.history.push("Busqueda_modificar_usuario")
         });
     }
     

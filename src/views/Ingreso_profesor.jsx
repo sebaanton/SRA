@@ -38,7 +38,7 @@ function Ingreso_profesor () {
       const asignaturaCount = asignatura_reportada.split(",");
       const año = new Date().getFullYear().toString();
       var año_semestre_m = año.concat(semestre.toString);
-      const { data2 } = await axios.get(`${apiUrl}/reporte`);
+      const data2 = await axios.get(`${apiUrl}/reporte`);
       console.log(data2.data)
       var i;
       var id_reporte = 0;
@@ -55,13 +55,13 @@ function Ingreso_profesor () {
         }
         const { data } = await axios.post(`${apiUrl}/reporte/`, {
                                                                
-                                                               año: new Date().getFullYear().toString(),
-                                                               semestre: semestre.toString(),
+                                                               año: new Date().getFullYear(),
+                                                               semestre: semestre,
                                                                tipo_causal: tipo_causal,
-                                                               asignaturas_reportadas: asignaturaCount.length.toString(),
-                                                               prioridad: Math.round(prioridad).toString(),
+                                                               asignaturas_reportadas: asignaturaCount.length,
+                                                               prioridad: Math.round(prioridad),
                                                                observacion: observacion,
-                                                               reiteraciones_causal: causalCount.toString(),
+                                                               reiteraciones_causal: causalCount,
                                                                tipo_ingreso: 'reportado',
                                                                alumno: rut,
                                                               }, function(){console.log(data)});                                                    
@@ -69,19 +69,19 @@ function Ingreso_profesor () {
         await setAsignatura(data.id)
         history.push("/profesor/Buscar_alumno");
       }else{
-        const prioridad = 0.3*causalCount + 0.7*(asignaturaCount.length());
+        const prioridad = 0.3*causalCount + 0.7*(asignaturaCount.length);
         if (prioridad > 4){
           prioridad = 4;
         }
         const cantidad_asignaturas  = await getCantAsigna(id_reporte);
         const { data } = await axios.put(`${apiUrl}/reporte/${id_reporte}`, {
-                                                              año: new Date().getFullYear().toString(),
-                                                              semestre: semestre.toString(),
+                                                              año: new Date().getFullYear(),
+                                                              semestre: semestre,
                                                               tipo_causal: tipo_causal,
-                                                              asignaturas_reportadas: cantidad_asignaturas.toString(),
-                                                              prioridad: prioridad.toString(),
+                                                              asignaturas_reportadas: cantidad_asignaturas,
+                                                              prioridad: prioridad,
                                                               observacion: observacion,
-                                                              reiteraciones_causal: causalCount.toString(),
+                                                              reiteraciones_causal: causalCount,
                                                               tipo_ingreso: 'reportado',
                                                               alumno: rut,
                                                             });                                                    
