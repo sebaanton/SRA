@@ -18,163 +18,209 @@ import { Tasks } from "components/Tasks/Tasks3.jsx";
 import { thArray, tdArray } from "variables/Variables.jsx";
 import Ver_detalle from "views/Ver_detalle";
 import axios from "axios";
+import { dataPie2 } from "variables/Variables";
 
 class Busqueda_profesor extends Component {
   state = {
-    alumno:[],
-    alumnoDisplay:[],
+    alumno: [],
+    asignaturas_profesor: [],
     checked: false,
     parameter: "",
+    reportes: [],
+    asignaturas_reportadas: [],
+    id_profe: 0,
+    alumnoDisplay: [],
   };
 
-  componentDidMount(){
-      axios.get("http://localhost:8000/alumno/").then(res2 => {
+  async componentDidMount() {
+    const id_profesor = localStorage.getItem('userID')
+    this.setState({
+      id_profe: id_profesor
+    })
+
+    await axios.get(`http://localhost:8000/asignatura/`).then(res2 => {
+      var l;
+      for (l = 0; l < res2.data.length; l++) {
+        if (res2.data[l].profesor == this.state.id_profe) {
+          this.setState({
+            asignaturas_profesor: this.state.asignaturas_profesor.concat(res2.data[l])
+          });
+        }
+      }
+
+    });
+
+
+    await axios.get(`http://localhost:8000/asignatura_reportada/`).then(res3 => {
+      var j;
+      var h;
+      for (h = 0; h < this.state.asignaturas_profesor.length; h++) {
+        for (j = 0; j < res3.data.length; j++) {
+          if (res3.data[j].asignatura == this.state.asignaturas_profesor[h].id) {
+            this.setState({
+              asignaturas_reportadas: this.state.asignaturas_reportadas.concat(res3.data[j]),
+            });
+          }
+        }
+      }
+    });
+
+    var k;
+    for (k = 0; k < this.state.asignaturas_reportadas.length; k++) {
+      await axios.get(`http://localhost:8000/reporte/${this.state.asignaturas_reportadas[k].reporte}`).then(res => {
         this.setState({
-          alumno: res2.data,
-          alumnoDisplay: res2.data
+          reportes: this.state.reportes.concat(res.data),
         });
       });
-      }
-  handleCheckedChange(event){
-    this.setState( {
+    }
+    var m;
+    for (m = 0; m < this.state.reportes.length; m++) {
+      await axios.get(`http://localhost:8000/alumno/${this.state.reportes[m].alumno}`).then(res2 => {
+        this.setState({
+          alumno: this.state.alumno.concat(res2.data),
+          alumnoDisplay: this.state.alumno.concat(res2.data)
+        });
+
+      });
+    }
+  }
+  handleCheckedChange(event) {
+    this.setState({
       value: event.target.value,
     });
   }
-  handleChangeParameter(event){
-    this.setState( {
+  handleChangeParameter(event) {
+    this.setState({
       parameter: event.target.value,
     });
   }
-  
-  onSearch(event){
+
+  onSearch(event) {
     var alum = [];
     var i;
     this.setState({
       alumnoDisplay: [],
     });
-    if(this.state.value == "opt_1"){
-      for(i=0; i< this.state.alumno.length;i++){
-        if(this.state.alumno[i].nombre == this.state.parameter){
+    if (this.state.value == "opt_1") {
+      for (i = 0; i < this.state.alumno.length; i++) {
+        if (this.state.alumno[i].nombre == this.state.parameter) {
           alum.push(this.state.alumno[i]);
         }
       }
-      this.setState( {
+      this.setState({
         alumnoDisplay: alum,
       });
     }
-    if(this.state.value == "opt_2"){
-      for(i=0; i< this.state.alumno.length;i++){
-        if(this.state.alumno[i].rut == this.state.parameter){
+    if (this.state.value == "opt_2") {
+      for (i = 0; i < this.state.alumno.length; i++) {
+        if (this.state.alumno[i].rut == this.state.parameter) {
           alum.push(this.state.alumno[i]);
         }
       }
-      this.setState( {
+      this.setState({
         alumnoDisplay: alum,
       });
     }
-    if(this.state.value == "opt_3"){
-      for(i=0; i< this.state.alumno.length;i++){
-        if(this.state.alumno[i].correo == this.state.parameter){
+    if (this.state.value == "opt_3") {
+      for (i = 0; i < this.state.alumno.length; i++) {
+        if (this.state.alumno[i].correo == this.state.parameter) {
           alum.push(this.state.alumno[i]);
         }
       }
-      this.setState( {
+      this.setState({
         alumnoDisplay: alum,
       });
     }
-    if(this.state.value == "opt_4"){
-      for(i=0; i< this.state.alumno.length;i++){
-        if(this.state.alumno[i].estado_actual == this.state.parameter){
+    if (this.state.value == "opt_4") {
+      for (i = 0; i < this.state.alumno.length; i++) {
+        if (this.state.alumno[i].estado_actual == this.state.parameter) {
           alum.push(this.state.alumno[i]);
         }
       }
-      this.setState( {
+      this.setState({
         alumnoDisplay: alum,
       });
     }
   }
-  
-  render() 
- 
-  
-  {	
+
+  render() {
     return (
 
       <div className="content">
-              <div className="card">
-              <div className="content">
-        <Grid fluid>
-          <Row>
-            <Col md={8} mdOffset={2}>
-              <Card
-                content={
-                  <form>
-                    <FormInputs
-                      ncols={["col-md-6"]}
-                      properties={[
-                        {
-                          type: "text",
-                          bsClass: "form-control",
-                          defaultValue: "Juanito Perez",
-                          value: this.state.parameter,
-                          onChange: this.handleChangeParameter.bind(this)
-                        }
-                      ]}
+        <div className="card">
+          <div className="content">
+            <Grid fluid>
+              <Row>
+                <Col md={8} mdOffset={2}>
+                  <Card
+                    content={
+                      <form>
+                        <FormInputs
+                          ncols={["col-md-6"]}
+                          properties={[
+                            {
+                              type: "text",
+                              bsClass: "form-control",
+                              defaultValue: "Juanito Perez",
+                              value: this.state.parameter,
+                              onChange: this.handleChangeParameter.bind(this)
+                            }
+                          ]}
 
-                    />
+                        />
 
-                   <Button bsStyle="info" pullRight fill onClick={this.onSearch.bind(this)}>
-                      Buscar
-                    </Button>   
+                        <Button bsStyle="info" pullRight fill onClick={this.onSearch.bind(this)}>
+                          Buscar
+                    </Button>
 
-                <h3>Atributos</h3>
-                  <div className="table-full-width">
-                    <table className="table">
-                    <div>
-                    <Col md={6} mdOffset={0.5}>
-                      <input 
-                        type="radio"
-                        name="name"
-                        value="opt_1"
-                        checked={this.state.value === "opt_1"}
-                        onChange={this.handleCheckedChange.bind(this)}
+                        <h3>Atributos</h3>
+                        <div className="table-full-width">
+                          <table className="table">
+                            <div>
+                              <Col md={6} mdOffset={0.5}>
+                                <input
+                                  type="radio"
+                                  name="name"
+                                  value="opt_1"
+                                  checked={this.state.value === "opt_1"}
+                                  onChange={this.handleCheckedChange.bind(this)}
 
-                      /> Nombre y apellido <br />
-                      <input 
-                        type="radio"
-                        name="name"
-                        value="opt_2"
-                        checked={this.state.value === "opt_2"}
-                        onChange={this.handleCheckedChange.bind(this)}
-                      /> Rut <br />
-                      <input 
-                        type="radio"
-                        name="name"
-                        value="opt_3"
-                        checked={this.state.value === "opt_3"}
-                        onChange={this.handleCheckedChange.bind(this)}
-                      /> Correo <br />
-                      <input 
-                        type="radio"
-                        name="name"
-                        value="opt_4"
-                        checked={this.state.value === "opt_4"}
-                        onChange={this.handleCheckedChange.bind(this)}
-                      /> Estado <br />
-                    </Col>
-                    </div>
-                
-                    </table>
-                  </div>
-              
-                    
-                  </form>
-                }
-              />
-            </Col>
-          </Row>
-        </Grid>
-      </div>
+                                /> Nombre y apellido <br />
+                                <input
+                                  type="radio"
+                                  name="name"
+                                  value="opt_2"
+                                  checked={this.state.value === "opt_2"}
+                                  onChange={this.handleCheckedChange.bind(this)}
+                                /> Rut <br />
+                                <input
+                                  type="radio"
+                                  name="name"
+                                  value="opt_3"
+                                  checked={this.state.value === "opt_3"}
+                                  onChange={this.handleCheckedChange.bind(this)}
+                                /> Correo <br />
+                                <input
+                                  type="radio"
+                                  name="name"
+                                  value="opt_4"
+                                  checked={this.state.value === "opt_4"}
+                                  onChange={this.handleCheckedChange.bind(this)}
+                                /> Estado <br />
+                              </Col>
+                            </div>
+
+                          </table>
+                        </div>
+
+
+                      </form>
+                    }
+                  />
+                </Col>
+              </Row>
+            </Grid>
+          </div>
         </div>
         <Grid fluid>
 
@@ -185,8 +231,8 @@ class Busqueda_profesor extends Component {
                 //ctTableFullWidth
                 //ctTableResponsive
                 content={
-                
-          
+
+
                   <Table striped hover>
                     <thead>
                       <tr>
@@ -198,7 +244,7 @@ class Busqueda_profesor extends Component {
                     <tbody>
                       {this.state.alumnoDisplay.map((prop, key) => {
                         return (
-                          
+
                           <tr>
                             <td key={key}>{prop.rut}</td>
                             <td key={key}>{prop.nombre}</td>
@@ -206,7 +252,7 @@ class Busqueda_profesor extends Component {
                             <td key={key}>{prop.estado_actual}</td>
                             <td>
                               <p><a href={`Ver_detalle_profesor/${prop.rut}`}>Ver Detalle</a></p>
-                              
+
                             </td>
                           </tr>
                         );
