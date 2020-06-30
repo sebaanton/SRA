@@ -589,6 +589,7 @@ class Modificar_reunion extends Component {
             }
           })
         }
+        alert("Reunion creada correctamente") 
         this.props.history.push(`Ver_flujo/${reporte}`)  
       });
     });
