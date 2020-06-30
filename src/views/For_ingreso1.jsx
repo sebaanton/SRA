@@ -54,6 +54,7 @@ function For_ingreso1 () {
                                                                alumno: rut
                                                               });
       await setCausal(data)
+      alert("Se ha creado correctamente") 
       history.push("/coordinador/notifications");
     } catch (e) {
       alert(e.message);
