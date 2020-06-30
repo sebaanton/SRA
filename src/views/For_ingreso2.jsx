@@ -331,7 +331,7 @@ function For_ingreso2 () {
                           maxlength:"5",
                           pattern: "[aA][lL][tT][oO]|[mM][eE][dD][iI][oO]|[bB][aA][jJ][oO]",
                           required:"required",
-                          title:"Números decimales entre 1.0 y 7.0",
+                          title:"Alto, Medio o Bajo",
                           onChange: handleChangeInteres
                         },
                         
