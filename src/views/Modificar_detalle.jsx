@@ -33,7 +33,7 @@ class Modificar_detalle extends Component {
   componentDidMount() {
     const currenturl = window.location.pathname
     const largo = currenturl.length
-    const urls = currenturl.slice(25,largo)
+    const urls = currenturl.slice(31,largo)
     const alumnoRUT = this.props.match.params.alumnoRUT;
     
 

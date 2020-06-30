@@ -46,7 +46,7 @@ const dashboardRoutes = [
     name: "Home",
     icon: "pe-7s-home",
     component: Notifications,
-    layout: "/admin",
+    layout: "/coordinador",
 
   },
    {   
@@ -54,7 +54,7 @@ const dashboardRoutes = [
     name: " Ver Estadisticas",
     icon: "pe-7s-graph",
     component: Dashboard,
-    layout: "/admin",
+    layout: "/coordinador",
 
   },
   {
@@ -62,7 +62,7 @@ const dashboardRoutes = [
     name: "Perfil",
     icon: "pe-7s-user",
     component: UserProfile,
-    layout: "/admin",
+    layout: "/coordinador",
 
   },
   {
@@ -70,7 +70,7 @@ const dashboardRoutes = [
     name: "Notificaciones",
     icon: "pe-7s-note2",
     component: TableList,
-    layout: "/admin",
+    layout: "/coordinador",
 
   },
   {
@@ -78,24 +78,24 @@ const dashboardRoutes = [
     name: "Login2",
     icon: "pe-7s-science",
     component: Login2,
-    layout: "/admin",
-    //estado: "false"
+    layout: "/",
+    estado: "false"
   },
   {
     path: "/Ver_detalle",
     name: "Ver Detalle",
     icon: "pe-7s-science",
     component: Ver_detalle,
-    layout: "/admin",
-
+    layout: "/coordinador",
+    estado: "false"
   },
   {
     path: "/Modificar_detalle",
     name: "Modificar Alumno",
     icon: "pe-7s-science",
     component: Modificar_detalle,
-    layout: "/admin",
-    //estado: "false"
+    layout: "/coordinador",
+    estado: "false"
 
   },
   {
@@ -103,16 +103,16 @@ const dashboardRoutes = [
     name: "Ver Registro(s)",
     icon: "pe-7s-science",
     component: Ver_registro,
-    layout: "/admin",
-
+    layout: "/coordinador",
+    estado: "false"
   },
   {
     path: "/Modificar_registro",
     name: "Modificar Registro",
     icon: "pe-7s-science",
     component: Modificar_registro,
-    layout: "/admin",
-    //estado: "false"
+    layout: "/coordinador",
+    estado: "false"
 
   },
   {
@@ -120,15 +120,15 @@ const dashboardRoutes = [
     name: "Ver Flujo",
     icon: "pe-7s-science",
     component: Ver_flujo,
-    layout: "/admin",
-    //estado: "false"
+    layout: "/coordinador",
+    estado: "false"
   },
   {
     path: "/For_ingreso1",
     name: "Formulario ingreso por causal",
     icon: "pe-7s-science",
     component: For_ingreso1,
-    layout: "/admin",
+    layout: "/coordinador",
     estado: "false"
   },
   {
@@ -136,7 +136,7 @@ const dashboardRoutes = [
     name: "Formulario ingreso Profesor-alumno",
     icon: "pe-7s-science",
     component: For_ingreso2,
-    layout: "/admin",
+    layout: "/coordinador",
     estado: "false"
   },
   {
@@ -144,7 +144,7 @@ const dashboardRoutes = [
     name: "Cargar plantilla",
     icon: "pe-7s-science",
     component: Cargar_plantilla,
-    layout: "/admin",
+    layout: "/coordinador",
     estado: "false"
 
   },
@@ -153,7 +153,7 @@ const dashboardRoutes = [
     name: "Crear Contacto",
     icon: "pe-7s-science",
     component: Crear_contacto,
-    layout: "/admin",
+    layout: "/coordinador",
     estado: "false"
 
   },
@@ -162,8 +162,8 @@ const dashboardRoutes = [
     name: "Modificar Contacto",
     icon: "pe-7s-science",
     component: Modificar_contacto,
-    layout: "/admin",
-    //estado: "false"
+    layout: "/coordinador",
+    estado: "false"
 
   },
   {
@@ -171,7 +171,7 @@ const dashboardRoutes = [
     name: "Agendar Reunion",
     icon: "pe-7s-science",
     component: Agendar_reunion,
-    layout: "/admin",
+    layout: "/coordinador",
     estado: "false"
   },
   {
@@ -179,8 +179,8 @@ const dashboardRoutes = [
     name: "Modificar Reunion",
     icon: "pe-7s-science",
     component: Modificar_reunion,
-    layout: "/admin",
-    //estado: "false"
+    layout: "/coordinador",
+    estado: "false"
 
   },
   {
@@ -188,7 +188,7 @@ const dashboardRoutes = [
     name: "Lista reportes",
     icon: "pe-7s-science",
     component: Lista_reportes,
-    layout: "/admin",
+    layout: "/coordinador",
     estado: "false"
   },
   {
@@ -196,7 +196,7 @@ const dashboardRoutes = [
     name: "Modificar Perfil",
     icon: "pe-7s-user",
     component: Modificar_perfil,
-    layout: "/admin",
+    layout: "/coordinador",
     estado: "false"
   },
 ];

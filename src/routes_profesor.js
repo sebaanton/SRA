@@ -46,7 +46,7 @@ const dashboardRoutes = [
     name: "Home",
     icon: "pe-7s-home",
     component: Busqueda_profesor,
-    layout: "/admin",
+    layout: "/profesor",
 
   },
    {   
@@ -54,7 +54,7 @@ const dashboardRoutes = [
     name: " Ver Estadisticas",
     icon: "pe-7s-graph",
     component: Dashboard,
-    layout: "/admin",
+    layout: "/profesor",
     estado:"false"
   },
   {
@@ -62,22 +62,23 @@ const dashboardRoutes = [
     name: "Perfil",
     icon: "pe-7s-user",
     component: UserProfile,
-    layout: "/admin",
+    layout: "/profesor",
   },
   {
     path: "/Login2",
     name: "Login2",
     icon: "pe-7s-science",
     component: Login2,
-    layout: "/admin",
-    //estado: "false"
+    layout: "/profesor",
+    estado: "false"
   },
   {
     path: "/Ver_detalle_profesor",
     name: "Ver Detalle",
     icon: "pe-7s-science",
     component: Ver_detalle_profesor,
-    layout: "/admin",
+    layout: "/profesor",
+    estado: "false"
 
   },
   {
@@ -85,7 +86,7 @@ const dashboardRoutes = [
     name: "Modificar Perfil",
     icon: "pe-7s-user",
     component: Modificar_alumno_profesor,
-    layout: "/admin",
+    layout: "/profesor",
     estado: "false"
   },
   {
@@ -93,7 +94,7 @@ const dashboardRoutes = [
     name: "Ver Flujo",
     icon: "pe-7s-science",
     component: Ver_flujo,
-    layout: "/admin",
+    layout: "/profesor",
     estado: "false"
   },
   {
@@ -101,7 +102,7 @@ const dashboardRoutes = [
     name: "Formulario ingreso por causal",
     icon: "pe-7s-science",
     component: For_ingreso1,
-    layout: "/admin",
+    layout: "/profesor",
     estado: "false"
   },
   {
@@ -109,7 +110,7 @@ const dashboardRoutes = [
     name: "Formulario ingreso Profesor",
     icon: "pe-7s-science",
     component: Ingreso_profesor,
-    layout: "/admin",
+    layout: "/profesor",
     estado: "false"
   },
   {
@@ -117,7 +118,7 @@ const dashboardRoutes = [
     name: "Cargar plantilla",
     icon: "pe-7s-science",
     component: Cargar_plantilla,
-    layout: "/admin",
+    layout: "/profesor",
     estado: "false"
 
   },
@@ -126,7 +127,7 @@ const dashboardRoutes = [
     name: "Modificar Perfil",
     icon: "pe-7s-user",
     component: Modificar_perfil,
-    layout: "/admin",
+    layout: "/profesor",
     estado: "false"
   },
   

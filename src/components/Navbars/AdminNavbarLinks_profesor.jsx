@@ -25,7 +25,7 @@ import Agendar_reunion from "views/Agendar_reunion";
 //import Popup from "reactjs-popup";
 
 
-class AdminNavbarLinks extends Component {
+class profesorNavbarLinks extends Component {
   render() {
     const notification = (
       <div>
@@ -49,11 +49,11 @@ class AdminNavbarLinks extends Component {
             eventKey={2}
             title="Ingresar Datos"
             id="basic-nav-dropdown-right">
-            <MenuItem eventKey={2.2} href="http://localhost:3000/admin/Ingreso_profesor">Reporte por Digitación</MenuItem>
-            <MenuItem eventKey={2.3} href="http://localhost:3000/admin/Cargar_plantilla">Cargar Plantilla</MenuItem>
+            <MenuItem eventKey={2.2} href="http://localhost:3000/profesor/Ingreso_profesor">Reporte por Digitación</MenuItem>
+            <MenuItem eventKey={2.3} href="http://localhost:3000/profesor/Cargar_plantilla">Cargar Plantilla</MenuItem>
            </NavDropdown>
           
-          <NavItem eventKey={3} href="http://localhost:3000/admin/Login2">
+          <NavItem eventKey={3} href="http://localhost:3000/Login2">
             Cerrar Sesión
           </NavItem>
         </Nav>
@@ -62,4 +62,4 @@ class AdminNavbarLinks extends Component {
   }
 }
 
-export default AdminNavbarLinks;
+export default profesorNavbarLinks;

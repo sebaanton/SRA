@@ -26,7 +26,7 @@ class Ver_detalle extends Component {
   componentDidMount() {
     const currenturl = window.location.pathname
     const largo = currenturl.length
-    const urls = currenturl.slice(19,largo)
+    const urls = currenturl.slice(25,largo)
     const alumnoRUT = this.props.match.params.alumnoRUT;
     
 
@@ -165,7 +165,7 @@ class Ver_detalle extends Component {
                     <Button bsStyle="info" pullLeft fill onClick={this.openRegistro.bind(this)}>
                       Ver Registro
                     </Button>
-                    <Button bsStyle="info" pullRight fill type="submit" href={`http://localhost:3000/admin/Modificar_detalle/${this.state.alumno.rut}`}>
+                    <Button bsStyle="info" pullRight fill type="submit" href={`http://localhost:3000/coordinador/Modificar_detalle/${this.state.alumno.rut}`}>
                       Modificar datos
                     </Button>
                     <div className="clearfix" />

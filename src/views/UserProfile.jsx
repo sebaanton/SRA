@@ -40,6 +40,7 @@ class UserProfile extends Component {
   }
   componentDidMount(){
     axios.get(`http://localhost:8000/${localStorage.getItem("userType")}/${localStorage.getItem("userID")}`).then(res2 => {
+      console.log(res2)
       if(res2.data.rut){
         this.setState({
           label: "RUT",
@@ -70,7 +71,7 @@ class UserProfile extends Component {
                       ncols={["col-md-5", "col-md-7"]}
                       properties={[
                         {
-                          label: "Rut",
+                          label: this.state.label,
                           type: "text",
                           bsClass: "form-control",
                           placeholder: this.state.noRUT,

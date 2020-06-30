@@ -24,7 +24,7 @@ class Modificar_registro extends Component {
   componentDidMount(){
     const currenturl = window.location.pathname
     const largo = currenturl.length
-    const id = currenturl.slice(26,largo)
+    const id = currenturl.slice(32,largo)
     axios.get(`http://localhost:8000/reporte/${id}`).then(res2 => {
       this.setState({
         reporte: res2.data,

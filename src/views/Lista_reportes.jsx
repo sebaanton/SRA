@@ -17,10 +17,9 @@ class Lista_reportes extends Component {
   };
 
   componentDidMount(){
-      console.log("aqui");
       const currenturl = window.location.pathname
       const largo = currenturl.length
-      const rut = currenturl.slice(22,largo)
+      const rut = currenturl.slice(28,largo)
       axios.get("http://localhost:8000/reporte/").then(res2 => {
         var i;
         var repo = [];
@@ -245,7 +244,7 @@ class Lista_reportes extends Component {
                             <td key={key}>{prop.asignaturas_reportadas}</td>
                             <td key={key}>{prop.reiteraciones_causal}</td>
                             <td>
-                              <p><a href={`http://localhost:3000/admin/Ver_registro/${prop.id}`}>Ver Registro</a></p>
+                              <p><a href={`http://localhost:3000/coordinador/Ver_registro/${prop.id}`}>Ver Registro</a></p>
                             </td>
                           </tr>
                         );

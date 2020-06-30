@@ -66,7 +66,7 @@ function Ingreso_profesor () {
                                                               });                                                    
 
         await setAsignatura(data.id)
-        history.push("/admin/Ingreso_profesor");
+        history.push("/profesor/Buscar_alumno");
       }else{
         const prioridad = 0.3*causalCount + 0.7*(asignaturaCount.length());
         if (prioridad > 4){
@@ -86,7 +86,7 @@ function Ingreso_profesor () {
                                                             });                                                    
 
         await setAsignatura(data.id)
-        history.push("/admin/Ingreso_profesor");
+        history.push("/profesor/Buscar_alumno");
       }
     } catch (e) {
       alert(e.message);

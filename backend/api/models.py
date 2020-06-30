@@ -120,8 +120,7 @@ class Asignatura(models.Model):
     glosa = models.CharField(max_length=40, blank=True)
     profesor = models.ForeignKey(Profesor, on_delete=models.DO_NOTHING)
 
-    def __str__(self):
-        return self.codigo_asignatura
+    
 
 class Asignatura_reportada(models.Model):
     asistencia = models.SmallIntegerField(null=False, blank=False, default=0)

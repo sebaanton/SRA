@@ -25,7 +25,7 @@ import Agendar_reunion from "views/Agendar_reunion";
 //import Popup from "reactjs-popup";
 
 
-class AdminNavbarLinks extends Component {
+class coordinadorNavbarLinks extends Component {
   render() {
     const notification = (
       <div>
@@ -49,19 +49,19 @@ class AdminNavbarLinks extends Component {
             id="basic-nav-dropdown-right"
             >
             
-            <MenuItem eventKey={1.1} href = "http://localhost:3000/admin/Crear_contacto">Contacto</MenuItem>
-            <MenuItem eventKey={1.2} href = "http://localhost:3000/admin/Agendar_reunion">Reunión</MenuItem>
+            <MenuItem eventKey={1.1} href = "http://localhost:3000/coordinador/Crear_contacto">Contacto</MenuItem>
+            <MenuItem eventKey={1.2} href = "http://localhost:3000/coordinador/Agendar_reunion">Reunión</MenuItem>
            </NavDropdown>
 
           <NavDropdown
             eventKey={2}
             title="Ingresar Datos"
             id="basic-nav-dropdown-right">
-            <MenuItem eventKey={2.1} href="http://localhost:3000/admin/For_ingreso1">Digitación Causal</MenuItem>
-            <MenuItem eventKey={2.2} href="http://localhost:3000/admin/For_ingreso2">Digitación Autoconsulta</MenuItem>
-            <MenuItem eventKey={2.3} href="http://localhost:3000/admin/Cargar_plantilla">Cargar Plantilla</MenuItem>
+            <MenuItem eventKey={2.1} href="http://localhost:3000/coordinador/For_ingreso1">Digitación Causal</MenuItem>
+            <MenuItem eventKey={2.2} href="http://localhost:3000/coordinador/For_ingreso2">Digitación Autoconsulta</MenuItem>
+            <MenuItem eventKey={2.3} href="http://localhost:3000/coordinador/Cargar_plantilla">Cargar Plantilla</MenuItem>
            </NavDropdown>
-          <NavItem eventKey={3} href="http://localhost:3000/admin/Login2">
+          <NavItem eventKey={3} href="http://localhost:3000/Login2">
             Cerrar Sesión
           </NavItem>
         </Nav>
@@ -70,4 +70,4 @@ class AdminNavbarLinks extends Component {
   }
 }
 
-export default AdminNavbarLinks;
+export default coordinadorNavbarLinks;

@@ -3,8 +3,9 @@ import { useHistory } from "react-router-dom";
 import { Grid, Row, Col } from "react-bootstrap";
 import Button from "components/CustomButton/CustomButton.jsx";
 import { Card } from "components/Card/Card.jsx";
-import bg from 'assets/images/bg.jpg';
+import bg from 'assets/images/bg5.jpg';
 import axios from "axios";
+import 'assets/css/bootstrap.css'
 
 const apiUrl = 'http://localhost:8000';
 
@@ -24,6 +25,7 @@ axios.interceptors.request.use(
 );
 
 function Login2() {
+  var redirect
   const history = useHistory();
   const storedJwt = localStorage.getItem('token');
   const [jwt, setJwt] = useState(storedJwt || null);
@@ -36,7 +38,13 @@ function Login2() {
       await getAdmin()
       await getCord()
       await getProf()
-      history.push("notifications");
+      if(redirect == "administrador"){
+        history.push("admin/Busqueda_Modificar_usuario");
+      }else if(redirect == "coordinador"){
+        history.push("coordinador/notifications");
+      }else if(redirect == "profesor"){
+        history.push("profesor/Buscar_alumno");
+      }
     } catch (e) {
       alert(e.message);
     }
@@ -47,9 +55,9 @@ function Login2() {
       var i
       for (i=0; i< response.data.length; i++) {
         if (response.data[i].email == email) {
+          redirect = "administrador"
           localStorage.setItem('userID', response.data[i].rut);
           localStorage.setItem('userType', 'administrador');
-          console.log( localStorage.getItem('userID'));
         }
       }
     } catch (error) {
@@ -62,6 +70,7 @@ function Login2() {
       var i
       for (i=0; i< response.data.length; i++) {
         if (response.data[i].email == email) {
+          redirect = "coordinador"
           localStorage.setItem('userID', response.data[i].rut);
           localStorage.setItem('userType', 'coordinador');
           console.log(localStorage.getItem('userID'))
@@ -77,6 +86,7 @@ function Login2() {
       var i
       for (i=0; i< response.data.length; i++) {
         if (response.data[i].email == email) {
+          redirect = "profesor"
           localStorage.setItem('userID', response.data[i].id);
           localStorage.setItem('userType', 'profesor');
         }
@@ -100,24 +110,34 @@ function Login2() {
   function handleChangeP(event) {
     setPassword(event.target.value);
   }
+  var backstyle = {
+    width: "101%",
+    height: "722px",
+    backgroundImage: `url(${bg})`,
+    backgroundSize: 'cover'
+  };
+  var logscreen = {
+    marginTop: "8%",
+    marginLeft: "34%",
+  }
 
  return (
+   <Row style={backstyle}>
     <container>
       <form >
-        <Row >
-          <Col md={4} mdOffset={2}>
+          <Col md={4} mdOffset={2} style={logscreen}>
         <Card
           content={
             <div>
-            <h3>Sign In</h3>
+            <h3>Iniciar Sesion</h3>
 
           <div className="form-group"  >
-              <label>Email address</label>
+              <label>Correo</label>
               <input type="email" className="form-control" placeholder="Enter email" value={email} onChange={handleChangeE} defaultValue=""/>
           </div>
 
           <div className="form-group">
-              <label>Password</label>
+              <label>Contraseña</label>
               <input type="password" className="form-control" placeholder="Enter password" value={password} onChange={handleChangeP} defaultValue=""/>
           </div>
 
@@ -132,25 +152,14 @@ function Login2() {
                 submit
               </Button>
             <br />  
-          <p className="forgot-password text-right">
-              Forgot <a href="#">password?</a>
-          </p>
           </div>
           }
         />
-      </Col>   
-
-      <Col md={4}>
-            <div>
-              <img src={bg} width="600" />
-
-            </div>
       </Col>
           
-
-          </Row>
       </form>
     </container>
+    </Row>
   );
 }
 export default Login2

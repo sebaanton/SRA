@@ -29,7 +29,7 @@ class Ver_registro extends Component {
     var asis = 0
     var inter = 0
     var interTex = ""
-    const id = currenturl.slice(20,largo)
+    const id = currenturl.slice(26,largo)
     axios.get(`http://localhost:8000/reporte/${id}`).then(res2 => {
       this.setState({
         reporte: res2.data,
@@ -210,10 +210,10 @@ class Ver_registro extends Component {
                     </form>
                         <br />
 
-                    <Button bsStyle="info" pullRight fill type="submit" href={`http://localhost:3000/admin/Modificar_registro/${this.state.reporte.id}`} >
+                    <Button bsStyle="info" pullRight fill type="submit" href={`http://localhost:3000/coordinador/Modificar_registro/${this.state.reporte.id}`} >
                       Modificar registro
                     </Button>
-                    <Button bsStyle="info" pullLeft fill type="submit" href={`http://localhost:3000/admin/Ver_flujo/${this.state.reporte.id}`} >
+                    <Button bsStyle="info" pullLeft fill type="submit" href={`http://localhost:3000/coordinador/Ver_flujo/${this.state.reporte.id}`} >
                       Ver flujo
                     </Button>
                     <div className="clearfix" />

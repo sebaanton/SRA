@@ -41,9 +41,7 @@ class Ver_detalle_profesor extends Component {
     var inter = 0
     var interTex = ""
     var asignatura = 0
-    
-    
-    const id = currenturl.slice(28,largo)
+    const id = currenturl.slice(31,largo)
     const alumnoRUT = this.props.match.params.alumnoRUT;
     
     
@@ -283,7 +281,7 @@ class Ver_detalle_profesor extends Component {
                     <br />
                     <br />
 
-                    <Button bsStyle="info" pullRight fill type="submit" href={`http://localhost:3000/admin/Modificar_alumno_profesor/${this.state.reporteDisplay.id}`}>
+                    <Button bsStyle="info" pullRight fill type="submit" href={`http://localhost:3000/profesor/Modificar_alumno_profesor/${this.state.reporteDisplay.id}`}>
                       Modificar Datos
                     </Button>
                     <div className="clearfix" />

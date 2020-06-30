@@ -54,7 +54,7 @@ class Ver_flujo extends React.Component {
   async componentDidMount() {
     const currenturl = window.location.pathname
     const largo = currenturl.length
-    const id_reporte = currenturl.slice(17, largo)
+    const id_reporte = currenturl.slice(23, largo)
     await axios.get(`http://localhost:8000/reporte/${id_reporte}`).then(res => {
       var fecha = new Date(res.data.fecha).toLocaleDateString('es', this.state.opciones)
         .replace(/ /g, '-')
