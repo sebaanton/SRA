@@ -27,11 +27,6 @@ class TableList extends React.Component {
   state = {
     data: [],
     estado: ['Realizada', 'Próxima', 'No realizada'],
-    nombre_alumno: [],
-    fecha: ['05/05/2020'],
-    hora: [],
-    medio: ['Zoom', 'GoogleMeet', 'correo', 'presencial', 'telefónica'],
-    nombre_reu_contacto: ['Contacto inicial'],
     conectores: ['con', 'mediante', 'vía'],
     estilo: ['success', 'warning', 'danger'],
     opciones: { year: 'numeric', month: 'short', day: 'numeric' },

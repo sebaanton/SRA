@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Grid, Row, Col, Table, Alert } from "react-bootstrap";
-import Button from "components/CustomButton/CustomButton.jsx";
-import Card from "components/Card/Card.jsx";
-import { thArray, tdArray } from "variables/Variables.jsx";
+
 
 function Notificaciones_m(props){
     return(
@@ -12,9 +10,6 @@ function Notificaciones_m(props){
             <Alert 
                 bsStyle={notificacion.estilo}
                 >
-                <button type="button" aria-hidden="true" className="close">
-                    &#x2715;
-                </button>
                 <span>
                 <b> {notificacion.estado} {notificacion.tipo} con {notificacion.nombre_alumno}- </b> {notificacion.nombre} {notificacion.conector} {notificacion.medio} {notificacion.fecha} a las {notificacion.hora}:{notificacion.minutos}
                 </span>
@@ -28,15 +23,3 @@ function Notificaciones_m(props){
 }
 
 export default Notificaciones_m;
-
-
-
-
-
-
-
-
-
-
-
- 
