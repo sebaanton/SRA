@@ -89,3 +89,6 @@ class RecomendacionSerializer(serializers.ModelSerializer):
         
 class CargarSerializer(serializers.Serializer):
     archivo = serializers.FileField(max_length=None, allow_empty_file=False, use_url=True)
+    
+class LargoSerializer(serializers.Serializer):
+    largo = serializers.IntegerField()
