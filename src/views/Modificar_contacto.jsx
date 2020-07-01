@@ -127,6 +127,7 @@ class Crear_contacto extends Component {
                                                                               interes: interes.toString(),
                                                                               autogestion: autogestion.toString(),
                                                                             }).then(data =>{
+        alert("Se ha modificado correctamente")
         this.props.history.goBack()  
       });                        
     });                  

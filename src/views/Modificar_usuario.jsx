@@ -188,8 +188,9 @@ class Modificar_usuario extends Component {
       formData_coordinador.append('telefono', this.state.telefono);
       formData_coordinador.append('password', this.state.password);
       formData_coordinador.append('admin', this.state.admin);
-      axios.put(`http://localhost:8000/coordinador/${this.state.id.toString()}/`, formData_coordinador).then(data => {///////////////////////
-   
+      axios.put(`http://localhost:8000/coordinador/${this.state.id}/`, formData_coordinador).then(data => {///////////////////////
+        alert("Se ha modificado correctamente")
+      this.props.history.goBack()
     });
 
     }
@@ -201,6 +202,7 @@ class Modificar_usuario extends Component {
       formData_administrador.append('telefono', this.state.telefono);
       formData_administrador.append('password', this.state.password);
       axios.put(`http://localhost:8000/administrador/${this.state.id}/`, formData_administrador).then(data => {///////////////////////
+        alert("Se ha modificado correctamente")
       this.props.history.goBack()
     });
   }
@@ -213,6 +215,7 @@ class Modificar_usuario extends Component {
       formData_profesor.append('password', this.state.password);
       formData_profesor.append('admin', this.state.admin);
       axios.put(`http://localhost:8000/profesor/${this.state.id}/`, formData_profesor).then(data => {///////////////////////
+        alert("Se ha modificado correctamente")
       this.props.history.goBack()
     });
 

@@ -117,6 +117,7 @@ class Modificar_detalle extends Component {
       formData.append('copia_registro', this.state.copia_registro);
     }
     axios.put(`http://localhost:8000/alumno/${this.state.alumno.rut}/`, formData).then(data =>{
+      alert("Se ha modificado correctamente")
       this.props.history.goBack()                                                          
     });
   }
