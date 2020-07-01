@@ -280,6 +280,7 @@ class Ingreso_profesor extends Component {
     formData_asignatura.append('reporte', this.state.reporte_id);
     //formData_asignatura.append('profesor', localStorage.getItem('userID'));////////////////////////////
     axios.put(`${apiUrl}/asignatura_reportada/${this.state.id_asignatura_reportada}/`, formData_asignatura).then(res=>{
+      alert("Se ha modificado correctamente")
       this.props.history.goBack()
     });
   }
