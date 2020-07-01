@@ -89,7 +89,7 @@ function For_ingreso1 () {
     formData.append('semestre_ingreso', semestre_ingreso);
     formData.append('telefono', telefono);
     formData.append('carrera_origen', carrera_origen);
-    formData.append('estado_actual', 'causal');
+    formData.append('estado_actual', 'en causal');
     formData.append('coordinador', localStorage.getItem('userID'));
     formData.append('copia_registro', file);
     try{
@@ -108,7 +108,7 @@ function For_ingreso1 () {
     formData.append('semestre_ingreso', semestre_ingreso);
     formData.append('telefono', telefono);
     formData.append('carrera_origen', carrera_origen);
-    formData.append('estado_actual', 'causal');
+    formData.append('estado_actual', 'en causal');
     formData.append('coordinador', localStorage.getItem('userID'));
     formData.append('copia_registro', file);
     console.log(rut)

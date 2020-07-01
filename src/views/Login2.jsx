@@ -140,14 +140,7 @@ function Login2() {
               <label>Contraseña</label>
               <input type="password" className="form-control" placeholder="Enter password" value={password} onChange={handleChangeP} defaultValue=""/>
           </div>
-
-          <div className="form-group">
-              <div className="custom-control custom-checkbox">
-                  <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                  <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
-              </div>
-          </div>
-
+          
           <Button bsStyle="info" pullleft fill onClick={onSubmit}>
                 submit
               </Button>

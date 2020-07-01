@@ -73,23 +73,29 @@ class Busqueda_modificar_usuario extends Component {
 
   handleEliminarProfesor(event){
     //console.log(event.target.value)event.target.value
-    axios.delete(`http://localhost:8000/profesor/${event.target.value.toString()}/`);   
-    alert("Se ha eliminado correctamente") 
+    axios.delete(`http://localhost:8000/profesor/${event.target.value.toString()}/`).then( data =>{
+      alert("Se ha eliminado correctamente") 
+      window.location.reload();
+    });   
     //axios.delete(`http://localhost:8000/profesor/${id3}`, { headers: { "Authorization": localStorage.getItem('userID')} }); 
   }
   
 
   handleEliminarCoord(event){
     //console.log(event.target.value)event.target.value
-    axios.delete(`http://localhost:8000/coordinador/${event.target.value.toString()}/`);   
-    alert("Se ha eliminado correctamente") 
+    axios.delete(`http://localhost:8000/coordinador/${event.target.value.toString()}/`).then( data =>{
+      alert("Se ha eliminado correctamente") 
+      window.location.reload();
+    });   
     //axios.delete(`http://localhost:8000/profesor/${id3}`, { headers: { "Authorization": localStorage.getItem('userID')} }); 
   }
 
   handleEliminarAdmin(event){
     //console.log(event.target.value)event.target.value
-    axios.delete(`http://localhost:8000/administrador/${event.target.value.toString()}/`);  
-    alert("Se ha eliminado correctamente") 
+    axios.delete(`http://localhost:8000/administrador/${event.target.value.toString()}/`).then( data =>{
+      alert("Se ha eliminado correctamente") 
+      window.location.reload();
+    });  
     //axios.delete(`http://localhost:8000/profesor/${id3}`, { headers: { "Authorization": localStorage.getItem('userID')} }); 
   }
 

@@ -182,7 +182,6 @@ class Modificar_usuario extends Component {
     console.log(this.state.admin)
     if(this.state.realizacion=="coordinador"){
       var formData_coordinador = new FormData();
-      formData_coordinador.append('rut', this.state.rut);
       formData_coordinador.append('nombre', this.state.nombre);
       formData_coordinador.append('email', this.state.email);
       formData_coordinador.append('telefono', this.state.telefono);
@@ -196,7 +195,6 @@ class Modificar_usuario extends Component {
     }
     else if(this.state.realizacion=="administrador"){
       var formData_administrador = new FormData();
-      formData_administrador.append('rut', this.state.rut);
       formData_administrador.append('nombre', this.state.nombre);
       formData_administrador.append('email', this.state.email);
       formData_administrador.append('telefono', this.state.telefono);

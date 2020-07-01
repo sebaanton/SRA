@@ -47,7 +47,7 @@ class AdminNavbarLinks extends Component {
            <NavItem eventKey={2} href="Crear_usuario">
            Crear Usuario
           </NavItem>
-          <NavItem eventKey={3} href="Login2">
+          <NavItem eventKey={3} href="http://localhost:3000/Login2">
             Cerrar Sesión
           </NavItem>
         </Nav>
