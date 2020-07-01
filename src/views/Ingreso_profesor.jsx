@@ -75,6 +75,7 @@ function Ingreso_profesor() {
         }, function () { console.log(data) });
         console.log(data.data.id)
         await setAsignatura(data.data.id)
+        alert("Se ha creado correctamente")
         history.push("/profesor/Buscar_alumno");
       } else {
         const prioridad = 0.3 * causalCount + 0.7 * (asignaturaCount.length);
@@ -102,7 +103,7 @@ function Ingreso_profesor() {
         }, function () { console.log(data) });
 
         await setAsignatura(data.data.id)
-        alert("Se ha creado correctamente") 
+        alert("Se ha modificado correctamente") 
         history.push("/profesor/Buscar_alumno");
       }
     } catch (e) {
