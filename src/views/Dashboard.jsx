@@ -181,7 +181,7 @@ componentDidMount() {
           if(res.data[i].tipo_ingreso.toLowerCase() == "autoconsulta"){
             autoconsulta=autoconsulta+1;
           }
-          if(estado_actual_alumno2[i2].toLowerCase() == "en observacion"){
+          if(estado_actual_alumno[i2].toLowerCase() == "en observacion"){
             en_observacion=en_observacion+1;
           }
         }

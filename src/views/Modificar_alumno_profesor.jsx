@@ -25,27 +25,27 @@ class Ingreso_profesor extends Component {
     asignatura_datos: [],
     nombre: "",// alumno
     rut: "",// reporte + alumno
-    calificacion: 0,// asignatura_reportada
-    asistencia_n: 0,// asignatura_reportada
-    interes_n: 0,// asignatura_reportada
+    calificacion: "",// asignatura_reportada
+    asistencia_n: "",// asignatura_reportada
+    interes_n: "",// asignatura_reportada
     email: "",// alumno
-    ramo: 0,// reporte + asignatura_reportad (id del ramo) reportado
-    id_asignatura_reportada: 0,
+    ramo: "",// reporte + asignatura_reportad (id del ramo) reportado
+    id_asignatura_reportada: "",
     observaciones: "",// reporte + asignatura_reportada
     semestre: "",// reporte
-    asignaturas_reportadas: 0, //  cantidad
-    prioridad: 0, // 
-    reiteraciones_causal: 0, // 
+    asignaturas_reportadas: "", //  cantidad
+    prioridad: "", // 
+    reiteraciones_causal: "", // 
     tipo_ingreso: "reportado", // 
     año_semestre: "", // año+semestre
-    id_reporte_n: 0, // 
+    id_reporte_n: "", // 
   };
 
   componentDidMount() {
 
     const currenturl = window.location.pathname
     const largo = currenturl.length
-    const id = currenturl.slice(33, largo)
+    const id = currenturl.slice(36, largo)
     //console.log(id)
     axios.get(`http://localhost:8000/reporte/${id}`).then(res =>{
       this.setState({
@@ -69,6 +69,8 @@ class Ingreso_profesor extends Component {
     axios.get(`http://localhost:8000/alumno/${this.state.rut}`).then(res => {
       this.setState({
         alumno: res.data,
+        nombre: res.data.nombre,
+        email: res.data.correo
       },
         //console.log(res.data.rut)
       );
@@ -78,6 +80,7 @@ class Ingreso_profesor extends Component {
         
         this.setState({
           reporteDisplay: res2.data,
+          reporte_id: id,
         }, function () {
           //console.log(this.state.reporteDisplay.id);
           //console.log(this.state.reporteDisplay);
@@ -94,12 +97,17 @@ class Ingreso_profesor extends Component {
               asig = res4.data[j]
             }
           }
-          //console.log(asig)
+          console.log(asig)
 
           this.setState({
             asignatura_reportada: asig,
+            asistencia_n: asig.asistencia,
+            calificacion: asig.notas_ponderadas/10,
+            interes_n: asig.participacion,
+            observaciones: asig.observaciones,
+            año_semestre: asig.año_semestre,
             //id_reporte_n: id_reporte,
-            id_asignatura_reportada: asig.asignatura // id de la asignatura
+            id_asignatura_reportada: asig.id // id de la asignatura
           }, function () {
             //console.log(this.state.id_asignatura_reportada);
           }
@@ -110,19 +118,22 @@ class Ingreso_profesor extends Component {
           axios.get(`http://localhost:8000/asignatura/`).then(res5 => {
             var k;
             const id_asignatura = this.state.asignatura_reportada.asignatura
-            this.setRamo(id_asignatura)
+            this.setState({
+              ramo: id_asignatura
+            })
             console.log(id_asignatura)
             console.log(res5.data)
             for (k = 0; k < res5.data.length; k++) {
               if (res5.data[k].id == id_asignatura) {
                 //console.log(res5.data[k])
-                asignatura = k
+                asignatura = res5.data[k].glosa
+                console.log(asignatura)
               }
             }
             //console.log(asig)
 
             this.setState({
-              asignatura_datos: res5.data[asignatura].glosa
+              asignatura_datos: asignatura
             }, function () {
               console.log(this.state.asignatura_datos);
             }
@@ -139,7 +150,8 @@ class Ingreso_profesor extends Component {
       id_reporte_n: id_r,
     })
   }
-  setRamo(ramo_id) {//check
+  setRamo(ramo_id) {
+    console.log(ramo_id)//check
     this.setState({
       ramo: ramo_id
     })
@@ -239,38 +251,35 @@ class Ingreso_profesor extends Component {
   }
 
   onSubmit(event) {
-
+    event.preventDefault();
     var formData_alumno = new FormData();
     var formData_reporte = new FormData();
     var formData_asignatura = new FormData();
+    console.log(this.state.rut)
+    console.log(this.state.nombre)
+    console.log(this.state.email)
     formData_alumno.append('rut', this.state.rut);
     formData_alumno.append('nombre', this.state.nombre);
     formData_alumno.append('correo', this.state.email);
-    formData_alumno.append('coordinador', localStorage.getItem('userID'));// -> rut de elliott
+    formData_alumno.append('estado_actual', 'reportado');
+    formData_alumno.append('coordinador', 10000002);// -> rut de elliott
+    axios.put(`${apiUrl}/alumno/${this.state.rut}/`, formData_alumno);
 
     // cantidad de asignaturas y la prioridad no debiese verse afectada por el ingreso de un profesor
 
     //formData_reporte.append('asignaturas_reportadas', this.state.asignaturas_reportadas);
     //formData_reporte.append('prioridad', this.state.prioridad);
-    formData_reporte.append('observacion', this.state.observaciones);
-    formData_reporte.append('reiteraciones_causal', this.state.reiteraciones_causal);
-    formData_reporte.append('tipo_ingreso', this.state.tipo_ingreso);
-    formData_reporte.append('rut', this.state.rut);//
-    formData_reporte.append('año', new Date().getFullYear().toString());//
-    formData_reporte.append('semestre', this.state.semestre);//
 
-    formData_asignatura.append('notas_ponderadas', this.state.calificacion);
+    formData_asignatura.append('notas_ponderadas', this.state.calificacion*10);
     formData_asignatura.append('asistencia', this.state.asistencia_n);
     formData_asignatura.append('participacion', this.state.interes_n);
+    console.log(this.state.reporte_id)
     formData_asignatura.append('asignatura', this.state.ramo);
     formData_asignatura.append('observaciones', this.state.observaciones);
     formData_asignatura.append('año_semestre', this.state.año_semestre);
     formData_asignatura.append('reporte', this.state.reporte_id);
     //formData_asignatura.append('profesor', localStorage.getItem('userID'));////////////////////////////
-
-    axios.put(`${apiUrl}/alumno/${this.state.rut}/`, formData_alumno);
-    axios.put(`${apiUrl}/asignatura_reportada/${this.state.id_asignatura_reportada}/`, formData_asignatura);
-    axios.put(`http://localhost:8000/reporte/${this.state.id_reporte_n}/`, formData_reporte).then(data => {///////////////////////
+    axios.put(`${apiUrl}/asignatura_reportada/${this.state.id_asignatura_reportada}/`, formData_asignatura).then(res=>{
       this.props.history.goBack()
     });
   }
@@ -283,6 +292,7 @@ class Ingreso_profesor extends Component {
               <Card
                 title="Detalle de alumno"
                 content={
+                  <form onSubmit={this.onSubmit.bind(this)}>
                   <form action="/send.php" >
                     <FormInputs
                       ncols={["col-md-4", "col-md-4", "col-md-3"]}
@@ -294,7 +304,7 @@ class Ingreso_profesor extends Component {
                           placeholder: "Juan",
                           minlength: "3",
                           maxlength: "50",
-                          pattern: "[a-zA-Z]+",
+                          pattern: "[a-zA-Z ]+",
                           required: "required",
                           title: "Letras de la A a la Z (mayúsculas o minúsculas)",
                           defaultValue: this.state.alumno.nombre,
@@ -310,6 +320,7 @@ class Ingreso_profesor extends Component {
                           maxlength: "10",
                           pattern: "[^a-zA-Z][0-9]{7,8}+-[0-9|Kk]",
                           required: "required",
+                          readonly:"readonly",
                           title: "Números enteros de 0 al 9 y la letra k en su ́ultima posición (mayúscula o minúscula)",
                           defaultValue: this.state.alumno.rut,
                           onChange: this.onRutChange.bind(this),
@@ -346,7 +357,7 @@ class Ingreso_profesor extends Component {
                           pattern: "[0-6][.][0-9]|[7][.][0]",
                           required: "required",
                           title: "Números decimales entre 1.0 y 7.0",
-                          defaultValue: this.state.asignatura_reportada.notas_ponderadas,
+                          defaultValue: this.state.calificacion,
                           onChange: this.onCalificacionChange.bind(this),
                         },
                         {
@@ -363,13 +374,13 @@ class Ingreso_profesor extends Component {
                           onChange: this.onAsistenciaChange.bind(this),
                         },
                         {
-                          label: "Interés Percibido",
+                          label: "Interés Percibido(1 al 3)",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "Alto-Medio-Bajo",
-                          minlength: "4",
-                          maxlength: "5",
-                          pattern: "[aA][lL][tT][oO]|[mM][eE][dD][iI][oO]|[bB][aA][jJ][oO]",
+                          placeholder: "2",
+                          minlength: "1",
+                          maxlength: "1",
+                          pattern: "[1]|[2]|[3]",
                           required: "required",
                           title: "Números decimales entre 1.0 y 7.0",
                           defaultValue: this.state.asignatura_reportada.participacion,
@@ -407,7 +418,7 @@ class Ingreso_profesor extends Component {
                           placeholder: "Calculo 1",
                           minlength: "5",
                           maxlength: "50",
-                          pattern: "[a-zA-Z]+",
+                          pattern: "[a-zA-Z ]+",
                           required: "required",
                           title: "Letras de la A a la Z (mayúsculas o minúsculas)",
                           defaultValue: this.state.asignatura_datos,
@@ -429,10 +440,11 @@ class Ingreso_profesor extends Component {
                     <br />
                     <br />
 
-                    <Button bsStyle="info" pullRight fill onClick={this.onSubmit.bind(this)}>
+                    <Button bsStyle="info" pullRight fill type='submit'>
                       Actualizar Datos
                     </Button>
                     <div className="clearfix" />
+                  </form>
                   </form>
                 }
               />

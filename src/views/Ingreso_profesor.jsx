@@ -22,7 +22,8 @@ const apiUrl = 'http://localhost:8000';
 function Ingreso_profesor() {
 
   const history = useHistory();
-  const onSubmit = async () => {
+  const onSubmit = async event => {
+    event.preventDefault();
     try {
       await setAlumno();
       await setNewAlumno();
@@ -39,7 +40,7 @@ function Ingreso_profesor() {
       var año = new Date().getFullYear();
 
       const data2 = await axios.get(`${apiUrl}/reporte`);
-      console.log(data2.data[0].alumno)
+      
       var i;
       var id_reporte = 0;
       for (i; i < data2.data.length; i++) {
@@ -53,7 +54,7 @@ function Ingreso_profesor() {
         if (prioridad > 4) {
           prioridad = 4;
         }
-        console.log(año)
+        
         console.log(semestre)
         console.log(tipo_causal)
         console.log(prioridad)
@@ -139,7 +140,7 @@ function Ingreso_profesor() {
     formData.append('nombre', nombre);
     formData.append('correo', correo);
     formData.append('estado_actual', 'reportado');
-    formData.append('coordinador', 186363558);// no le pasa el formData
+    formData.append('coordinador', 10000002);// no le pasa el formData
     console.log(formData)
     try {
       console.log(formData)
@@ -157,7 +158,7 @@ function Ingreso_profesor() {
     formData.append('nombre', nombre);
     formData.append('correo', correo);
     formData.append('estado_actual', 'reportado');
-    formData.append('coordinador', 186363558);
+    formData.append('coordinador', 10000002);
     try {
       console.log(formData)
       await axios.post(`${apiUrl}/alumno/`, formData);
@@ -194,7 +195,7 @@ function Ingreso_profesor() {
         const data = await axios.post(`${apiUrl}/asignatura_reportada/`, {
           asistencia: asistencia,
           participacion: interes,
-          notas_ponderadas: calificacion,
+          notas_ponderadas: calificacion*10,
           año: año_semestre,
           observaciones: observacion,
           asignatura: data9.data[p].id,
@@ -310,6 +311,7 @@ function Ingreso_profesor() {
             <Card
               title="Reporte profesor"
               content={
+                <form onSubmit={onSubmit}>
                 <form action="/send.php" >
                   <FormInputs
                     ncols={["col-md-4", "col-md-4", "col-md-3"]}
@@ -321,7 +323,7 @@ function Ingreso_profesor() {
                         placeholder: "Juan",
                         minlength: "3",
                         maxlength: "25",
-                        pattern: "[a-zA-Z]+",
+                        pattern: "[a-zA-Z ]+",
                         required: "required",
                         title: "Letras de la A a la Z (mayúsculas o minúsculas)",
                         onChange: handleChangeNombre
@@ -343,7 +345,6 @@ function Ingreso_profesor() {
                         type: "text",
                         bsClass: "form-control",
                         placeholder: "Reportado",
-                        defaultValue: "Reportado",
                         minlength: "9",
                         maxlength: "12",
                         pattern: "[aA][uU][tT][oO]|[Cc][Oo][nN][Ss][Uu][lL][tT][aA]|[Rr][eE][Pp][oO][rR][tT][aA][dD][oO]",
@@ -376,7 +377,7 @@ function Ingreso_profesor() {
                         label: "Porcentaje de Asistencia",
                         type: "text",
                         bsClass: "form-control",
-                        placeholder: "10%",
+                        placeholder: "10",
                         minlength: "1",
                         maxlength: "3",
                         pattern: "[0-9]|[0-9][0-9]|[1][0][0]",
@@ -385,13 +386,13 @@ function Ingreso_profesor() {
                         onChange: handleChangeAsistencia
                       },
                       {
-                        label: "Interés Percibido",
+                        label: "Interés Percibido(1 al 3)",
                         type: "text",
                         bsClass: "form-control",
-                        placeholder: "Alto-Medio-Bajo",
-                        minlength: "4",
-                        maxlength: "5",
-                        pattern: "[aA][lL][tT][oO]|[mM][eE][dD][iI][oO]|[bB][aA][jJ][oO]",
+                        placeholder: "2",
+                        minlength: "1",
+                        maxlength: "1",
+                        pattern: "[1]|[2]|[3]",
                         required: "required",
                         title: "Números decimales entre 1.0 y 7.0",
                         onChange: handleChangeInteres
@@ -426,7 +427,7 @@ function Ingreso_profesor() {
                         placeholder: "Calculo 1",
                         minlength: "5",
                         maxlength: "50",
-                        pattern: "[a-zA-Z]+",
+                        pattern: "[a-zA-Z ]+",
                         required: "required",
                         title: "Letras de la A a la Z (mayúsculas o minúsculas)",
                         onChange: handleChangeAsignatura_reportada
@@ -446,10 +447,11 @@ function Ingreso_profesor() {
                   <br />
                   <br />
 
-                  <Button bsStyle="info" pullRight fill onClick={onSubmit}>
+                  <Button bsStyle="info" pullRight fill type="submit">
                     Ingresar Datos
                     </Button>
                   <div className="clearfix" />
+                </form>
                 </form>
               }
             />

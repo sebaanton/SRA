@@ -86,9 +86,8 @@ class Ver_detalle_profesor extends Component {
             asig = res4.data[i]
           }
         }
-        //console.log(asig)
-        
         this.setState({
+          calificacion:asig.notas_ponderadas/10,
           asignatura_reportada: asig
         }, function(){
           console.log(this.state.asignatura_reportada);
@@ -198,8 +197,8 @@ class Ver_detalle_profesor extends Component {
                           required:"required",
                           title:"Números decimales entre 1.0 y 7.0",
                           disabled:"disabled",
-                          placeholder: this.state.asignatura_reportada.notas_ponderadas,
-                          defaultValue: this.state.asignatura_reportada.notas_ponderadas,    
+                          placeholder: this.state.calificacion,
+                          defaultValue: this.state.calificacion,    
                         },
                         {
                           label: "Porcentaje de Asistencia",

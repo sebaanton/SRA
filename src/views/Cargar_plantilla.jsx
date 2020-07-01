@@ -90,11 +90,6 @@ class Cargar_plantilla extends Component {
                 const apiUrl = 'http://localhost:8000';
                 try{
                   axios.post(`${apiUrl}/cargar/`, formData).then(data=>{
-                    if(localStorage.getItem("userType") == "coordinador"){
-                      this.history.push("/coordinador/notifications");
-                    }else{
-                      this.history.push("/profesor/Buscar_alumno");
-                    }
                     alert("Se han cargado los datos correctamente")
                   });
                 }catch(e){
