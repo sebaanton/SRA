@@ -99,6 +99,7 @@ class Crear_usuario extends Component {
 
 
   onSubmit(event){
+    event.preventDefault();
     var password;
     password= this.state.nombre.split(" ")[0] + this.state.nombre.split(" ")[1];
     console.log(password)
@@ -137,6 +138,7 @@ class Crear_usuario extends Component {
               <Card
                 title="Crear Usuario"
                 content={
+                  <form onSubmit={this.onSubmit.bind(this)}>
                   <form>
 
                     <FormInputs
@@ -146,10 +148,10 @@ class Crear_usuario extends Component {
                           label: "Nombre y Apellido",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "Nombre",
+                          placeholder: "Nombre Apellido",
                           minlength:"3",
                           maxlength:"25",
-                          pattern: "[a-zA-Z]+",
+                          pattern: "[a-zA-Z ]+",
                           required:"required",
                           onChange: this.onNombreChange.bind(this),
                           //defaultValue: "Mike"
@@ -158,10 +160,10 @@ class Crear_usuario extends Component {
                           label: "Telefono",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "87654321",
-                          minlength:"8",
-                          maxlength:"8",
-                          pattern: "[0-9]+",
+                          placeholder: "987654321",
+                          minlength:"9",
+                          maxlength:"9",
+                          pattern: "[0-9]{9}",
                           required:"required",
                           onChange: this.onTelefonoChange.bind(this),
                         },
@@ -174,7 +176,7 @@ class Crear_usuario extends Component {
                           label: "Email",
                           type: "email",
                           bsClass: "form-control",
-                          placeholder: "Email",
+                          placeholder: "Email@mail.udp.cl",
                           minlength:"15",
                           maxlength:"50",
                           pattern: "[a-zA-z0-9.]+@mail.udp.cl",
@@ -185,7 +187,7 @@ class Crear_usuario extends Component {
                           label: "Tipo",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "",
+                          placeholder: "administrador",
                           minlength:"8",
                           maxlength:"50",
                           pattern: "[Aa][dD][Mm][iI][Nn][iI][sS][tT][rR][aA][dD][oO][rR]|[Cc][oO][oO][rR][dD][Ii][nN][aA][Dd][Oo][rR]|[Pp][rR][oO][Ff][eE][sS][oO][rR]",
@@ -208,7 +210,6 @@ class Crear_usuario extends Component {
                           minlength:"1",
                           maxlength:"2",
                           pattern: "[0-9]+",
-                          required:"required",
                           onChange: this.onJornadaChange.bind(this),
                           //defaultValue: "123456789"
                         },                        
@@ -228,7 +229,6 @@ class Crear_usuario extends Component {
                           minlength:"9",
                           maxlength:"10",
                           pattern: "[^a-zA-Z][0-9]{7,8}+-[0-9|Kk]",
-                          required:"required",
                           //defaultValue: "123456789"
                           onChange: this.onRutChange.bind(this),
                         },
@@ -237,10 +237,11 @@ class Crear_usuario extends Component {
                     />
                     </div>
                 
-                    <Button bsStyle="info" pullRight fill onClick={this.onSubmit.bind(this)}>
+                    <Button bsStyle="info" pullRight fill type='submit'>
                       Crear
                     </Button>
                     <div className="clearfix" />
+                  </form>
                   </form>
                 }
               />

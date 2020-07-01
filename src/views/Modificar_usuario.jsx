@@ -170,6 +170,7 @@ class Modificar_usuario extends Component {
 
 
   onSubmit(event){
+    event.preventDefault();
     console.log(this.state.realizacion)
     console.log(this.state.rut)
     console.log(this.state.nombre)
@@ -178,6 +179,7 @@ class Modificar_usuario extends Component {
     console.log(this.state.jornada)
     console.log(this.state.id)
     console.log(this.state.password)
+    console.log(this.state.admin)
     if(this.state.realizacion=="coordinador"){
       var formData_coordinador = new FormData();
       formData_coordinador.append('rut', this.state.rut);
@@ -186,8 +188,8 @@ class Modificar_usuario extends Component {
       formData_coordinador.append('telefono', this.state.telefono);
       formData_coordinador.append('password', this.state.password);
       formData_coordinador.append('admin', this.state.admin);
-      axios.put(`http://localhost:8000/coordinador/${this.state.id}/`, formData_coordinador).then(data => {///////////////////////
-      this.props.history.goBack()
+      axios.put(`http://localhost:8000/coordinador/${this.state.id.toString()}/`, formData_coordinador).then(data => {///////////////////////
+   
     });
 
     }
@@ -227,6 +229,7 @@ class Modificar_usuario extends Component {
               <Card
                 title="Modificar Usuario"
                 content={
+                  <form onSubmit={this.onSubmit.bind(this)}>
                   <form>
 
                     <FormInputs
@@ -239,7 +242,7 @@ class Modificar_usuario extends Component {
                           placeholder: "Nombre",
                           minlength:"3",
                           maxlength:"25",
-                          pattern: "[a-zA-Z]+",
+                          pattern: "[a-zA-Z ]+",
                           required:"required",
                           onChange: this.onNombreChange.bind(this),
                           defaultValue: this.state.nombre,
@@ -250,9 +253,9 @@ class Modificar_usuario extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "87654321",
-                          minlength:"8",
-                          maxlength:"8",
-                          pattern: "[0-9]+",
+                          minlength:"9",
+                          maxlength:"9",
+                          pattern: "[0-9]{9}",
                           required:"required",
                           onChange: this.onTelefonoChange.bind(this),
                           defaultValue: this.state.telefono,
@@ -304,7 +307,6 @@ class Modificar_usuario extends Component {
                           minlength:"1",
                           maxlength:"2",
                           pattern: "[0-9]+",
-                          required:"required",
                           onChange: this.onJornadaChange.bind(this),
                           defaultValue: this.state.jornada,
                           //defaultValue: "123456789"
@@ -325,7 +327,7 @@ class Modificar_usuario extends Component {
                           minlength:"9",
                           maxlength:"10",
                           pattern: "[^a-zA-Z][0-9]{7,8}+-[0-9|Kk]",
-                          required:"required",
+                          readonly:"readonly",
                           //defaultValue: "123456789"
                           onChange: this.onRutChange.bind(this),
                           defaultValue: this.state.rut,
@@ -335,10 +337,11 @@ class Modificar_usuario extends Component {
                     />
                     </div>
                 
-                    <Button bsStyle="info" pullRight fill onClick={this.onSubmit.bind(this)}>
+                    <Button bsStyle="info" pullRight fill type='submit'>
                       Modificar
                     </Button>
                     <div className="clearfix" />
+                  </form>
                   </form>
                 }
               />
