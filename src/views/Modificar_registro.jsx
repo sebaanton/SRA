@@ -18,13 +18,17 @@ class Modificar_registro extends Component {
     alumno: [],
     cantidad: "",
     observacion: "",
-    redirect: null
+    redirect: null,
+    id_rep:0,
   };
 
   componentDidMount(){
     const currenturl = window.location.pathname
     const largo = currenturl.length
     const id = currenturl.slice(32,largo)
+    this.setState({
+      id_rep: id
+    })
     axios.get(`http://localhost:8000/reporte/${id}`).then(res2 => {
       this.setState({
         reporte: res2.data,
@@ -39,7 +43,10 @@ class Modificar_registro extends Component {
       });
     });
   }
-
+  handleEliminarReporte(event) {
+    axios.delete(`http://localhost:8000/reporte/${event.target.value.toString()}/`);
+    //axios.delete(`http://localhost:8000/profesor/${id3}`, { headers: { "Authorization": localStorage.getItem('userID')} }); 
+  }
   handleChangeCantidad(event){
     this.setState( {
       cantidad: event.target.value,
@@ -197,8 +204,11 @@ class Modificar_registro extends Component {
                       </label>   
                     </form>
                         <br />
-
-                    <Button bsStyle="info" pullRight fill type="submit">
+                        <Button bsStyle="info" pullLeft value={this.state.id_rep} onClick={this.handleEliminarReporte.bind(this)}>
+                              Eliminar
+                            </Button>
+                            
+                    <Button bsStyle="info" pullRight fill onClick={this.onSubmit.bind(this)}>
                       Actualizar registro
                     </Button>
                     <div className="clearfix" />

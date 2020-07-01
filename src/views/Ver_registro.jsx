@@ -213,6 +213,7 @@ class Ver_registro extends Component {
                     <Button bsStyle="info" pullRight fill type="submit" href={`http://localhost:3000/coordinador/Modificar_registro/${this.state.reporte.id}`} >
                       Modificar registro
                     </Button>
+                    
                     <Button bsStyle="info" pullLeft fill type="submit" href={`http://localhost:3000/coordinador/Ver_flujo/${this.state.reporte.id}`} >
                       Ver flujo
                     </Button>

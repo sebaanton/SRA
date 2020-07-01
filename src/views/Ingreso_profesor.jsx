@@ -102,6 +102,7 @@ function Ingreso_profesor() {
         }, function () { console.log(data) });
 
         await setAsignatura(data.data.id)
+        alert("Se ha creado correctamente") 
         history.push("/profesor/Buscar_alumno");
       }
     } catch (e) {

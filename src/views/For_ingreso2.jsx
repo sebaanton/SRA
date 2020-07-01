@@ -102,6 +102,7 @@ function For_ingreso2() {
         }, function () { console.log(data) });
 
         await setAsignatura(data.data.id)
+        alert("Se ha creado correctamente") 
         history.push("/coordinador/notifications");
       }
     } catch (e) {
